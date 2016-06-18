@@ -12,6 +12,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using EatThatChicken.ViewModel;
 
 namespace EatThatChicken
 {
@@ -23,6 +24,8 @@ namespace EatThatChicken
         public MainWindow()
         {
             InitializeComponent();
+            this.DataContext = new MainViewModel(this);
         }
+
     }
 }

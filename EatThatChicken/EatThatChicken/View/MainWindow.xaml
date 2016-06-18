@@ -1,0 +1,15 @@
+﻿<Window x:Class="EatThatChicken.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:EatThatChicken.View"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="600" Width="1000" Background="#371E71" ResizeMode="NoResize"  WindowStartupLocation="CenterScreen">
+    <Canvas>
+
+        <Button x:Name="btnStart" Content="START GAME" Command="{Binding StartCommand}" Canvas.Left="91" Canvas.Top="64" Width="214" Height="68" />
+        <Button x:Name="btnExit" Content="EXIT GAME" Command="{Binding ExitCommand}" Canvas.Left="91" Canvas.Top="389" Width="214" Height="68"/>
+        <Image x:Name="chicken" Canvas.Left="345" Canvas.Top="10" Width="598" Height="508" Source="/Images/chicken.jpg"/>
+    </Canvas>
+</Window>
