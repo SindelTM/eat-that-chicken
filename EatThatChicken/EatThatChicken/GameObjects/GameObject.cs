@@ -9,6 +9,13 @@ namespace EatThatChicken.GameObjects
             this.IsAlive = true;
         }
 
+        protected GameObject(Size bounds, Position position, bool isAlive)
+        {
+            this.Bounds = bounds;
+            this.Position = position;
+            this.IsAlive = true;
+        }
+
         public Size Bounds { get; set; }
 
         public Position Position { get; set; }
@@ -19,7 +26,7 @@ namespace EatThatChicken.GameObjects
         {
             throw new System.NotImplementedException();
         }
-
+        
         public void Move()
         {
             throw new System.NotImplementedException();

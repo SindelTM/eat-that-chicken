@@ -8,5 +8,9 @@ namespace EatThatChicken.GameObjects.Birds
 {
     public class SkinyTurkey: Bird
     {
+        public SkinyTurkey(Size bounds, Position position, bool isAlive, int points)
+            :base(bounds, position, isAlive, points)
+        {
+        }
     }
 }
