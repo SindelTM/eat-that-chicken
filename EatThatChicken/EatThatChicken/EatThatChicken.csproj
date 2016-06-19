@@ -56,7 +56,16 @@
       <SubType>Designer</SubType>
     </ApplicationDefinition>
     <Compile Include="Common\CommandBase.cs" />
+    <Compile Include="Contracts\IAttackable.cs" />
+    <Compile Include="Contracts\ICollidable.cs" />
+    <Compile Include="Contracts\IGameObject.cs" />
+    <Compile Include="Contracts\IMoveable.cs" />
+    <Compile Include="Contracts\IUpdateable.cs" />
+    <Compile Include="GameObjects\Birds\AngryTurkey.cs" />
     <Compile Include="GameObjects\Birds\Bird.cs" />
+    <Compile Include="GameObjects\Birds\MuscleTurkey.cs" />
+    <Compile Include="GameObjects\Birds\NaughtyTurkey.cs" />
+    <Compile Include="GameObjects\Birds\SkinyTurkey.cs" />
     <Compile Include="ViewModel\MainViewModel.cs" />
     <Compile Include="ViewModel\SecondViewModel.cs" />
     <Compile Include="View\secondWindow.xaml.cs">
