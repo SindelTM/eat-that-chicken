@@ -1,16 +1,28 @@
-﻿namespace EatThatChicken.GameObjects
+﻿using EatThatChicken.Contracts;
+
+namespace EatThatChicken.GameObjects
 {
-    public abstract class GameObject
+    public abstract class GameObject : IGameObject
     {
-        public GameObject()
+        protected GameObject()
         {
             this.IsAlive = true;
         }
 
-        Size Bounds { get; set; }
+        public Size Bounds { get; set; }
 
-        Position Position { get; set; }
+        public Position Position { get; set; }
 
         public virtual bool IsAlive { get; set; }
+
+        public void Update()
+        {
+            throw new System.NotImplementedException();
+        }
+
+        public void Move()
+        {
+            throw new System.NotImplementedException();
+        }
     }
 }
