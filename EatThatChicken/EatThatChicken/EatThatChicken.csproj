@@ -59,6 +59,7 @@
     <Compile Include="Contracts\IAttackable.cs" />
     <Compile Include="Contracts\ICollidable.cs" />
     <Compile Include="Contracts\IGameObject.cs" />
+    <Compile Include="Contracts\IGameObjectFactory.cs" />
     <Compile Include="Contracts\IMoveable.cs" />
     <Compile Include="Contracts\IUpdateable.cs" />
     <Compile Include="Engines\GameEngine.cs" />
@@ -68,6 +69,8 @@
     <Compile Include="GameObjects\Birds\NaughtyTurkey.cs" />
     <Compile Include="GameObjects\Birds\SkinyTurkey.cs" />
     <Compile Include="Contracts\IGameRenderer.cs" />
+    <Compile Include="GameObjects\Bullets\Bullet.cs" />
+    <Compile Include="GameObjects\Factories\BulletFactory.cs" />
     <Compile Include="Renderers\WPFGameRenderer.cs" />
     <Compile Include="ViewModel\Commands\RelayCommand.cs" />
     <Compile Include="ViewModel\MainViewModel.cs" />
@@ -113,7 +116,7 @@
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
-    <None Include="EatThatChickenDiaram.cd" />
+    <None Include="EatThatChickenDiagram.cd" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -129,6 +132,7 @@
   <ItemGroup>
     <Resource Include="Images\chicken.jpg" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
