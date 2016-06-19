@@ -6,56 +6,62 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Input;
 using EatThatChicken.View;
+using EatThatChicken.ViewModel.Commands;
+using EatThatChicken.Engines;
 
 namespace EatThatChicken.ViewModel
 {
     class MainViewModel
     {
         private MainWindow firstWindow;
+
         //field startCommand,exitCommand-btnStart,btnExit
-        private ICommand startCommand;
-        private ICommand exitCommand;
+        private RelayCommand startCommand;
+        private RelayCommand exitCommand;
+
+        //constructor 
+        public MainViewModel(MainWindow window)
+        {
+            firstWindow = window;
+        }
 
         //property btnStart,btnExit
         public ICommand StartCommand
         {
             get
             {
-                if (startCommand == null)
+                if (this.startCommand == null)
                 {
-                    startCommand = new CommandBase(i => this.StartGame(), null);
+                    this.startCommand = new RelayCommand(this.StartGame);
                 }
-                return startCommand;
+
+                return this.startCommand;
             }
         }
+
         public ICommand ExitCommand
         {
             get
             {
-                if (exitCommand == null)
+                if (this.exitCommand == null)
                 {
-                    exitCommand = new CommandBase(i => this.ExitGame(), null);
+                    this.exitCommand = new RelayCommand(this.ExitGame);
                 }
-                return exitCommand;
+                return this.exitCommand;
             }
         }
 
         //methods for opening/closing windows btnStart,btnExit
         private void StartGame()
         {
-            secondWindow secondWindow = new secondWindow();
+            GameFieldWindow secondWindow = new GameFieldWindow();
             secondWindow.Show();
             firstWindow.Close();
         }
+
         private void ExitGame()
         {
             firstWindow.Close();
-        }
-       
-        //constructor 
-        public MainViewModel(MainWindow window)
-        {
-            firstWindow = window;
         }
     }
 }

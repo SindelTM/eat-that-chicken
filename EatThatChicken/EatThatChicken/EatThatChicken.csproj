@@ -61,15 +61,19 @@
     <Compile Include="Contracts\IGameObject.cs" />
     <Compile Include="Contracts\IMoveable.cs" />
     <Compile Include="Contracts\IUpdateable.cs" />
+    <Compile Include="Engines\GameEngine.cs" />
     <Compile Include="GameObjects\Birds\AngryTurkey.cs" />
     <Compile Include="GameObjects\Birds\Bird.cs" />
     <Compile Include="GameObjects\Birds\MuscleTurkey.cs" />
     <Compile Include="GameObjects\Birds\NaughtyTurkey.cs" />
     <Compile Include="GameObjects\Birds\SkinyTurkey.cs" />
+    <Compile Include="Contracts\IGameRenderer.cs" />
+    <Compile Include="Renderers\WPFGameRenderer.cs" />
+    <Compile Include="ViewModel\Commands\RelayCommand.cs" />
     <Compile Include="ViewModel\MainViewModel.cs" />
-    <Compile Include="ViewModel\SecondViewModel.cs" />
-    <Compile Include="View\secondWindow.xaml.cs">
-      <DependentUpon>secondWindow.xaml</DependentUpon>
+    <Compile Include="ViewModel\GameFieldViewModel.cs" />
+    <Compile Include="View\GameFieldWindow.xaml.cs">
+      <DependentUpon>GameFieldWindow.xaml</DependentUpon>
     </Compile>
     <Page Include="View\MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
@@ -86,7 +90,7 @@
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Page Include="View\secondWindow.xaml">
+    <Page Include="View\GameFieldWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
