@@ -65,11 +65,11 @@
     <Compile Include="Engines\GameEngine.cs" />
     <Compile Include="GameObjects\Birds\AngryBird.cs" />
     <Compile Include="GameObjects\Birds\Bird.cs" />
-    <Compile Include="GameObjects\Birds\BirdsFactory.cs" />
     <Compile Include="GameObjects\Birds\MuscleBird.cs" />
     <Compile Include="GameObjects\Birds\NaughtyBird.cs" />
     <Compile Include="GameObjects\Birds\SkinyBird.cs" />
     <Compile Include="Contracts\IGameRenderer.cs" />
+    <Compile Include="GameObjects\Factories\BirdsFactory.cs" />
     <Compile Include="Misc\GameAction.cs" />
     <Compile Include="Misc\KeyDownEventArgs.cs" />
     <Compile Include="GameObjects\Bullets\Bullet.cs" />
