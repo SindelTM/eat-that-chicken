@@ -65,6 +65,7 @@
     <Compile Include="Engines\GameEngine.cs" />
     <Compile Include="GameObjects\Birds\AngryBird.cs" />
     <Compile Include="GameObjects\Birds\Bird.cs" />
+    <Compile Include="GameObjects\Birds\BirdsFactory.cs" />
     <Compile Include="GameObjects\Birds\MuscleBird.cs" />
     <Compile Include="GameObjects\Birds\NaughtyBird.cs" />
     <Compile Include="GameObjects\Birds\SkinyBird.cs" />
