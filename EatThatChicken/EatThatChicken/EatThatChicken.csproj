@@ -63,11 +63,11 @@
     <Compile Include="Contracts\IMoveable.cs" />
     <Compile Include="Contracts\IUpdateable.cs" />
     <Compile Include="Engines\GameEngine.cs" />
-    <Compile Include="GameObjects\Birds\AngryTurkey.cs" />
+    <Compile Include="GameObjects\Birds\AngryBird.cs" />
     <Compile Include="GameObjects\Birds\Bird.cs" />
-    <Compile Include="GameObjects\Birds\MuscleTurkey.cs" />
-    <Compile Include="GameObjects\Birds\NaughtyTurkey.cs" />
-    <Compile Include="GameObjects\Birds\SkinyTurkey.cs" />
+    <Compile Include="GameObjects\Birds\MuscleBird.cs" />
+    <Compile Include="GameObjects\Birds\NaughtyBird.cs" />
+    <Compile Include="GameObjects\Birds\SkinyBird.cs" />
     <Compile Include="Contracts\IGameRenderer.cs" />
     <Compile Include="Misc\GameAction.cs" />
     <Compile Include="Misc\KeyDownEventArgs.cs" />

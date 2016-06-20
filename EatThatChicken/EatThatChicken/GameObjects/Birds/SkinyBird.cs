@@ -6,16 +6,16 @@ using System.Threading.Tasks;
 
 namespace EatThatChicken.GameObjects.Birds
 {
-    public class SkinyTurkey: Bird
+    public class SkinyBird: Bird
     {
         private const int SkinnyBirdHealth = 1;
 
-        protected SkinyTurkey(int health)
+        protected SkinyBird(int health)
         {
             this.Health = health;
         }
 
-        public SkinyTurkey()
+        public SkinyBird()
             :this(SkinnyBirdHealth)
         {
         }

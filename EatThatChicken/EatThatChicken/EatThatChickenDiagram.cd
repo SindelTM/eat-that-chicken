@@ -16,40 +16,39 @@
     </TypeIdentifier>
     <Lollipop Position="0.2" />
   </Class>
-  <Class Name="EatThatChicken.GameObjects.Birds.AngryTurkey" Collapsed="true">
+  <Class Name="EatThatChicken.GameObjects.Birds.AngryBird" Collapsed="true">
     <Position X="0.5" Y="9.25" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
-      <FileName>GameObjects\Birds\AngryTurkey.cs</FileName>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAIAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>GameObjects\Birds\AngryBird.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="EatThatChicken.GameObjects.Birds.Bird" Collapsed="true">
     <Position X="0.75" Y="8" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAAAAAAAAAAAgAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>GameObjects\Birds\Bird.cs</FileName>
     </TypeIdentifier>
-    <Lollipop Position="0.2" />
   </Class>
-  <Class Name="EatThatChicken.GameObjects.Birds.MuscleTurkey" Collapsed="true">
+  <Class Name="EatThatChicken.GameObjects.Birds.MuscleBird" Collapsed="true">
     <Position X="7.25" Y="9.25" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
-      <FileName>GameObjects\Birds\MuscleTurkey.cs</FileName>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAACAAAAAAAA=</HashCode>
+      <FileName>GameObjects\Birds\MuscleBird.cs</FileName>
     </TypeIdentifier>
   </Class>
-  <Class Name="EatThatChicken.GameObjects.Birds.NaughtyTurkey" Collapsed="true">
+  <Class Name="EatThatChicken.GameObjects.Birds.NaughtyBird" Collapsed="true">
     <Position X="2.75" Y="9.25" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
-      <FileName>GameObjects\Birds\NaughtyTurkey.cs</FileName>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABAAA=</HashCode>
+      <FileName>GameObjects\Birds\NaughtyBird.cs</FileName>
     </TypeIdentifier>
   </Class>
-  <Class Name="EatThatChicken.GameObjects.Birds.SkinyTurkey" Collapsed="true">
+  <Class Name="EatThatChicken.GameObjects.Birds.SkinyBird" Collapsed="true">
     <Position X="5" Y="9.25" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
-      <FileName>GameObjects\Birds\SkinyTurkey.cs</FileName>
+      <HashCode>AQAACAAAAAAAAAAAAAAAAAAAAAEAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>GameObjects\Birds\SkinyBird.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="EatThatChicken.GameObjects.Bullets.Bullet" Collapsed="true">
