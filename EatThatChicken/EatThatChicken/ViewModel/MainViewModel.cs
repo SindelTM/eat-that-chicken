@@ -1,28 +1,21 @@
 ﻿using EatThatChicken.Common;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Input;
 using EatThatChicken.View;
-using EatThatChicken.ViewModel.Commands;
-using EatThatChicken.Engines;
 
 namespace EatThatChicken.ViewModel
 {
     class MainViewModel
     {
-        private MainWindow firstWindow;
+        private MainWindow mainWindow;
 
         //field startCommand,exitCommand-btnStart,btnExit
-        private RelayCommand startCommand;
-        private RelayCommand exitCommand;
+        private CommandBase startCommand;
+        private CommandBase exitCommand;
 
         //constructor 
         public MainViewModel(MainWindow window)
         {
-            firstWindow = window;
+            mainWindow = window;
         }
 
         //property btnStart,btnExit
@@ -32,7 +25,7 @@ namespace EatThatChicken.ViewModel
             {
                 if (this.startCommand == null)
                 {
-                    this.startCommand = new RelayCommand(this.StartGame);
+                    this.startCommand = new CommandBase(this.StartGame, this.CanExecuteStartCommand);
                 }
 
                 return this.startCommand;
@@ -45,23 +38,33 @@ namespace EatThatChicken.ViewModel
             {
                 if (this.exitCommand == null)
                 {
-                    this.exitCommand = new RelayCommand(this.ExitGame);
+                    this.exitCommand = new CommandBase(this.ExitGame, this.CanExecuteExitCommand);
                 }
                 return this.exitCommand;
             }
         }
 
         //methods for opening/closing windows btnStart,btnExit
-        private void StartGame()
+        private void StartGame(object param)
         {
-            GameFieldWindow secondWindow = new GameFieldWindow();
-            secondWindow.Show();
-            firstWindow.Close();
+            GameFieldWindow gameFieldWindow = new GameFieldWindow();
+            gameFieldWindow.Show();
+            mainWindow.Close();
         }
 
-        private void ExitGame()
+        private bool CanExecuteStartCommand(object param)
         {
-            firstWindow.Close();
+            return true;
+        }
+
+        private void ExitGame(object param)
+        {
+            mainWindow.Close();
+        }
+
+        private bool CanExecuteExitCommand(object param)
+        {
+            return true;
         }
     }
 }

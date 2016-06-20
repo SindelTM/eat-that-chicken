@@ -1,25 +1,57 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Controls;
 using EatThatChicken.GameObjects;
 using System.Windows.Shapes;
 using System.Windows.Media;
+using EatThatChicken.View;
+using System.Windows.Input;
+using EatThatChicken.Misc;
 
 namespace EatThatChicken.Renderers
 {
     class WPFGameRenderer : IGameRenderer
     {
+        public int ScreenHeight
+        {
+            get
+            {
+                return (int)(this.playGroundCanvas.Parent as GameFieldWindow).Height;
+            }
+        }
+
+        public int ScreenWidth
+        {
+            get
+            {
+                return (int)(this.playGroundCanvas.Parent as GameFieldWindow).Width;
+            }
+        }
+
         private Canvas playGroundCanvas;
 
         public WPFGameRenderer(Canvas playGroundCanvas)
         {
             this.playGroundCanvas = playGroundCanvas;
+
+            (this.playGroundCanvas.Parent as GameFieldWindow).KeyDown += (sender, args) =>
+            {
+                var key = args.Key;
+                if (key == Key.Left)
+                {
+                    this.UIAction(this, new KeyDownEventArgs(GameAction.MoveLeft));
+                }
+                else if (key == Key.Right)
+                {
+                    this.UIAction(this, new KeyDownEventArgs(GameAction.MoveRight));
+                }
+                else if (key == Key.Space)
+                {
+                    this.UIAction(this, new KeyDownEventArgs(GameAction.Fire));
+                }
+            };
         }
 
-        public event EventHandler UIAction;
+        public event EventHandler<KeyDownEventArgs> UIAction;
 
         public void Clear()
         {
@@ -42,11 +74,6 @@ namespace EatThatChicken.Renderers
 
                 this.playGroundCanvas.Children.Add(rect);
             }
-        }
-
-        public void UIActionHandler(object sender, EventArgs args)
-        {
-            throw new NotImplementedException();
         }
     }
 }

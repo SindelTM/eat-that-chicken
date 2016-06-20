@@ -1,16 +1,19 @@
 ﻿using EatThatChicken.GameObjects;
+using EatThatChicken.Misc;
 using System;
 
 namespace EatThatChicken.Renderers
 {
     public interface IGameRenderer
     {
+        int ScreenWidth { get; }
+
+        int ScreenHeight { get; }
+
         void Clear();
 
         void Draw(params GameObject[] gameObjects);
 
-        event EventHandler UIAction;
-
-        void UIActionHandler(object sender, EventArgs args);
+        event EventHandler<KeyDownEventArgs> UIAction;
     }
 }
