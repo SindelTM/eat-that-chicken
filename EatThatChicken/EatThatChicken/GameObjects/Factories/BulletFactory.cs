@@ -3,17 +3,17 @@ using EatThatChicken.GameObjects.Bullets;
 
 namespace EatThatChicken.GameObjects.Factories
 {
-    public class BulletFactory : IGameObjectFactory
+    public class BulletFactory : IGameObjectFactory<Bullet>
     {
         const int bulletWidth = 10;
         const int bulletHeight = 30;
-        public GameObject Get(int left, int top)
+        public Bullet Get(int left, int top)
         {
-            return new Bullet()
-            {
-                Position = new Position (left, top),
-                Bounds = new Size (bulletWidth, bulletHeight)
-            };
+            Position position = new Position(left, top);
+            Size bounds = new Size(bulletWidth, bulletHeight);
+            bool isAlive = true;
+
+            return new Bullet(bounds, position, isAlive);
         }
     }
 }

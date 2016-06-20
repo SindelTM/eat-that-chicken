@@ -6,6 +6,8 @@ using System.Windows.Media;
 using EatThatChicken.View;
 using System.Windows.Input;
 using EatThatChicken.Misc;
+using EatThatChicken.GameObjects.Birds;
+using EatThatChicken.GameObjects.Bullets;
 
 namespace EatThatChicken.Renderers
 {
@@ -65,12 +67,20 @@ namespace EatThatChicken.Renderers
                 var rect = new Rectangle
                 {
                     Width = gameObject.Bounds.Width,
-                    Height = gameObject.Bounds.Height,
-                    Fill = Brushes.Black
+                    Height = gameObject.Bounds.Height
                 };
 
                 Canvas.SetLeft(rect, gameObject.Position.Left);
                 Canvas.SetTop(rect, gameObject.Position.Top);
+
+                if (gameObject is Bird)
+                {
+                    rect.Fill = Brushes.Black;
+                }
+                else if (gameObject is Bullet)
+                {
+                    rect.Fill = Brushes.Red;
+                }
 
                 this.playGroundCanvas.Children.Add(rect);
             }

@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:EatThatChicken.View"
         mc:Ignorable="d"
-        Title="MainWindow" Height="600" Width="1000" Background="#371E71" ResizeMode="NoResize"  WindowStartupLocation="CenterScreen">
+        Title="Start Game" Height="600" Width="1000" Background="#371E71" ResizeMode="NoResize"  WindowStartupLocation="CenterScreen">
     <Canvas>
 
         <Button x:Name="btnStart" Content="START GAME" Command="{Binding StartCommand}" Canvas.Left="91" Canvas.Top="64" Width="214" Height="68" />

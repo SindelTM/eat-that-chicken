@@ -2,8 +2,9 @@
 {
     using EatThatChicken.GameObjects;
 
-    public interface IGameObjectFactory
+    public interface IGameObjectFactory<T>
+        where T : IGameObject
     {
-             GameObject Get(int left, int top);
+             T Get(int left, int top);
     }
 }
