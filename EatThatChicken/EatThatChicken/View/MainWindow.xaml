@@ -8,8 +8,10 @@
         Title="Start Game" Height="600" Width="1000" Background="#371E71" ResizeMode="NoResize"  WindowStartupLocation="CenterScreen">
     <Canvas>
 
-        <Button x:Name="btnStart" Content="START GAME" Command="{Binding StartCommand}" Canvas.Left="91" Canvas.Top="64" Width="214" Height="68" />
-        <Button x:Name="btnExit" Content="EXIT GAME" Command="{Binding ExitCommand}" Canvas.Left="91" Canvas.Top="389" Width="214" Height="68"/>
+        <Button x:Name="btnStart" Content="START GAME" Command="{Binding StartCommand}" Canvas.Left="91" Canvas.Top="64"/>
+        <Button x:Name="btnHighscore" Content="HIGHSCORE" Canvas.Left="91" Canvas.Top="172"/>
+        <Button x:Name="btnInstructions" Content="INSTRUCTIONS" Canvas.Left="91" Canvas.Top="281"/>
+        <Button x:Name="btnExit" Content="EXIT GAME" Command="{Binding ExitCommand}" Canvas.Left="91" Canvas.Top="389"/>
         <Image x:Name="chicken" Canvas.Left="345" Canvas.Top="10" Width="598" Height="508" Source="/Images/chicken.jpg"/>
     </Canvas>
 </Window>

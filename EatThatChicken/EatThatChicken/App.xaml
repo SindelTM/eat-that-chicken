@@ -4,6 +4,92 @@
              xmlns:local="clr-namespace:EatThatChicken"
              StartupUri="View/MainWindow.xaml">
     <Application.Resources>
-         
+        <!--new-->
+        <GradientStopCollection x:Key="MyGlassGradientStopsResource">
+            <GradientStop Color="WhiteSmoke" Offset="0.2" />
+            <GradientStop Color="Transparent" Offset="0.4" />
+            <GradientStop Color="WhiteSmoke" Offset="0.5" />
+            <GradientStop Color="Transparent" Offset="0.75" />
+            <GradientStop Color="WhiteSmoke" Offset="0.9" />
+            <GradientStop Color="Transparent" Offset="1" />
+        </GradientStopCollection>
+        <!--new GradientStopCollection-->
+        <LinearGradientBrush x:Key="PinkPurpleGradientBrush"  
+                            StartPoint="0,0" EndPoint="1,1">
+            <GradientStop Color="Plum" Offset="0.3"/>
+            <GradientStop Color="Purple" Offset="1"/>
+        </LinearGradientBrush>
+        <Style TargetType="{x:Type Button}">
+            <Setter Property="Background" Value="{StaticResource PinkPurpleGradientBrush}"/>
+            <Setter Property="Width" Value="214"/>
+            <Setter Property="Height" Value="68"/>
+            <Setter Property="Margin" Value="10"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="{x:Type Button}">
+                        <Grid Width="{TemplateBinding Width}"   
+          Height="{TemplateBinding Height}" ClipToBounds="True">
+
+                            <Rectangle x:Name="outerRectangle" HorizontalAlignment="Stretch"   
+          VerticalAlignment="Stretch" Stroke="{TemplateBinding Background}"   
+          RadiusX="20" RadiusY="20" StrokeThickness="5" Fill="Transparent" />
+
+                            <Rectangle x:Name="innerRectangle" HorizontalAlignment="Stretch"   
+            VerticalAlignment="Stretch" Stroke="Transparent"   
+            StrokeThickness="20"   
+            Fill="{TemplateBinding Background}" RadiusX="20" RadiusY="20"   
+          />
+
+                            <Rectangle x:Name="glassCube" HorizontalAlignment="Stretch"  
+            VerticalAlignment="Stretch"  
+            StrokeThickness="2" RadiusX="10" RadiusY="10" Opacity="0"  
+            Fill="{StaticResource  PinkPurpleGradientBrush}"  
+            RenderTransformOrigin="0.5,0.5">
+                                <Rectangle.Stroke>
+                                    <LinearGradientBrush StartPoint="0.5,0" EndPoint="0.5,1">
+                                        <LinearGradientBrush.GradientStops>
+                                            <GradientStop Offset="0.0" Color="Pink" />
+                                            <GradientStop Offset="1.0" Color="Purple" />
+                                        </LinearGradientBrush.GradientStops>
+                                    </LinearGradientBrush>
+                                </Rectangle.Stroke>
+                                <Rectangle.RenderTransform>
+                                    <TransformGroup>
+                                        <ScaleTransform />
+                                        <RotateTransform />
+                                    </TransformGroup>
+                                </Rectangle.RenderTransform>
+                                <Rectangle.BitmapEffect>
+                                    <BevelBitmapEffect />
+                                </Rectangle.BitmapEffect>
+                            </Rectangle>
+                            <DockPanel Name="myContentPresenterDockPanel">
+                                <ContentPresenter x:Name="myContentPresenter" 
+                                                  Margin="20"   
+                                                  Content="{TemplateBinding  Content}" 
+                                                  TextBlock.Foreground="Black" 
+                                                  TextBlock.FontSize="23"
+                                                  TextBlock.FontFamily="Times New Roman"
+                                                  TextBlock.TextAlignment="Center"/>
+                            </DockPanel>
+                        </Grid>
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsMouseOver" Value="True">
+                                <Setter Property ="Rectangle.Stroke" 
+                                        TargetName="outerRectangle"   
+                                        Value="{DynamicResource {x:Static SystemColors.HighlightBrushKey}}" />
+                                <Setter Property="Rectangle.Opacity" Value="1" TargetName="glassCube" />
+                                <Setter Property="ContentPresenter.BitmapEffect"    
+                                        TargetName="myContentPresenter">
+                                    <Setter.Value>
+                                        <BlurBitmapEffect Radius="1" />
+                                    </Setter.Value>
+                                </Setter>
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
     </Application.Resources>
 </Application>
