@@ -9,7 +9,7 @@ namespace EatThatChicken.GameObjects.Factories
         const int bulletHeight = 30;
         public Bullet Get(int left, int top)
         {
-            Position position = new Position(left, top);
+            Position position = new Position(left - (bulletWidth / 2), top);
             Size bounds = new Size(bulletWidth, bulletHeight);
             bool isAlive = true;
 

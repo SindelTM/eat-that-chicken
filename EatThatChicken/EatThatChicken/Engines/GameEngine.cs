@@ -66,7 +66,7 @@ namespace EatThatChicken.Engines
 
         private void FireBullet()
         {
-            var left = this.Hunter.Position.Left - HunterWidth / 2;
+            var left = this.Hunter.Position.Left + HunterWidth / 2;
             var top = this.Hunter.Position.Top;
             Bullet bullet = bulletFactory.Get(left, top);
 
@@ -106,7 +106,7 @@ namespace EatThatChicken.Engines
         {
             foreach (var bullet in this.Bullets)
             {
-                var left = this.Hunter.Position.Left + this.Hunter.Bounds.Width / 2;
+                var left = bullet.Position.Left;
                 var top = bullet.Position.Top - BulletSpeed;
                 bullet.Position = new Position(left, top);
                 this.renderer.Draw(bullet);

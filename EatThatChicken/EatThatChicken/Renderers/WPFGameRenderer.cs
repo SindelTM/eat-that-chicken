@@ -8,6 +8,7 @@ using System.Windows.Input;
 using EatThatChicken.Misc;
 using EatThatChicken.GameObjects.Birds;
 using EatThatChicken.GameObjects.Bullets;
+using System.Windows;
 
 namespace EatThatChicken.Renderers
 {
@@ -79,11 +80,26 @@ namespace EatThatChicken.Renderers
                 }
                 else if (gameObject is Bullet)
                 {
-                    rect.Fill = Brushes.Red;
+                    this.DrawBullet(gameObject);
                 }
 
                 this.playGroundCanvas.Children.Add(rect);
             }
+        }
+
+        private void DrawBullet(GameObject bullet)
+        {
+             var rect = new Border
+            {
+                Width = bullet.Bounds.Width,
+                Height = bullet.Bounds.Height,
+                Background = Brushes.White,
+                CornerRadius = new CornerRadius(10, 10, 0, 0)
+            };
+
+            Canvas.SetLeft(rect, bullet.Position.Left);
+            Canvas.SetTop(rect, bullet.Position.Top);
+            this.playGroundCanvas.Children.Add(rect);
         }
     }
 }
