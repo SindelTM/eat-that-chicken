@@ -83,7 +83,8 @@ namespace EatThatChicken.Engines
 
             Size bounds = new Size(HunterWidth, HunterHeight);
 
-            this.Hunter = new Bird(bounds, position, true, 100);
+            // TO DO add Hunter
+            this.Hunter = new SkinyBird();
 
             this.timer = new DispatcherTimer();
             timer.Interval = TimeSpan.FromMilliseconds(TimerIntervalMillis);

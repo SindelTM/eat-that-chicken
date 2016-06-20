@@ -1,9 +1,10 @@
 ﻿using System;
 using EatThatChicken.GameObjects.Birds;
+using EatThatChicken.Contracts;
 
 namespace EatThatChicken.GameObjects.Factories
 {
-    public class BirdsFactory
+    public class BirdsFactory: IGameObjectFactory<Bird>
     {
         // TODO: see if width,height and appearance is enough
         private const int Count = 100;
@@ -30,7 +31,7 @@ namespace EatThatChicken.GameObjects.Factories
 
         static readonly Random rand = new Random();
 
-        public GameObject Get(int left, int top)
+        public Bird Get(int left, int top)
         {
             if (rand.Next(Count) <= SkinyBirdAppearanceChance)
             {
@@ -59,17 +60,12 @@ namespace EatThatChicken.GameObjects.Factories
                     };
                 }
 
-                return new SkinyBird()
-                {
-                    Position = new Position(left, top),
-                    Bounds = new Size(SkinyBirdBoundsWidth, SkinyBirdBoundsHeight)
-                };
             }
 
-            return new Bird()
+            return new SkinyBird()
             {
                 Position = new Position(left, top),
-                Bounds = new Size(BirdBoundsHeight, BirdBoundsWidth)
+                Bounds = new Size(SkinyBirdBoundsWidth, SkinyBirdBoundsHeight)
             };
         }
     }
