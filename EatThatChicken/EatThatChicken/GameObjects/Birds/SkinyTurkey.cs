@@ -8,9 +8,37 @@ namespace EatThatChicken.GameObjects.Birds
 {
     public class SkinyTurkey: Bird
     {
-        public SkinyTurkey(Size bounds, Position position, bool isAlive, int points)
-            :base(bounds, position, isAlive, points)
+        private const int SkinnyBirdHealth = 1;
+
+        protected SkinyTurkey(int health)
+        {
+            this.Health = health;
+        }
+
+        public SkinyTurkey()
+            :this(SkinnyBirdHealth)
         {
         }
+
+        protected int Health { get; set; }
+
+
+        public override bool IsAlive
+        {
+            get
+            {
+                return this.Health > 0;
+            }
+            set
+            {
+                if (!value)
+                {
+                    --this.Health;
+                }
+            }
+        }
+
+
+
     }
 }

@@ -6,11 +6,16 @@ using System.Threading.Tasks;
 
 namespace EatThatChicken.GameObjects.Birds
 {
-    public class AngryTurkey: Bird
+    public class AngryTurkey: SkinyTurkey
     {
-        public AngryTurkey(Size bounds, Position position, bool isAlive, int points)
-            :base(bounds, position, isAlive, points)
+        private const int AngryBirdDefaultHealth = 3; 
+
+        public AngryTurkey()
+            :base(AngryBirdDefaultHealth)
         {
         }
+
+
+
     }
 }

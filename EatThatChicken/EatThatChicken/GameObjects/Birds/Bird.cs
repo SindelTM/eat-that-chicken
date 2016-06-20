@@ -2,14 +2,20 @@
 {
     using Contracts;
 
-    public class Bird : GameObject, IMoveable, IUpdateable
-    {
-        public Bird(Size bounds, Position position, bool isAlive, int points)
-            :base(bounds, position, isAlive)
-        {
-            this.Points = points;
-        }
 
-        public int Points { get; set; }
+    // TODO remove constructor when hunter is initialized correctly
+
+
+    public class Bird : GameObject
+    {
+        public Bird(Size bounds, Position position, bool isAlive, int point) 
+            : base(bounds, position, isAlive)
+        {
+
+        }
+        public Bird()
+        {
+
+        }
     }
 }
