@@ -18,10 +18,7 @@ namespace EatThatChicken.Engines
         const int HunterHeight = 150;
         const int HunterWidth = 50;
         const int HunterPoints = 100;
-
-        //TODO Use Move() method when implemented
-        const int BulletSpeed = 40;
-
+        
         const int TimerIntervalMillis = 100;
 
         private BulletFactory bulletFactory = new BulletFactory();
@@ -29,7 +26,7 @@ namespace EatThatChicken.Engines
         //TODO Use Hunter type instead when implemented
         private Bird Hunter { get; set; }
 
-        private List<GameObject> Bullets { get; set; }
+        private List<Bullet> Bullets { get; set; }
 
         private IGameRenderer renderer { get; set; }
 
@@ -39,7 +36,7 @@ namespace EatThatChicken.Engines
         {
             this.renderer = renderer;
             this.renderer.UIAction += UIActionHandler;
-            this.Bullets = new List<GameObject>();
+            this.Bullets = new List<Bullet>();
         }
 
         private void UIActionHandler(object sender, KeyDownEventArgs e)
@@ -107,9 +104,8 @@ namespace EatThatChicken.Engines
         {
             foreach (var bullet in this.Bullets)
             {
-                var left = bullet.Position.Left;
-                var top = bullet.Position.Top - BulletSpeed;
-                bullet.Position = new Position(left, top);
+
+                bullet.Move();
                 this.renderer.Draw(bullet);
             }
         }
