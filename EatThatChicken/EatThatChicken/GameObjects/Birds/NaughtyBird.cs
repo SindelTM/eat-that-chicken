@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace EatThatChicken.GameObjects.Birds
 {
-    public class NaughtyBird: SkinyBird
+    public class NaughtyBird: Bird
     {
         private const int NaughtyBirdDefaultHealth = 4;
 
