@@ -46,17 +46,15 @@ namespace EatThatChicken.Engines
         {
             if (e.Action == GameAction.MoveLeft)
             {
-                int left = this.Hunter.Position.Left - HunterSpeed;
-                int top = this.Hunter.Position.Top;
-                Position newPosition = new Position(left, top);
-                this.Hunter.Position = newPosition;
+                this.Hunter.MoveLeft = 1;
+                this.Hunter.Move();
+                this.Hunter.MoveLeft = 0;
             }
             else if (e.Action == GameAction.MoveRight)
             {
-                int left = this.Hunter.Position.Left + HunterSpeed;
-                int top = this.Hunter.Position.Top;
-                Position newPosition = new Position(left, top);
-                this.Hunter.Position = newPosition;
+                this.Hunter.MoveLeft = -1;
+                this.Hunter.Move();
+                this.Hunter.MoveLeft = 0;
             }
             else if (e.Action == GameAction.Fire)
             {
