@@ -19,27 +19,30 @@ namespace EatThatChicken.Engines
         const int HunterHeight = 190;
         const int HunterWidth = 90;
         const int HunterPoints = 100;
-        
+
+        const int BirdWidth = 60; // This is used to locate where to show up new Bird
+
         const int TimerIntervalMillis = 100;
 
         private BulletFactory bulletFactory = new BulletFactory();
 
         private BirdsFactory birdFactory = new BirdsFactory();
 
-        //TODO Use Hunter type instead when implemented
         private Hunter Hunter { get; set; }
 
-        private List<Bullet> Bullets { get; set; }
+        private List<GameObject> GameObject { get; set; }
 
         private IGameRenderer renderer { get; set; }
 
         private DispatcherTimer timer;
 
+        static readonly Random rand = new Random();
+
         public GameEngine(IGameRenderer renderer)
         {
             this.renderer = renderer;
             this.renderer.UIAction += UIActionHandler;
-            this.Bullets = new List<Bullet>();
+            this.GameObject = new List<GameObject>();
         }
 
         private void UIActionHandler(object sender, KeyDownEventArgs e)
@@ -68,12 +71,12 @@ namespace EatThatChicken.Engines
             var top = this.Hunter.Position.Top;
             Bullet bullet = bulletFactory.Get(left, top);
 
-            this.Bullets.Add(bullet);
+            this.GameObject.Add(bullet);
         }
 
         public void InitGame()
         {
-            this.Bullets.Clear();
+            this.GameObject.Clear();
 
             var left = (this.renderer.ScreenWidth - HunterWidth) / 2;
             var top = this.renderer.ScreenHeight - HunterHeight;
@@ -83,7 +86,7 @@ namespace EatThatChicken.Engines
 
             // TO DO add Hunter
             this.Hunter = new Hunter(bounds, position);
-
+            this.GameObject.Add(Hunter);
             this.timer = new DispatcherTimer();
             timer.Interval = TimeSpan.FromMilliseconds(TimerIntervalMillis);
             timer.Tick += this.GameLoop;
@@ -97,16 +100,15 @@ namespace EatThatChicken.Engines
         private void GameLoop(object sender, EventArgs args)
         {
             this.renderer.Clear();
-            this.renderer.Draw(this.Hunter);
-            this.DrawBullets();
-        }
-
-        private void DrawBullets()
-        {
-            foreach (var bullet in this.Bullets)
+            //this.renderer.Draw(this.Hunter);
+            int left = rand.Next(0, this.renderer.ScreenWidth - BirdWidth);
+            int top = 0;
+            GameObject bird = birdFactory.Get(left, top);
+            this.GameObject.Add(bird);
+            foreach (var gameObj in this.GameObject) 
             {
-                this.renderer.Draw(bullet);
-                bullet.Move();
+                this.renderer.Draw(gameObj);
+                gameObj.Move();
             }
         }
     }

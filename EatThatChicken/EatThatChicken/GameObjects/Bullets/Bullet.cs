@@ -9,7 +9,7 @@
             : base(bounds, position)
         {
             this.MoveSpeed = 40;
-            this.MoveTop = -1;
+            this.MoveTop = 1;
             this.MoveLeft = 0;
         }
         
