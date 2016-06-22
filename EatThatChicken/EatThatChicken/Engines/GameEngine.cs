@@ -16,8 +16,8 @@ namespace EatThatChicken.Engines
         //TODO Use Move() method when implemented
         const int HunterSpeed = 15;
         //TODO Use Hunter Factory when implemented
-        const int HunterHeight = 150;
-        const int HunterWidth = 50;
+        const int HunterHeight = 190;
+        const int HunterWidth = 90;
         const int HunterPoints = 100;
         
         const int TimerIntervalMillis = 100;
@@ -27,7 +27,7 @@ namespace EatThatChicken.Engines
         private BirdsFactory birdFactory = new BirdsFactory();
 
         //TODO Use Hunter type instead when implemented
-        private SkinyBird Hunter { get; set; }
+        private Hunter Hunter { get; set; }
 
         private List<Bullet> Bullets { get; set; }
 
@@ -84,7 +84,7 @@ namespace EatThatChicken.Engines
             Size bounds = new Size(HunterWidth, HunterHeight);
 
             // TO DO add Hunter
-            this.Hunter = new SkinyBird();
+            this.Hunter = new Hunter(bounds, position);
 
             this.timer = new DispatcherTimer();
             timer.Interval = TimeSpan.FromMilliseconds(TimerIntervalMillis);
@@ -107,9 +107,8 @@ namespace EatThatChicken.Engines
         {
             foreach (var bullet in this.Bullets)
             {
-
-                bullet.Move();
                 this.renderer.Draw(bullet);
+                bullet.Move();
             }
         }
     }

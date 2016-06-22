@@ -4,16 +4,14 @@
 
     public class Bullet : GameObject
     {
-        public Bullet(Size bounds, Position position, bool isAlive)
-            : base(bounds, position, isAlive) { }
 
-        public void Move()
+        public Bullet(Size bounds, Position position)
+            : base(bounds, position)
         {
-            const int bulletSpeed = 40;
-            int left = this.Position.Left;
-            int top = this.Position.Top - bulletSpeed;
-
-            this.Position = new Position(left, top);
-        } 
+            this.MoveSpeed = 40;
+            this.MoveTop = -1;
+            this.MoveLeft = 0;
+        }
+        
     }
 }
