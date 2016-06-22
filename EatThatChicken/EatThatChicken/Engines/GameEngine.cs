@@ -2,6 +2,7 @@
 using EatThatChicken.GameObjects.Birds;
 using EatThatChicken.GameObjects.Bullets;
 using EatThatChicken.GameObjects.Factories;
+using EatThatChicken.GameObjects.Factories.BirdsFactories;
 using EatThatChicken.Misc;
 using EatThatChicken.Renderers;
 using System;
@@ -10,7 +11,7 @@ using System.Windows.Threading;
 
 namespace EatThatChicken.Engines
 {
-    class GameEngine
+    public class GameEngine
     {
         //TODO Use Move() method when implemented
         const int HunterSpeed = 15;
@@ -23,8 +24,10 @@ namespace EatThatChicken.Engines
 
         private BulletFactory bulletFactory = new BulletFactory();
 
+        private BirdsFactory birdFactory = new BirdsFactory();
+
         //TODO Use Hunter type instead when implemented
-        private Bird Hunter { get; set; }
+        private SkinyBird Hunter { get; set; }
 
         private List<Bullet> Bullets { get; set; }
 

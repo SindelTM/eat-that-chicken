@@ -1,12 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace EatThatChicken.GameObjects.Birds
+﻿namespace EatThatChicken.GameObjects.Birds
 {
-    public class MuscleBird: SkinyBird
+    public class MuscleBird: Bird
     {
         private const int MuscleBirdDefaultHealth = 5;
 

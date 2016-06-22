@@ -10,35 +10,9 @@ namespace EatThatChicken.GameObjects.Birds
     {
         private const int SkinnyBirdHealth = 1;
 
-        protected SkinyBird(int health)
-        {
-            this.Health = health;
-        }
-
         public SkinyBird()
-            :this(SkinnyBirdHealth)
+            :base(SkinnyBirdHealth)
         {
         }
-
-        protected int Health { get; set; }
-
-
-        public override bool IsAlive
-        {
-            get
-            {
-                return this.Health > 0;
-            }
-            set
-            {
-                if (!value)
-                {
-                    --this.Health;
-                }
-            }
-        }
-
-
-
     }
 }
