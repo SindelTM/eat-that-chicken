@@ -9,6 +9,7 @@ using EatThatChicken.Misc;
 using EatThatChicken.GameObjects.Birds;
 using EatThatChicken.GameObjects.Bullets;
 using System.Windows;
+using System.Windows.Media.Imaging;
 
 namespace EatThatChicken.Renderers
 {
@@ -82,9 +83,18 @@ namespace EatThatChicken.Renderers
                 {
                     this.DrawBullet(gameObject);
                 }
-
+                else if (gameObject is Hunter)
+                {
+                    this.DrawHunter(gameObject);
+                }
                 this.playGroundCanvas.Children.Add(rect);
             }
+        }
+
+        private void DrawHunter(GameObject sindel)
+        {
+            var image = this.CreateImage("/Images/Sindel.png", sindel.Position, sindel.Bounds);
+            this.playGroundCanvas.Children.Add(image);
         }
 
         private void DrawBullet(GameObject bullet)
@@ -100,6 +110,23 @@ namespace EatThatChicken.Renderers
             Canvas.SetLeft(rect, bullet.Position.Left);
             Canvas.SetTop(rect, bullet.Position.Top);
             this.playGroundCanvas.Children.Add(rect);
+        }
+
+        private Image CreateImage(string path, Position position, GameObjects.Size bounds)
+        {
+            Image image = new Image();
+            BitmapImage bitmap = new BitmapImage();
+            bitmap.BeginInit();
+            bitmap.UriSource = new Uri(path, UriKind.RelativeOrAbsolute);
+            bitmap.EndInit();
+
+            image.Source = bitmap;
+            image.Width = bounds.Width;
+            image.Height = bounds.Height;
+
+            Canvas.SetLeft(image, position.Left);
+            Canvas.SetTop(image, position.Top);
+            return image;
         }
     }
 }

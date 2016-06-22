@@ -74,6 +74,10 @@
     <Compile Include="GameObjects\Factories\BirdsFactories\MuscleBirdFactory.cs" />
     <Compile Include="GameObjects\Factories\BirdsFactories\NaughtyBirdFactory.cs" />
     <Compile Include="GameObjects\Factories\BirdsFactories\SkinyBirdFactory.cs" />
+    <Compile Include="GameObjects\GameItems\Bomb.cs" />
+    <Compile Include="GameObjects\GameItems\ChickenLeg.cs" />
+    <Compile Include="GameObjects\GameItems\Heart.cs" />
+    <Compile Include="GameObjects\Hunter.cs" />
     <Compile Include="Misc\GameAction.cs" />
     <Compile Include="Misc\KeyDownEventArgs.cs" />
     <Compile Include="GameObjects\Bullets\Bullet.cs" />
@@ -138,7 +142,9 @@
   <ItemGroup>
     <Resource Include="Images\chicken.jpg" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Resource Include="Images\Sindel.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

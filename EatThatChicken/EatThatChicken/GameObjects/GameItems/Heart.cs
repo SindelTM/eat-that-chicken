@@ -3,7 +3,7 @@
     class Heart : GameObject
     {
         public Heart(Size bounds, Position position, bool isAlive)
-            :base(bounds, position, isAlive)
+            :base(bounds, position)
         {
 
         }

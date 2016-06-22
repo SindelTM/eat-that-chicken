@@ -3,7 +3,7 @@
     public class Bomb : GameObject
     {
         public Bomb(Size bounds, Position position, bool isAlive)
-            :base(bounds, position, isAlive)
+            :base(bounds, position)
         {
 
         }
