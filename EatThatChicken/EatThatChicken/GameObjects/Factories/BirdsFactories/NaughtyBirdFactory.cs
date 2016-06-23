@@ -3,13 +3,13 @@ using EatThatChicken.GameObjects.Birds;
 
 namespace EatThatChicken.GameObjects.Factories.BirdsFactories
 {
-    public class NaughtyBirdFactory : IGameObjectFactory<Bird>
+    public class NaughtyBirdFactory : IGameObjectFactory<NaughtyBird>
     {
         // TODO: see if width, height is enough
         private const int NaughtyBirdBoundsWidth = 60;
         private const int NaughtyBirdBoundsHeight = 70;
 
-        public Bird Get(int left, int top)
+        public NaughtyBird Get(int left, int top)
         {
             return new NaughtyBird()
             {
