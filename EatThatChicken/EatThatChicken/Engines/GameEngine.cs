@@ -111,5 +111,24 @@ namespace EatThatChicken.Engines
                 gameObj.Move();
             }
         }
+
+        private void RemoveObject(GameObject anything)
+        {
+            if (anything.IsAlive == false)
+            {
+                this.GameObject.Remove(anything);
+            }
+        }
+
+        private void KillBird(Bird bird, Bullet bullet)
+        {
+            if (bird.Position.Left == bullet.Position.Left && bird.Position.Top == bullet.Position.Top)
+            {
+                RemoveObject(bird);
+                RemoveObject(bullet);
+            }
+
+        }
+
     }
 }

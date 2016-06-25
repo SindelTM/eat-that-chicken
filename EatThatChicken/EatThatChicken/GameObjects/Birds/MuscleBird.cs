@@ -7,9 +7,9 @@
         public MuscleBird()
             :base(MuscleBirdDefaultHealth)
         {
-            this.MoveSpeed = 20;
-            this.MoveTop = -1;
-            this.MoveLeft = 0;
+            this.MoveSpeed = 4;
+            this.MoveTop = 0;
+            this.MoveLeft = 1;
         }
     }
 }

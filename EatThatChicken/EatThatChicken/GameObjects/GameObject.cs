@@ -32,7 +32,7 @@ namespace EatThatChicken.GameObjects
             throw new System.NotImplementedException();
         }
 
-        public void Move()
+        public virtual void Move()
         {
             int left = this.Position.Left - (this.MoveLeft * this.MoveSpeed);
             int top = this.Position.Top - (this.MoveTop * this.MoveSpeed);
