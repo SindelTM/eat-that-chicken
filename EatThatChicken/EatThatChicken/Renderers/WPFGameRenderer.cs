@@ -77,7 +77,7 @@ namespace EatThatChicken.Renderers
 
                 if (gameObject is Bird)
                 {
-                    rect.Fill = Brushes.Black;
+                    this.DrawBird(gameObject);
                 }
                 else if (gameObject is Bullet)
                 {
@@ -89,6 +89,11 @@ namespace EatThatChicken.Renderers
                 }
                 this.playGroundCanvas.Children.Add(rect);
             }
+        }
+        private void DrawBird(GameObject bird)
+        {
+            var image = this.CreateImage("/Images/chicken.jpg", bird.Position, bird.Bounds);
+            this.playGroundCanvas.Children.Add(image);
         }
 
         private void DrawHunter(GameObject sindel)
