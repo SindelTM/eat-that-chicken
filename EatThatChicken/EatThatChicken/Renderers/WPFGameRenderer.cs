@@ -92,8 +92,29 @@ namespace EatThatChicken.Renderers
         }
         private void DrawBird(GameObject bird)
         {
-            var image = this.CreateImage("/Images/chicken.jpg", bird.Position, bird.Bounds);
-            this.playGroundCanvas.Children.Add(image);
+
+            if (bird is AngryBird)
+            {
+                var image = this.CreateImage("/Images/Birds/angry.jpg", bird.Position, bird.Bounds);
+                this.playGroundCanvas.Children.Add(image);
+            }
+            if (bird is SkinyBird)
+            {
+                var image = this.CreateImage("/Images/Birds/skiny.jpg", bird.Position, bird.Bounds);
+                this.playGroundCanvas.Children.Add(image);
+            }
+            if (bird is MuscleBird)
+            {
+                var image = this.CreateImage("/Images/Birds/muscle.jpg", bird.Position, bird.Bounds);
+                this.playGroundCanvas.Children.Add(image);
+            }
+            if (bird is NaughtyBird)
+            {
+                var image = this.CreateImage("/Images/Birds/naughty.jpg", bird.Position, bird.Bounds);
+                this.playGroundCanvas.Children.Add(image);
+            }
+
+
         }
 
         private void DrawHunter(GameObject sindel)

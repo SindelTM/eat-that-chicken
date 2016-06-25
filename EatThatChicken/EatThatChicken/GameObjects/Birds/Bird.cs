@@ -14,8 +14,6 @@ namespace EatThatChicken.GameObjects.Birds
 
         public override void Move()
         {
-            //   int left = this.Position.Left - (this.MoveLeft * this.MoveSpeed);
-            //   int top = this.Position.Top - (this.MoveTop * this.MoveSpeed);
                int left = this.Position.Left - (this.MoveLeft * this.MoveSpeed);
                int top = this.Position.Top - (this.MoveTop * this.MoveSpeed);
             this.Position = new Position(left, top);
