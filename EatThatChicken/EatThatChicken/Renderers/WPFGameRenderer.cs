@@ -95,22 +95,22 @@ namespace EatThatChicken.Renderers
 
             if (bird is AngryBird)
             {
-                var image = this.CreateImage("/Images/Birds/angry.jpg", bird.Position, bird.Bounds);
+                var image = this.CreateImage("/Images/Birds/angry.png", bird.Position, bird.Bounds);
                 this.playGroundCanvas.Children.Add(image);
             }
             if (bird is SkinyBird)
             {
-                var image = this.CreateImage("/Images/Birds/skiny.jpg", bird.Position, bird.Bounds);
+                var image = this.CreateImage("/Images/Birds/skiny.png", bird.Position, bird.Bounds);
                 this.playGroundCanvas.Children.Add(image);
             }
             if (bird is MuscleBird)
             {
-                var image = this.CreateImage("/Images/Birds/muscle.jpg", bird.Position, bird.Bounds);
+                var image = this.CreateImage("/Images/Birds/muscle.png", bird.Position, bird.Bounds);
                 this.playGroundCanvas.Children.Add(image);
             }
             if (bird is NaughtyBird)
             {
-                var image = this.CreateImage("/Images/Birds/naughty.jpg", bird.Position, bird.Bounds);
+                var image = this.CreateImage("/Images/Birds/naughty.png", bird.Position, bird.Bounds);
                 this.playGroundCanvas.Children.Add(image);
             }
 

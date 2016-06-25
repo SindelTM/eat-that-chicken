@@ -14,8 +14,8 @@ namespace EatThatChicken.GameObjects.Birds
             :base(SkinnyBirdHealth)
         {
             this.MoveSpeed = 8;
-            this.MoveTop = 0;
-            this.MoveLeft = 1;
+            this.MoveTop = -1;
+            this.MoveLeft = 0;
         }
     }
 }

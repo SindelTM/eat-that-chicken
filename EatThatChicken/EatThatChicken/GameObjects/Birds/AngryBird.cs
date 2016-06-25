@@ -8,8 +8,8 @@
             :base(AngryBirdDefaultHealth)
         {
             this.MoveSpeed = 6;
-            this.MoveTop = 0;
-            this.MoveLeft = 1;
+            this.MoveTop = -1;
+            this.MoveLeft = 0;
         }
     }
 }
