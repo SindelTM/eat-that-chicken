@@ -1,18 +1,18 @@
-﻿using System;
-using System.Windows.Controls;
-using EatThatChicken.GameObjects;
-using System.Windows.Shapes;
-using System.Windows.Media;
-using EatThatChicken.View;
-using System.Windows.Input;
-using EatThatChicken.Misc;
-using EatThatChicken.GameObjects.Birds;
-using EatThatChicken.GameObjects.Bullets;
-using System.Windows;
-using System.Windows.Media.Imaging;
-
-namespace EatThatChicken.Renderers
+﻿namespace EatThatChicken.Renderers
 {
+    using System;
+    using System.Windows.Controls;
+    using EatThatChicken.GameObjects;
+    using System.Windows.Shapes;
+    using System.Windows.Media;
+    using EatThatChicken.View;
+    using System.Windows.Input;
+    using EatThatChicken.Misc;
+    using EatThatChicken.GameObjects.Birds;
+    using EatThatChicken.GameObjects.Bullets;
+    using System.Windows;
+    using System.Windows.Media.Imaging;
+
     class WPFGameRenderer : IGameRenderer
     {
         public int ScreenHeight

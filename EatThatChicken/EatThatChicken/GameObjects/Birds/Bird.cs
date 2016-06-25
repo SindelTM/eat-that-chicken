@@ -1,7 +1,7 @@
-﻿using EatThatChicken.Contracts;
-
-namespace EatThatChicken.GameObjects.Birds
+﻿namespace EatThatChicken.GameObjects.Birds
 {
+    using EatThatChicken.Contracts;
+
     public abstract class Bird : GameObject, IMoveable
     {
         protected Bird(int health) 
@@ -11,15 +11,6 @@ namespace EatThatChicken.GameObjects.Birds
         }
 
         protected int Health { get; set; }
-
-        public override void Move()
-        {
-               int left = this.Position.Left - (this.MoveLeft * this.MoveSpeed);
-               int top = this.Position.Top - (this.MoveTop * this.MoveSpeed);
-            this.Position = new Position(left, top);
-        }
-
-
 
         public override bool IsAlive
         {

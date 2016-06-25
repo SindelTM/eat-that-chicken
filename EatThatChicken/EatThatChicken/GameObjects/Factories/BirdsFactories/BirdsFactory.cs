@@ -6,7 +6,6 @@ namespace EatThatChicken.GameObjects.Factories.BirdsFactories
 {
     public class BirdsFactory: IGameObjectFactory<Bird>
     {
-        // TODO: see if appearance of birds is OK
         static readonly Random rand = new Random();
         private const int Count = 100;
 

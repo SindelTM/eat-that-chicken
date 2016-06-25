@@ -1,16 +1,16 @@
-﻿using EatThatChicken.GameObjects;
-using EatThatChicken.GameObjects.Birds;
-using EatThatChicken.GameObjects.Bullets;
-using EatThatChicken.GameObjects.Factories;
-using EatThatChicken.GameObjects.Factories.BirdsFactories;
-using EatThatChicken.Misc;
-using EatThatChicken.Renderers;
-using System;
-using System.Collections.Generic;
-using System.Windows.Threading;
-
-namespace EatThatChicken.Engines
+﻿namespace EatThatChicken.Engines
 {
+    using EatThatChicken.GameObjects;
+    using EatThatChicken.GameObjects.Birds;
+    using EatThatChicken.GameObjects.Bullets;
+    using EatThatChicken.GameObjects.Factories;
+    using EatThatChicken.GameObjects.Factories.BirdsFactories;
+    using EatThatChicken.Misc;
+    using EatThatChicken.Renderers;
+    using System;
+    using System.Collections.Generic;
+    using System.Windows.Threading;
+
     public class GameEngine
     {
         //TODO Use Move() method when implemented
@@ -50,12 +50,20 @@ namespace EatThatChicken.Engines
             if (e.Action == GameAction.MoveLeft)
             {
                 this.Hunter.MoveLeft = 1;
+                if (Hunter.Position.Left < 0)
+                {
+                    this.Hunter.MoveLeft = 0;
+                }
                 this.Hunter.Move();
                 this.Hunter.MoveLeft = 0;
             }
             else if (e.Action == GameAction.MoveRight)
             {
                 this.Hunter.MoveLeft = -1;
+                if (Hunter.Position.Left > this.renderer.ScreenWidth - HunterWidth)
+                {
+                    this.Hunter.MoveLeft = 0;
+                }
                 this.Hunter.Move();
                 this.Hunter.MoveLeft = 0;
             }
@@ -100,7 +108,7 @@ namespace EatThatChicken.Engines
         private void GameLoop(object sender, EventArgs args)
         {
             this.renderer.Clear();
-            //this.renderer.Draw(this.Hunter);
+            this.renderer.Draw(this.Hunter);
             int left = rand.Next(0, this.renderer.ScreenWidth - BirdWidth);
             int top = 0;
             GameObject bird = birdFactory.Get(left, top);

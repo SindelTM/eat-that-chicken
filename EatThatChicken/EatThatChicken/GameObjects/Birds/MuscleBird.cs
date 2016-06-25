@@ -9,7 +9,7 @@
         {
             this.MoveSpeed = 4;
             this.MoveTop = -1;
-            this.MoveLeft = 1;
+            this.MoveLeft = 0;
         }
     }
 }

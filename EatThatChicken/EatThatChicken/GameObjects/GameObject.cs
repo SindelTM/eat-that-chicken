@@ -1,7 +1,7 @@
-﻿using EatThatChicken.Contracts;
-
-namespace EatThatChicken.GameObjects
+﻿namespace EatThatChicken.GameObjects
 {
+    using EatThatChicken.Contracts;
+
     public abstract class GameObject : IGameObject
     {
          protected readonly int moveSpeed;

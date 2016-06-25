@@ -29,6 +29,7 @@
       <HashCode>AQAACAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>GameObjects\Birds\Bird.cs</FileName>
     </TypeIdentifier>
+    <Lollipop Position="0.2" />
   </Class>
   <Class Name="EatThatChicken.GameObjects.Birds.MuscleBird" Collapsed="true">
     <Position X="7.25" Y="9.25" Width="1.5" />
