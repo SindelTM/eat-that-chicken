@@ -10,6 +10,7 @@ using EatThatChicken.GameObjects.Birds;
 using EatThatChicken.GameObjects.Bullets;
 using System.Windows;
 using System.Windows.Media.Imaging;
+using EatThatChicken.GameObjects.Hunters;
 
 namespace EatThatChicken.Renderers
 {

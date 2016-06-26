@@ -1,15 +1,16 @@
-﻿namespace EatThatChicken.GameObjects.Birds
+﻿using EatThatChicken.Enumerations;
+
+namespace EatThatChicken.GameObjects.Birds
 {
     public class MuscleBird: Bird
     {
+        private const int defaultSpeed = 20;
+        private const MoveType defaultTop = MoveType.Decremental;
+        private const MoveType defaultLeft = MoveType.None;
+
         private const int MuscleBirdDefaultHealth = 5;
 
         public MuscleBird()
-            :base(MuscleBirdDefaultHealth)
-        {
-            this.MoveSpeed = 20;
-            this.MoveTop = -1;
-            this.MoveLeft = 0;
-        }
+            :base(MuscleBirdDefaultHealth) { }
     }
 }

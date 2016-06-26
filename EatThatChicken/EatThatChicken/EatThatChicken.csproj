@@ -60,9 +60,11 @@
     <Compile Include="Contracts\ICollidable.cs" />
     <Compile Include="Contracts\IGameObject.cs" />
     <Compile Include="Contracts\IGameObjectFactory.cs" />
+    <Compile Include="Contracts\IHunter.cs" />
     <Compile Include="Contracts\IMoveable.cs" />
     <Compile Include="Contracts\IUpdateable.cs" />
     <Compile Include="Engines\GameEngine.cs" />
+    <Compile Include="Enumerations\MoveType.cs" />
     <Compile Include="GameObjects\Birds\AngryBird.cs" />
     <Compile Include="GameObjects\Birds\Bird.cs" />
     <Compile Include="GameObjects\Birds\MuscleBird.cs" />
@@ -77,7 +79,8 @@
     <Compile Include="GameObjects\GameItems\Bomb.cs" />
     <Compile Include="GameObjects\GameItems\ChickenLeg.cs" />
     <Compile Include="GameObjects\GameItems\Heart.cs" />
-    <Compile Include="GameObjects\Hunter.cs" />
+    <Compile Include="GameObjects\Hunters\Hunter.cs" />
+    <Compile Include="GameObjects\MoveAction.cs" />
     <Compile Include="Misc\GameAction.cs" />
     <Compile Include="Misc\KeyDownEventArgs.cs" />
     <Compile Include="GameObjects\Bullets\Bullet.cs" />

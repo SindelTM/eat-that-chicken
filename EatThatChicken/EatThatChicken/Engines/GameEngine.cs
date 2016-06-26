@@ -3,6 +3,7 @@ using EatThatChicken.GameObjects.Birds;
 using EatThatChicken.GameObjects.Bullets;
 using EatThatChicken.GameObjects.Factories;
 using EatThatChicken.GameObjects.Factories.BirdsFactories;
+using EatThatChicken.GameObjects.Hunters;
 using EatThatChicken.Misc;
 using EatThatChicken.Renderers;
 using System;
@@ -49,15 +50,11 @@ namespace EatThatChicken.Engines
         {
             if (e.Action == GameAction.MoveLeft)
             {
-                this.Hunter.MoveLeft = 1;
-                this.Hunter.Move();
-                this.Hunter.MoveLeft = 0;
+                this.Hunter.MoveLeft();
             }
             else if (e.Action == GameAction.MoveRight)
             {
-                this.Hunter.MoveLeft = -1;
-                this.Hunter.Move();
-                this.Hunter.MoveLeft = 0;
+                this.Hunter.MoveRight();
             }
             else if (e.Action == GameAction.Fire)
             {
