@@ -32,7 +32,7 @@ using EatThatChicken.GameObjects.Hunters;
 
         private Hunter Hunter { get; set; }
 
-        private List<GameObject> GameObject { get; set; }
+        private List<GameObject> GameObjects { get; set; }
 
         private List<Bullet> Bullets { get; set; }
 
@@ -46,7 +46,7 @@ using EatThatChicken.GameObjects.Hunters;
         {
             this.renderer = renderer;
             this.renderer.UIAction += UIActionHandler;
-            this.GameObject = new List<GameObject>();
+            this.GameObjects = new List<GameObject>();
             this.Bullets = new List<Bullet>();
             this.Birds = new List<Bird>();
         }
@@ -73,13 +73,13 @@ using EatThatChicken.GameObjects.Hunters;
             var top = this.Hunter.Position.Top;
             Bullet bullet = bulletFactory.Get(left, top);
 
-            this.GameObject.Add(bullet);
+            this.GameObjects.Add(bullet);
             this.Bullets.Add(bullet);
         }
 
         public void InitGame()
         {
-            this.GameObject.Clear();
+            this.GameObjects.Clear();
 
             var left = (this.renderer.ScreenWidth - HunterWidth) / 2;
             var top = this.renderer.ScreenHeight - HunterHeight;
@@ -89,7 +89,7 @@ using EatThatChicken.GameObjects.Hunters;
 
             // TO DO add Hunter
             this.Hunter = new Hunter(bounds, position);
-            this.GameObject.Add(Hunter);
+            this.GameObjects.Add(Hunter);
             this.timer = new DispatcherTimer();
             timer.Interval = TimeSpan.FromMilliseconds(TimerIntervalMillis);
             timer.Tick += this.GameLoop;
@@ -117,7 +117,7 @@ using EatThatChicken.GameObjects.Hunters;
 
             if (rand.Next(100) < GenerateBirdChanse)
             {
-                this.GameObject.Add(newBird);
+                this.GameObjects.Add(newBird);
                 this.Birds.Add(newBird);
             }
             foreach (var bullet in Bullets)
@@ -143,7 +143,7 @@ using EatThatChicken.GameObjects.Hunters;
                 }
             }
 
-            foreach (var gameObj in this.GameObject)
+            foreach (var gameObj in this.GameObjects)
             {
                 this.renderer.Draw(gameObj);
                 gameObj.Move();
@@ -154,7 +154,7 @@ using EatThatChicken.GameObjects.Hunters;
         {
             if (anything.IsAlive == false)
             {
-                this.GameObject.Remove(anything);
+                this.GameObjects.Remove(anything);
             }
         }
 
