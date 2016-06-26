@@ -11,7 +11,7 @@
     using GameObjects.Hunters;
     using Misc;
     using Renderers;
-
+    using System.Linq;
 
     public class GameEngine
     {
@@ -27,6 +27,8 @@
         const int TimerIntervalMillis = 150;
         const int GenerateBirdChanse = 20;
 
+        private static int leftPositionOfBird;
+
         private BulletFactory bulletFactory = new BulletFactory();
 
         private BirdsFactory birdFactory = new BirdsFactory();
@@ -36,6 +38,8 @@
         private List<GameObject> GameObjects { get; set; }
 
         private List<GameObject> Bullets { get; set; }
+
+        private List<Bird> BirdsInTop { get; set; }
 
         private List<GameObject> Birds { get; set; }
 
@@ -51,6 +55,7 @@
             this.renderer.UIAction += UIActionHandler;
             this.GameObjects = new List<GameObject>();
             this.Bullets = new List<GameObject>();
+            this.BirdsInTop = new List<Bird>();
             this.Birds = new List<GameObject>();
             this.CollisionDetector = new SimpleCollisionDetector();
         }
@@ -123,7 +128,7 @@
             this.renderer.Clear();
             this.renderer.Draw(this.Hunter);
             this.KillIfColliding();
-            this.RemoveBirdsOutofScreen();
+            this.RemoveBirdsAndBulletsOutofScreen();
             this.RemoveNotAliveGameObjects();
             this.AddBird();
 
@@ -133,21 +138,28 @@
         {
             Random rand = new Random();
 
-            int left = rand.Next(0, this.renderer.ScreenWidth - BirdWidth);
+        //    int left = rand.Next(0, this.renderer.ScreenWidth - BirdWidth);
+            int left = GetNextLeft();
             int top = 0;
+          
             Bird newBird = birdFactory.Get(left, top);
+            leftPositionOfBird = newBird.Position.Left;
 
-            if (rand.Next(100) < GenerateBirdChanse)
-            {
-                this.GameObjects.Add(newBird);
-                this.Birds.Add(newBird);
-            }
-            
-            foreach (var gameObj in this.GameObjects)
-            {
-                this.renderer.Draw(gameObj);
-                gameObj.Move();
-            }
+                if (rand.Next(100) < GenerateBirdChanse)
+                {
+                    this.GameObjects.Add(newBird);
+                    this.BirdsInTop.Add(newBird);
+                    this.Birds.Add(newBird);
+                }
+
+                foreach (var gameObj in this.GameObjects)
+                {
+                    this.renderer.Draw(gameObj);
+                    gameObj.Move();
+                }
+
+            BirdsInTop.RemoveAll(b => b.Position.Top > b.Bounds.Height);
+
         }
 
         private void KillIfColliding()
@@ -174,7 +186,7 @@
             this.Bullets.RemoveAll(bullet => !bullet.IsAlive);
         }
 
-        private void RemoveBirdsOutofScreen()
+        private void RemoveBirdsAndBulletsOutofScreen()
         {
             foreach (var bird in this.Birds)
             {
@@ -184,6 +196,97 @@
                     break;
                 }
             }
+            foreach (var bullet in this.Bullets)
+            {
+                if (bullet.Position.Top + bullet.Bounds.Height < 0)
+                {
+                    bullet.IsAlive = false;
+                    break;
+                }
+            }
+
+
+        }
+
+        private int GetNextLeft()
+        {
+            BirdsInTop = BirdsInTop.OrderBy(b => b.Position.Left).ToList();
+
+            int currentSpace = 0;
+            
+            int maxSpace = 0;
+            int maxSpaceIndex = 0;
+
+            for (int index = 0; index < BirdsInTop.Count - 1; index++)
+            {
+
+                if (index == 0)
+                {
+                    currentSpace = BirdsInTop[index].Position.Left;
+                }
+                else if (index == BirdsInTop.Count - 2)
+                {
+                    currentSpace = renderer.ScreenWidth - BirdsInTop[index + 1].Position.Left;
+                }
+                else
+                {
+                    currentSpace = BirdsInTop[index + 1].Position.Left - BirdsInTop[index].Position.Left;
+                }
+                
+                if (currentSpace > BirdsInTop[index].Bounds.Width * 3 && currentSpace > maxSpace)
+                {
+                    maxSpace = currentSpace;
+                    maxSpaceIndex = index;
+                }
+
+
+            }
+            int initialSpace = 0;
+            int lastSpace = 0;
+
+            if (BirdsInTop.Count > 0)
+            {
+                initialSpace = BirdsInTop[0].Position.Left;
+                lastSpace = renderer.ScreenWidth - (BirdsInTop[BirdsInTop.Count - 1].Position.Left + BirdsInTop[BirdsInTop.Count - 1].Bounds.Width);
+            }
+
+
+
+            int startRange = 0;
+            int endRange = renderer.ScreenWidth;
+
+            if (initialSpace > lastSpace && initialSpace > maxSpace)
+            {
+                endRange = BirdsInTop[0].Position.Left;              
+            }
+            else if(lastSpace > initialSpace && lastSpace > maxSpace)
+            {
+                startRange = BirdsInTop[BirdsInTop.Count - 1].Position.Left + BirdsInTop[BirdsInTop.Count - 1].Bounds.Width;
+            }
+            else if (maxSpace > initialSpace && maxSpace > lastSpace)
+            {
+                Bird firstBird = BirdsInTop[maxSpaceIndex];
+                startRange = firstBird.Position.Left + firstBird.Bounds.Width;
+                Bird lastBird = BirdsInTop[maxSpaceIndex + 1];
+                endRange = lastBird.Position.Left - lastBird.Bounds.Width;
+            }
+
+
+
+
+            //if (BirdsInTop.Count > 1 && maxSpace > BirdsInTop[0].Bounds.Width)
+            //{
+
+            //    Bird firstBird = BirdsInTop[maxSpaceIndex];
+            //    startRange = firstBird.Position.Left + firstBird.Bounds.Width;
+            //    Bird lastBird = BirdsInTop[maxSpaceIndex + 1];
+            //    endRange = lastBird.Position.Left - lastBird.Bounds.Width;
+            //}
+
+            Random rand = new Random();
+            int result = rand.Next(startRange, endRange);
+
+            return result;
         }
 
     }
