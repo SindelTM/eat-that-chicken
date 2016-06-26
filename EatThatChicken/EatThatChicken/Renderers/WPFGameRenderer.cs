@@ -1,19 +1,19 @@
-﻿using System;
-using System.Windows.Controls;
-using EatThatChicken.GameObjects;
-using System.Windows.Shapes;
-using System.Windows.Media;
-using EatThatChicken.View;
-using System.Windows.Input;
-using EatThatChicken.Misc;
-using EatThatChicken.GameObjects.Birds;
-using EatThatChicken.GameObjects.Bullets;
-using System.Windows;
-using System.Windows.Media.Imaging;
+﻿namespace EatThatChicken.Renderers
+{
+    using System;
+    using System.Windows.Controls;
+    using EatThatChicken.GameObjects;
+    using System.Windows.Shapes;
+    using System.Windows.Media;
+    using EatThatChicken.View;
+    using System.Windows.Input;
+    using EatThatChicken.Misc;
+    using EatThatChicken.GameObjects.Birds;
+    using EatThatChicken.GameObjects.Bullets;
+    using System.Windows;
+    using System.Windows.Media.Imaging;
 using EatThatChicken.GameObjects.Hunters;
 
-namespace EatThatChicken.Renderers
-{
     class WPFGameRenderer : IGameRenderer
     {
         public int ScreenHeight
@@ -78,7 +78,7 @@ namespace EatThatChicken.Renderers
 
                 if (gameObject is Bird)
                 {
-                    rect.Fill = Brushes.Black;
+                    this.DrawBird(gameObject);
                 }
                 else if (gameObject is Bullet)
                 {
@@ -90,6 +90,32 @@ namespace EatThatChicken.Renderers
                 }
                 this.playGroundCanvas.Children.Add(rect);
             }
+        }
+        private void DrawBird(GameObject bird)
+        {
+
+            if (bird is AngryBird)
+            {
+                var image = this.CreateImage("/Images/Birds/angry.png", bird.Position, bird.Bounds);
+                this.playGroundCanvas.Children.Add(image);
+            }
+            if (bird is SkinyBird)
+            {
+                var image = this.CreateImage("/Images/Birds/skiny.png", bird.Position, bird.Bounds);
+                this.playGroundCanvas.Children.Add(image);
+            }
+            if (bird is MuscleBird)
+            {
+                var image = this.CreateImage("/Images/Birds/muscle.png", bird.Position, bird.Bounds);
+                this.playGroundCanvas.Children.Add(image);
+            }
+            if (bird is NaughtyBird)
+            {
+                var image = this.CreateImage("/Images/Birds/naughty.png", bird.Position, bird.Bounds);
+                this.playGroundCanvas.Children.Add(image);
+            }
+
+
         }
 
         private void DrawHunter(GameObject sindel)

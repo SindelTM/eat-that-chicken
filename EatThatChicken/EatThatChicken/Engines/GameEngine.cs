@@ -1,17 +1,17 @@
-﻿using EatThatChicken.GameObjects;
-using EatThatChicken.GameObjects.Birds;
-using EatThatChicken.GameObjects.Bullets;
-using EatThatChicken.GameObjects.Factories;
-using EatThatChicken.GameObjects.Factories.BirdsFactories;
-using EatThatChicken.GameObjects.Hunters;
-using EatThatChicken.Misc;
-using EatThatChicken.Renderers;
-using System;
-using System.Collections.Generic;
-using System.Windows.Threading;
-
-namespace EatThatChicken.Engines
+﻿namespace EatThatChicken.Engines
 {
+    using EatThatChicken.GameObjects;
+    using EatThatChicken.GameObjects.Birds;
+    using EatThatChicken.GameObjects.Bullets;
+    using EatThatChicken.GameObjects.Factories;
+    using EatThatChicken.GameObjects.Factories.BirdsFactories;
+using EatThatChicken.GameObjects.Hunters;
+    using EatThatChicken.Misc;
+    using EatThatChicken.Renderers;
+    using System;
+    using System.Collections.Generic;
+    using System.Windows.Threading;
+
     public class GameEngine
     {
         //TODO Use Move() method when implemented
@@ -51,10 +51,18 @@ namespace EatThatChicken.Engines
             if (e.Action == GameAction.MoveLeft)
             {
                 this.Hunter.MoveLeft();
+                if (Hunter.Position.Left < 0)
+                {
+                    this.Hunter.MoveLeft = 0;
+                }
             }
             else if (e.Action == GameAction.MoveRight)
             {
                 this.Hunter.MoveRight();
+                if (Hunter.Position.Left > this.renderer.ScreenWidth - HunterWidth)
+                {
+                    this.Hunter.MoveLeft = 0;
+                }
             }
             else if (e.Action == GameAction.Fire)
             {
@@ -97,7 +105,7 @@ namespace EatThatChicken.Engines
         private void GameLoop(object sender, EventArgs args)
         {
             this.renderer.Clear();
-            //this.renderer.Draw(this.Hunter);
+            this.renderer.Draw(this.Hunter);
             int left = rand.Next(0, this.renderer.ScreenWidth - BirdWidth);
             int top = 0;
             GameObject bird = birdFactory.Get(left, top);
@@ -108,5 +116,24 @@ namespace EatThatChicken.Engines
                 gameObj.Move();
             }
         }
+
+        private void RemoveObject(GameObject anything)
+        {
+            if (anything.IsAlive == false)
+            {
+                this.GameObject.Remove(anything);
+            }
+        }
+
+        private void KillBird(Bird bird, Bullet bullet)
+        {
+            if (bird.Position.Left == bullet.Position.Left && bird.Position.Top == bullet.Position.Top)
+            {
+                RemoveObject(bird);
+                RemoveObject(bullet);
+            }
+
+        }
+
     }
 }

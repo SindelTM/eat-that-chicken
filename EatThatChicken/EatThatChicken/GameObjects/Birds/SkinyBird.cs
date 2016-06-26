@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace EatThatChicken.GameObjects.Birds
+﻿namespace EatThatChicken.GameObjects.Birds
 {
     public class SkinyBird: Bird
     {
@@ -13,7 +7,7 @@ namespace EatThatChicken.GameObjects.Birds
         public SkinyBird()
             :base(SkinnyBirdHealth)
         {
-            this.MoveSpeed = 25;
+            this.MoveSpeed = 8;
             this.MoveTop = -1;
             this.MoveLeft = 0;
         }

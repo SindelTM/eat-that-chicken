@@ -1,7 +1,7 @@
-﻿using EatThatChicken.Contracts;
-
-namespace EatThatChicken.GameObjects
+﻿namespace EatThatChicken.GameObjects
 {
+    using EatThatChicken.Contracts;
+
     public abstract class GameObject : IGameObject
     {
         protected readonly MoveAction moveAction;
@@ -30,7 +30,7 @@ namespace EatThatChicken.GameObjects
             throw new System.NotImplementedException();
         }
 
-        public void Move()
+        public virtual void Move()
         {
             int left = this.Position.Left - ((int)this.moveAction.Left * this.moveAction.Speed);
             int top = this.Position.Top - ((int)this.moveAction.Top * this.moveAction.Speed);

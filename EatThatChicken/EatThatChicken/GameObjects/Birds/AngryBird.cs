@@ -7,6 +7,9 @@
         public AngryBird()
             :base(AngryBirdDefaultHealth)
         {
+            this.MoveSpeed = 6;
+            this.MoveTop = -1;
+            this.MoveLeft = 0;
         }
     }
 }

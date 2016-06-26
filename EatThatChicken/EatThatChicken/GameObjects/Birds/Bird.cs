@@ -1,6 +1,8 @@
 ﻿namespace EatThatChicken.GameObjects.Birds
 {
-    public abstract class Bird : GameObject
+    using EatThatChicken.Contracts;
+
+    public abstract class Bird : GameObject, IMoveable
     {
         protected Bird(int health) 
             : base()

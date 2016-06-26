@@ -11,7 +11,7 @@ namespace EatThatChicken.GameObjects.Birds
         public NaughtyBird()
             :base(NaughtyBirdDefaultHealth)
         {
-            this.MoveSpeed = 50;
+            this.MoveSpeed = 2;
             this.MoveTop = -1;
             this.MoveLeft = 0;
         }
