@@ -12,6 +12,8 @@ namespace EatThatChicken.GameObjects
 
         public MoveAction() : this(MoveType.None, MoveType.None, 0) { }
 
+        public MoveAction(int speed) : this(MoveType.None, MoveType.None, speed) { }
+
         public MoveAction(MoveType left, MoveType top, int speed)
         {
             this.Left = left;
