@@ -10,7 +10,7 @@ namespace EatThatChicken.GameObjects.Birds
 
         private static MoveAction moveaction = new MoveAction(defaultLeft, defaultTop, defaultSpeed);
 
-        private const int MuscleBirdDefaultHealth = 5;
+        private const int MuscleBirdDefaultHealth = 4;
 
         public MuscleBird(Size bounds, Position position)
             :base(MuscleBirdDefaultHealth, bounds, position, moveaction) { }

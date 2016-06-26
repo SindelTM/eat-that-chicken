@@ -10,7 +10,7 @@
 
         private static MoveAction moveaction = new MoveAction(defaultLeft, defaultTop, defaultSpeed);
 
-        private const int NaughtyBirdDefaultHealth = 4;
+        private const int NaughtyBirdDefaultHealth = 2;
 
         public NaughtyBird(Size bounds, Position position)
             : base(NaughtyBirdDefaultHealth, bounds, position, moveaction) { }

@@ -123,6 +123,7 @@
             this.renderer.Clear();
             this.renderer.Draw(this.Hunter);
             this.KillIfColliding();
+            this.RemoveBirdsOutofScreen();
             this.RemoveNotAliveGameObjects();
             this.AddBird();
 
@@ -162,7 +163,8 @@
                         break;
                     }
                 }
-            }
+            }            
+
         }
 
         private void RemoveNotAliveGameObjects()
@@ -170,6 +172,18 @@
             this.GameObjects.RemoveAll(go => !go.IsAlive);
             this.Birds.RemoveAll(bird => !bird.IsAlive);
             this.Bullets.RemoveAll(bullet => !bullet.IsAlive);
+        }
+
+        private void RemoveBirdsOutofScreen()
+        {
+            foreach (var bird in this.Birds)
+            {
+                if (bird.Position.Top > (this.Hunter.Position.Top + this.Hunter.Bounds.Height))
+                {
+                    bird.IsAlive = false;
+                    break;
+                }
+            }
         }
 
     }
