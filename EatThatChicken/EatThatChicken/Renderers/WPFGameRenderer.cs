@@ -1,18 +1,19 @@
 ﻿namespace EatThatChicken.Renderers
 {
     using System;
+    using System.Windows;
     using System.Windows.Controls;
-    using EatThatChicken.GameObjects;
-    using System.Windows.Shapes;
-    using System.Windows.Media;
-    using EatThatChicken.View;
     using System.Windows.Input;
-    using EatThatChicken.Misc;
+    using System.Windows.Media;
+    using System.Windows.Media.Imaging;
+    using System.Windows.Shapes;
+    using EatThatChicken.GameObjects;
     using EatThatChicken.GameObjects.Birds;
     using EatThatChicken.GameObjects.Bullets;
-    using System.Windows;
-    using System.Windows.Media.Imaging;
     using EatThatChicken.GameObjects.Hunters;
+    using EatThatChicken.Misc;
+    using EatThatChicken.View;
+
 
     class WPFGameRenderer : IGameRenderer
     {
@@ -120,8 +121,6 @@
                 var image = this.CreateImage("/Images/Birds/naughty.png", bird.Position, bird.Bounds);
                 this.playGroundCanvas.Children.Add(image);
             }
-
-
         }
 
         private void DrawHunter(GameObject hunter)
@@ -161,6 +160,5 @@
             Canvas.SetTop(image, position.Top);
             return image;
         }
-
     }
 }

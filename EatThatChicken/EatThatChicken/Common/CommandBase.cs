@@ -1,8 +1,8 @@
-﻿using System;
-using System.Windows.Input;
-
-namespace EatThatChicken.Common
+﻿namespace EatThatChicken.Common
 {
+    using System;
+    using System.Windows.Input;
+
     public class CommandBase : ICommand
     {
         readonly Action<object> execute;

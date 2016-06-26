@@ -1,6 +1,7 @@
 ﻿namespace EatThatChicken.GameObjects.Bullets
 {
     using Enumerations;
+
     public class Bullet : GameObject
     {
         private const int defaultSpeed = 40;

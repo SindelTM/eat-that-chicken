@@ -1,9 +1,9 @@
-﻿using EatThatChicken.Engines;
-using EatThatChicken.Renderers;
-using EatThatChicken.View;
-
-namespace EatThatChicken.ViewModel
+﻿namespace EatThatChicken.ViewModel
 {
+    using EatThatChicken.Engines;
+    using EatThatChicken.Renderers;
+    using EatThatChicken.View;
+
     class GameFieldViewModel
     {
         private GameEngine Engine { get; set; }

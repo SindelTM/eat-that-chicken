@@ -1,7 +1,7 @@
-﻿using System;
-
-namespace EatThatChicken.Misc
+﻿namespace EatThatChicken.Misc
 {
+    using System;
+
     public class KeyDownEventArgs : EventArgs
     {
         public GameAction Action { get; set; }

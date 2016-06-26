@@ -1,17 +1,17 @@
 ﻿namespace EatThatChicken.Engines
 {
-    using EatThatChicken.GameObjects;
-    using EatThatChicken.GameObjects.Birds;
-    using EatThatChicken.GameObjects.Bullets;
-    using EatThatChicken.GameObjects.Factories;
-    using EatThatChicken.GameObjects.Factories.BirdsFactories;
-    using EatThatChicken.GameObjects.Hunters;
-    using EatThatChicken.Misc;
-    using EatThatChicken.Renderers;
     using System;
     using System.Collections.Generic;
-    using System.Linq;
     using System.Windows.Threading;
+    using GameObjects;
+    using GameObjects.Birds;
+    using GameObjects.Bullets;
+    using GameObjects.Factories;
+    using GameObjects.Factories.BirdsFactories;
+    using GameObjects.Hunters;
+    using Misc;
+    using Renderers;
+
 
     public class GameEngine
     {

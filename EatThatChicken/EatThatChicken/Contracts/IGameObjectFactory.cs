@@ -1,6 +1,5 @@
 ﻿namespace EatThatChicken.Contracts
 {
-
     public interface IGameObjectFactory<T>
         where T : IGameObject
     {

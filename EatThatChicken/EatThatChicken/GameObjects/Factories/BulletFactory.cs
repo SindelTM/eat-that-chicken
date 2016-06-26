@@ -1,8 +1,8 @@
-﻿using EatThatChicken.Contracts;
-using EatThatChicken.GameObjects.Bullets;
-
-namespace EatThatChicken.GameObjects.Factories
+﻿namespace EatThatChicken.GameObjects.Factories
 {
+    using EatThatChicken.Contracts;
+    using EatThatChicken.GameObjects.Bullets;
+
     public class BulletFactory : IGameObjectFactory<Bullet>
     {
         const int bulletWidth = 10;

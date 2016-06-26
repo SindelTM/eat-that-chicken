@@ -1,7 +1,7 @@
-﻿using EatThatChicken.Enumerations;
-
-namespace EatThatChicken.GameObjects
+﻿namespace EatThatChicken.GameObjects
 {
+    using EatThatChicken.Enumerations;
+
     public class MoveAction
     {
         public MoveType Left { get; }

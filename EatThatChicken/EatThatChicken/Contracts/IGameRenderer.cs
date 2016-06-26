@@ -1,9 +1,9 @@
-﻿using EatThatChicken.GameObjects;
-using EatThatChicken.Misc;
-using System;
-
-namespace EatThatChicken.Renderers
+﻿namespace EatThatChicken.Renderers
 {
+    using System;
+    using EatThatChicken.GameObjects;
+    using EatThatChicken.Misc;
+
     public interface IGameRenderer
     {
         int ScreenWidth { get; }

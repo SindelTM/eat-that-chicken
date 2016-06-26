@@ -1,8 +1,8 @@
-﻿using EatThatChicken.Contracts;
-using EatThatChicken.GameObjects.Birds;
-
-namespace EatThatChicken.GameObjects.Factories.BirdsFactories
+﻿namespace EatThatChicken.GameObjects.Factories.BirdsFactories
 {
+    using EatThatChicken.Contracts;
+    using EatThatChicken.GameObjects.Birds;
+
     public class AngryBirdFactory : IGameObjectFactory<AngryBird>
     {
         // TODO: see if width, height is enough

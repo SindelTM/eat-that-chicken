@@ -1,8 +1,8 @@
-﻿using EatThatChicken.Contracts;
-using EatThatChicken.Enumerations;
-
-namespace EatThatChicken.GameObjects.Hunters
+﻿namespace EatThatChicken.GameObjects.Hunters
 {
+    using Contracts;
+    using Enumerations;
+
     public class Hunter : GameObject, IHunter
     {
         public Hunter(Size bounds, Position position)
