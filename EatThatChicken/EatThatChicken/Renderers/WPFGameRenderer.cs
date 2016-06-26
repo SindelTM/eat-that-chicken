@@ -12,7 +12,7 @@
     using EatThatChicken.GameObjects.Bullets;
     using System.Windows;
     using System.Windows.Media.Imaging;
-using EatThatChicken.GameObjects.Hunters;
+    using EatThatChicken.GameObjects.Hunters;
 
     class WPFGameRenderer : IGameRenderer
     {
@@ -91,9 +91,15 @@ using EatThatChicken.GameObjects.Hunters;
                 this.playGroundCanvas.Children.Add(rect);
             }
         }
+
+        public bool IsInRange(Position position)
+        {
+            return 0 <= position.Left && position.Left <= this.ScreenWidth &&
+                0 <= position.Top-200 && position.Top <= this.ScreenHeight;
+        }
+
         private void DrawBird(GameObject bird)
         {
-
             if (bird is AngryBird)
             {
                 var image = this.CreateImage("/Images/Birds/angry.png", bird.Position, bird.Bounds);
@@ -155,5 +161,6 @@ using EatThatChicken.GameObjects.Hunters;
             Canvas.SetTop(image, position.Top);
             return image;
         }
+
     }
 }

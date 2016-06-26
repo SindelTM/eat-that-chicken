@@ -82,9 +82,11 @@
     <Compile Include="GameObjects\Hunters\Hunter.cs" />
     <Compile Include="GameObjects\MoveAction.cs" />
     <Compile Include="Misc\GameAction.cs" />
+    <Compile Include="Misc\ICollisionDetector.cs" />
     <Compile Include="Misc\KeyDownEventArgs.cs" />
     <Compile Include="GameObjects\Bullets\Bullet.cs" />
     <Compile Include="GameObjects\Factories\BulletFactory.cs" />
+    <Compile Include="Misc\SimpleCollisionDetector.cs" />
     <Compile Include="Renderers\WPFGameRenderer.cs" />
     <Compile Include="ViewModel\MainViewModel.cs" />
     <Compile Include="ViewModel\GameFieldViewModel.cs" />

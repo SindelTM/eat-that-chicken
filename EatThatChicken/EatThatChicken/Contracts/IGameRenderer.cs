@@ -14,6 +14,8 @@ namespace EatThatChicken.Renderers
 
         void Draw(params GameObject[] gameObjects);
 
+        bool IsInRange(Position position);
+
         event EventHandler<KeyDownEventArgs> UIAction;
     }
 }

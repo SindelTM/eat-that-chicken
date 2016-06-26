@@ -5,11 +5,12 @@
     using EatThatChicken.GameObjects.Bullets;
     using EatThatChicken.GameObjects.Factories;
     using EatThatChicken.GameObjects.Factories.BirdsFactories;
-using EatThatChicken.GameObjects.Hunters;
+    using EatThatChicken.GameObjects.Hunters;
     using EatThatChicken.Misc;
     using EatThatChicken.Renderers;
     using System;
     using System.Collections.Generic;
+    using System.Linq;
     using System.Windows.Threading;
 
     public class GameEngine
@@ -34,11 +35,13 @@ using EatThatChicken.GameObjects.Hunters;
 
         private List<GameObject> GameObjects { get; set; }
 
-        private List<Bullet> Bullets { get; set; }
+        private List<GameObject> Bullets { get; set; }
 
-        private List<Bird> Birds { get; set; }
+        private List<GameObject> Birds { get; set; }
 
         private IGameRenderer renderer { get; set; }
+
+        public ICollisionDetector CollisionDetector { get; private set; }
 
         private DispatcherTimer timer;
 
@@ -47,19 +50,26 @@ using EatThatChicken.GameObjects.Hunters;
             this.renderer = renderer;
             this.renderer.UIAction += UIActionHandler;
             this.GameObjects = new List<GameObject>();
-            this.Bullets = new List<Bullet>();
-            this.Birds = new List<Bird>();
+            this.Bullets = new List<GameObject>();
+            this.Birds = new List<GameObject>();
+            this.CollisionDetector = new SimpleCollisionDetector();
         }
 
         private void UIActionHandler(object sender, KeyDownEventArgs e)
         {
             if (e.Action == GameAction.MoveLeft)
             {
-                this.Hunter.MoveLeft();
+                if (this.Hunter.Position.Left > 0)
+                {
+                    this.Hunter.MoveLeft();
+                }        
             }
             else if (e.Action == GameAction.MoveRight)
             {
-                this.Hunter.MoveRight();
+                if (this.Hunter.Position.Left < this.renderer.ScreenWidth - HunterWidth)
+                {
+                    this.Hunter.MoveRight();
+                }
             }
             else if (e.Action == GameAction.Fire)
             {
@@ -71,10 +81,18 @@ using EatThatChicken.GameObjects.Hunters;
         {
             var left = this.Hunter.Position.Left + HunterWidth / 2;
             var top = this.Hunter.Position.Top;
-            Bullet bullet = bulletFactory.Get(left, top);
+            Bullet newBullet = bulletFactory.Get(left, top);
 
-            this.GameObjects.Add(bullet);
-            this.Bullets.Add(bullet);
+            foreach (var bullet in Bullets)
+            {
+                if (!this.renderer.IsInRange(bullet.Position))
+                {
+                    bullet.IsAlive = false;
+                }
+            }
+
+            this.GameObjects.Add(newBullet);
+            this.Bullets.Add(newBullet);
         }
 
         public void InitGame()
@@ -104,8 +122,11 @@ using EatThatChicken.GameObjects.Hunters;
         {
             this.renderer.Clear();
             this.renderer.Draw(this.Hunter);
+            this.KillIfColliding();
+            this.RemoveNotAliveGameObjects();
             this.AddBird();
-         }
+
+        }
 
         public void AddBird()
         {
@@ -120,29 +141,7 @@ using EatThatChicken.GameObjects.Hunters;
                 this.GameObjects.Add(newBird);
                 this.Birds.Add(newBird);
             }
-            foreach (var bullet in Bullets)
-            {
-                foreach (var bird in Birds)
-                {
-                    int bulletTop = 0;
-                    int bulletleft = 0;
-                    int bulletRight = 0;
-
-                    int birdBottom = 0;
-                    int birdleft = 0;
-                    int birdRight = 0;
-
-                    bool shouldDie = false;
-                    //TODO check collision......
-                    if (shouldDie)
-                    {
-                        bullet.IsAlive = false;
-                        bird.IsAlive = false;
-                        break;
-                    }
-                }
-            }
-
+            
             foreach (var gameObj in this.GameObjects)
             {
                 this.renderer.Draw(gameObj);
@@ -150,21 +149,28 @@ using EatThatChicken.GameObjects.Hunters;
             }
         }
 
-        private void RemoveObject(GameObject anything)
+        private void KillIfColliding()
         {
-            if (anything.IsAlive == false)
+            foreach (var bullet in this.Bullets)
             {
-                this.GameObjects.Remove(anything);
+                foreach (var bird in this.Birds)
+                {
+                    if (CollisionDetector.AreCollided(bird, bullet))
+                    {
+                        bullet.IsAlive = false;
+                        bird.IsAlive = false;
+                        break;
+                    }
+                }
             }
         }
 
-        private void KillBird(Bird bird, Bullet bullet)
+        private void RemoveNotAliveGameObjects()
         {
-            if (bird.Position.Left == bullet.Position.Left && bird.Position.Top == bullet.Position.Top)
-            {
-                RemoveObject(bird);
-                RemoveObject(bullet);
-            }
+            this.GameObjects.RemoveAll(go => !go.IsAlive);
+            this.Birds.RemoveAll(bird => !bird.IsAlive);
+            this.Bullets.RemoveAll(bullet => !bullet.IsAlive);
         }
+
     }
 }
