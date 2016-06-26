@@ -7,15 +7,14 @@ namespace EatThatChicken.GameObjects.Factories.BirdsFactories
     {
         // TODO: see if width, height is enough
         private const int AngryBirdBoundsWidth = 60;
-        private const int AngryBirdBoundsHeight = 70; 
+        private const int AngryBirdBoundsHeight = 70;
 
         public AngryBird Get(int left, int top)
         {
-            return new AngryBird()
-            {
-                Position = new Position(left, top),
-                Bounds = new Size(AngryBirdBoundsWidth, AngryBirdBoundsHeight)
-            };
+            Position position = new Position(left, top);
+            Size bounds = new Size(AngryBirdBoundsWidth, AngryBirdBoundsHeight);
+
+            return new AngryBird(bounds, position);
         }
     }
 }

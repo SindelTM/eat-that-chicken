@@ -11,11 +11,10 @@ namespace EatThatChicken.GameObjects.Factories.BirdsFactories
 
         public SkinyBird Get(int left, int top)
         {
-            return new SkinyBird()
-            {
-                Position = new Position(left, top),
-                Bounds = new Size(SkinyBirdBoundsWidth, SkinyBirdBoundsHeight)
-            };
+            Position position = new Position(left, top);
+            Size bounds = new Size(SkinyBirdBoundsWidth, SkinyBirdBoundsHeight);
+
+            return new SkinyBird(bounds, position);
         }
     }
 }

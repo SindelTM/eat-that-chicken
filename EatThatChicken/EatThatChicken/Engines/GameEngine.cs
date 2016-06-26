@@ -51,18 +51,10 @@ using EatThatChicken.GameObjects.Hunters;
             if (e.Action == GameAction.MoveLeft)
             {
                 this.Hunter.MoveLeft();
-                if (Hunter.Position.Left < 0)
-                {
-                    this.Hunter.MoveLeft = 0;
-                }
             }
             else if (e.Action == GameAction.MoveRight)
             {
                 this.Hunter.MoveRight();
-                if (Hunter.Position.Left > this.renderer.ScreenWidth - HunterWidth)
-                {
-                    this.Hunter.MoveLeft = 0;
-                }
             }
             else if (e.Action == GameAction.Fire)
             {

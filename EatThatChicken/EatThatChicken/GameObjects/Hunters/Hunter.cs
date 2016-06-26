@@ -1,6 +1,4 @@
-﻿using System;
-using EatThatChicken.Contracts;
-using EatThatChicken.Enumerations;
+﻿using EatThatChicken.Contracts;
 
 namespace EatThatChicken.GameObjects.Hunters
 {

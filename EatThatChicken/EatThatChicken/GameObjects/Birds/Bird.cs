@@ -4,8 +4,8 @@
 
     public abstract class Bird : GameObject, IMoveable
     {
-        protected Bird(int health) 
-            : base()
+        protected Bird(int health, Size bounds, Position position, MoveAction moveAction) 
+            : base(bounds, position, moveAction)
         {
             this.Health = health;
         }

@@ -1,4 +1,5 @@
 ﻿using EatThatChicken.Contracts;
+using EatThatChicken.Enumerations;
 using EatThatChicken.GameObjects.Birds;
 
 namespace EatThatChicken.GameObjects.Factories.BirdsFactories
@@ -11,11 +12,10 @@ namespace EatThatChicken.GameObjects.Factories.BirdsFactories
 
         public NaughtyBird Get(int left, int top)
         {
-            return new NaughtyBird()
-            {
-                Position = new Position(left, top),
-                Bounds = new Size(NaughtyBirdBoundsWidth, NaughtyBirdBoundsHeight)
-            };
+            Position position = new Position(left, top);
+            Size bounds = new Size(NaughtyBirdBoundsWidth, NaughtyBirdBoundsWidth);
+
+            return new NaughtyBird(bounds, position);
         }
     }
 }
