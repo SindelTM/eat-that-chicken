@@ -22,7 +22,8 @@
 
         const int BirdWidth = 60; // This is used to locate where to show up new Bird
 
-        const int TimerIntervalMillis = 100;
+        const int TimerIntervalMillis = 150;
+        const int GenerateBirdChanse = 20;
 
         private BulletFactory bulletFactory = new BulletFactory();
 
@@ -32,17 +33,21 @@
 
         private List<GameObject> GameObject { get; set; }
 
+        private List<Bullet> Bullets { get; set; }
+
+        private List<Bird> Birds { get; set; }
+
         private IGameRenderer renderer { get; set; }
 
         private DispatcherTimer timer;
-
-        static readonly Random rand = new Random();
 
         public GameEngine(IGameRenderer renderer)
         {
             this.renderer = renderer;
             this.renderer.UIAction += UIActionHandler;
             this.GameObject = new List<GameObject>();
+            this.Bullets = new List<Bullet>();
+            this.Birds = new List<Bird>();
         }
 
         private void UIActionHandler(object sender, KeyDownEventArgs e)
@@ -80,6 +85,7 @@
             Bullet bullet = bulletFactory.Get(left, top);
 
             this.GameObject.Add(bullet);
+            this.Bullets.Add(bullet);
         }
 
         public void InitGame()
@@ -109,11 +115,46 @@
         {
             this.renderer.Clear();
             this.renderer.Draw(this.Hunter);
+            this.AddBird();
+         }
+
+        public void AddBird()
+        {
+            Random rand = new Random();
+
             int left = rand.Next(0, this.renderer.ScreenWidth - BirdWidth);
             int top = 0;
-            GameObject bird = birdFactory.Get(left, top);
-            this.GameObject.Add(bird);
-            foreach (var gameObj in this.GameObject) 
+            Bird newBird = birdFactory.Get(left, top);
+
+            if (rand.Next(100) < GenerateBirdChanse)
+            {
+                this.GameObject.Add(newBird);
+                this.Birds.Add(newBird);
+            }
+            foreach (var bullet in Bullets)
+            {
+                foreach (var bird in Birds)
+                {
+                    int bulletTop = 0;
+                    int bulletleft = 0;
+                    int bulletRight = 0;
+
+                    int birdBottom = 0;
+                    int birdleft = 0;
+                    int birdRight = 0;
+
+                    bool shouldDie = false;
+                    //TODO check collision......
+                    if (shouldDie)
+                    {
+                        bullet.IsAlive = false;
+                        bird.IsAlive = false;
+                        break;
+                    }
+                }
+            }
+
+            foreach (var gameObj in this.GameObject)
             {
                 this.renderer.Draw(gameObj);
                 gameObj.Move();
@@ -135,8 +176,6 @@
                 RemoveObject(bird);
                 RemoveObject(bullet);
             }
-
         }
-
     }
 }

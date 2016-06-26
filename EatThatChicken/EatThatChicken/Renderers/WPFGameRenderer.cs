@@ -117,9 +117,9 @@
 
         }
 
-        private void DrawHunter(GameObject sindel)
+        private void DrawHunter(GameObject hunter)
         {
-            var image = this.CreateImage("/Images/Sindel.png", sindel.Position, sindel.Bounds);
+            var image = this.CreateImage("/Images/Hunter.png", hunter.Position, hunter.Bounds);
             this.playGroundCanvas.Children.Add(image);
         }
 
