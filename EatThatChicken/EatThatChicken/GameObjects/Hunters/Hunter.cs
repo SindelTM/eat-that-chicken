@@ -1,4 +1,6 @@
-﻿namespace EatThatChicken.GameObjects.Hunters
+﻿using System.Windows.Controls;
+
+namespace EatThatChicken.GameObjects.Hunters
 {
     using Contracts;
     using Enumerations;
@@ -20,6 +22,12 @@
             int left = this.Position.Left - ((int)MoveType.Decremental * this.moveAction.Speed);
 
             this.Position = new Position(left, this.Position.Top);
+        }
+
+        public override void Draw(Canvas playgroundCanvas)
+        {
+            var image = this.CreateImage("/Images/Hunter.png", this.Position, this.Bounds);
+            playgroundCanvas.Children.Add(image);
         }
     }
 }

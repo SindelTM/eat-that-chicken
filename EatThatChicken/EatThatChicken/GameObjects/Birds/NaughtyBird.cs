@@ -1,4 +1,6 @@
-﻿namespace EatThatChicken.GameObjects.Birds
+﻿using System.Windows.Controls;
+
+namespace EatThatChicken.GameObjects.Birds
 {
     using EatThatChicken.Enumerations;
 
@@ -14,5 +16,11 @@
 
         public NaughtyBird(Size bounds, Position position)
             : base(NaughtyBirdDefaultHealth, bounds, position, moveaction) { }
+
+        public override void Draw(Canvas playgroundCanvas)
+        {
+            var image = this.CreateImage("/Images/Birds/naughty.png", this.Position, this.Bounds);
+            playgroundCanvas.Children.Add(image);
+        }
     }
 }

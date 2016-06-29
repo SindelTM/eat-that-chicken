@@ -1,4 +1,8 @@
-﻿namespace EatThatChicken.GameObjects
+﻿using System;
+using System.Windows.Controls;
+using System.Windows.Media.Imaging;
+
+namespace EatThatChicken.GameObjects
 {
     using EatThatChicken.Contracts;
 
@@ -28,6 +32,27 @@
         public void Update()
         {
             throw new System.NotImplementedException();
+        }
+
+        
+
+        public abstract void Draw(Canvas playgroundCanvas);
+
+        public Image CreateImage(string path, Position position, GameObjects.Size bounds)
+        {
+            Image image = new Image();
+            BitmapImage bitmap = new BitmapImage();
+            bitmap.BeginInit();
+            bitmap.UriSource = new Uri(path, UriKind.RelativeOrAbsolute);
+            bitmap.EndInit();
+
+            image.Source = bitmap;
+            image.Width = bounds.Width;
+            image.Height = bounds.Height;
+
+            Canvas.SetLeft(image, position.Left);
+            Canvas.SetTop(image, position.Top);
+            return image;
         }
 
         public virtual void Move()

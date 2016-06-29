@@ -6,14 +6,14 @@ namespace EatThatChicken.ViewModel
 {
     class MainViewModel
     {
-        private MainWindow mainWindow;
+        private View.MainWindow mainWindow;
 
         //field startCommand,exitCommand-btnStart,btnExit
         private CommandBase startCommand;
         private CommandBase exitCommand;
 
         //constructor 
-        public MainViewModel(MainWindow window)
+        public MainViewModel(View.MainWindow window)
         {
             mainWindow = window;
         }

@@ -1,8 +1,9 @@
-﻿namespace EatThatChicken.GameObjects.Factories.BirdsFactories
-{
-    using EatThatChicken.Contracts;
-    using EatThatChicken.GameObjects.Birds;
+﻿using EatThatChicken.Contracts;
+using EatThatChicken.GameObjects;
+using EatThatChicken.GameObjects.Birds;
 
+namespace EatThatChicken.Factories.BirdsFactories
+{
     public class AngryBirdFactory : IGameObjectFactory<AngryBird>
     {
         // TODO: see if width, height is enough

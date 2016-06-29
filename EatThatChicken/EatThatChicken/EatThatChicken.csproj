@@ -65,27 +65,30 @@
     <Compile Include="Contracts\IUpdateable.cs" />
     <Compile Include="Engines\GameEngine.cs" />
     <Compile Include="Enumerations\MoveType.cs" />
+    <Compile Include="Factories\BirdsFactories\AngryBirdFactory.cs" />
+    <Compile Include="Factories\BirdsFactories\BirdFactory.cs" />
+    <Compile Include="Factories\BirdsFactories\MuscleBirdFactory.cs" />
+    <Compile Include="Factories\BirdsFactories\NaughtyBirdFactory.cs" />
+    <Compile Include="Factories\BirdsFactories\SkinyBirdFactory.cs" />
+    <Compile Include="Factories\BulletFactory.cs" />
+    <Compile Include="Factories\ItemsFactory\ItemGenerator.cs" />
     <Compile Include="GameObjects\Birds\AngryBird.cs" />
     <Compile Include="GameObjects\Birds\Bird.cs" />
     <Compile Include="GameObjects\Birds\MuscleBird.cs" />
     <Compile Include="GameObjects\Birds\NaughtyBird.cs" />
     <Compile Include="GameObjects\Birds\SkinyBird.cs" />
     <Compile Include="Contracts\IGameRenderer.cs" />
-    <Compile Include="GameObjects\Factories\BirdsFactories\AngryBirdFactory.cs" />
-    <Compile Include="GameObjects\Factories\BirdsFactories\BirdsFactory.cs" />
-    <Compile Include="GameObjects\Factories\BirdsFactories\MuscleBirdFactory.cs" />
-    <Compile Include="GameObjects\Factories\BirdsFactories\NaughtyBirdFactory.cs" />
-    <Compile Include="GameObjects\Factories\BirdsFactories\SkinyBirdFactory.cs" />
     <Compile Include="GameObjects\GameItems\Bomb.cs" />
     <Compile Include="GameObjects\GameItems\ChickenLeg.cs" />
     <Compile Include="GameObjects\GameItems\Heart.cs" />
+    <Compile Include="GameObjects\GameItems\Item.cs" />
+    <Compile Include="GameObjects\GameItems\ItemAttribute.cs" />
     <Compile Include="GameObjects\Hunters\Hunter.cs" />
     <Compile Include="GameObjects\MoveAction.cs" />
     <Compile Include="Misc\GameAction.cs" />
     <Compile Include="Misc\ICollisionDetector.cs" />
     <Compile Include="Misc\KeyDownEventArgs.cs" />
     <Compile Include="GameObjects\Bullets\Bullet.cs" />
-    <Compile Include="GameObjects\Factories\BulletFactory.cs" />
     <Compile Include="Misc\SimpleCollisionDetector.cs" />
     <Compile Include="Renderers\WPFGameRenderer.cs" />
     <Compile Include="ViewModel\MainViewModel.cs" />
@@ -159,6 +162,14 @@
   <ItemGroup>
     <Resource Include="Images\Hunter.png" />
   </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\bomb.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\chicken-leg.png" />
+    <Resource Include="Images\heart.png" />
+  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

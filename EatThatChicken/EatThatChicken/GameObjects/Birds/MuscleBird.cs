@@ -1,4 +1,5 @@
-﻿using EatThatChicken.Enumerations;
+﻿using System.Windows.Controls;
+using EatThatChicken.Enumerations;
 
 namespace EatThatChicken.GameObjects.Birds
 {
@@ -14,5 +15,11 @@ namespace EatThatChicken.GameObjects.Birds
 
         public MuscleBird(Size bounds, Position position)
             :base(MuscleBirdDefaultHealth, bounds, position, moveaction) { }
+
+        public override void Draw(Canvas playgroundCanvas)
+        {
+            var image = this.CreateImage("/Images/Birds/muscle.png", this.Position, this.Bounds);
+            playgroundCanvas.Children.Add(image);
+        }
     }
 }

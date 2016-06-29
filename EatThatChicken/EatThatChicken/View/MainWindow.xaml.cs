@@ -1,7 +1,7 @@
 ﻿using System.Windows;
 using EatThatChicken.ViewModel;
 
-namespace EatThatChicken
+namespace EatThatChicken.View
 {
     /// <summary>
     /// Interaction logic for MainWindow.xaml

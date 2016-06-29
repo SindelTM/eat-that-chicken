@@ -1,4 +1,6 @@
-﻿namespace EatThatChicken.GameObjects.Birds
+﻿using System.Windows.Controls;
+
+namespace EatThatChicken.GameObjects.Birds
 {
     using EatThatChicken.Enumerations;
 
@@ -14,5 +16,11 @@
 
         public SkinyBird(Size bounds, Position position)
             : base(SkinnyBirdHealth, bounds, position, moveaction) { }
+
+        public override void Draw(Canvas playGroundCanvas)
+        {
+            var image = this.CreateImage("/Images/Birds/skiny.png", this.Position, this.Bounds);
+            playGroundCanvas.Children.Add(image);
+        }
     }
 }

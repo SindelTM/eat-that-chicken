@@ -1,4 +1,11 @@
-﻿namespace EatThatChicken.Engines
+﻿using System.Threading;
+using EatThatChicken.Contracts;
+using EatThatChicken.Factories;
+using EatThatChicken.Factories.BirdsFactories;
+using EatThatChicken.Factories.ItemsFactory;
+using EatThatChicken.GameObjects.GameItems;
+
+namespace EatThatChicken.Engines
 {
     using System;
     using System.Collections.Generic;
@@ -6,8 +13,6 @@
     using GameObjects;
     using GameObjects.Birds;
     using GameObjects.Bullets;
-    using GameObjects.Factories;
-    using GameObjects.Factories.BirdsFactories;
     using GameObjects.Hunters;
     using Misc;
     using Renderers;
@@ -43,6 +48,8 @@
 
         public ICollisionDetector CollisionDetector { get; private set; }
 
+        private Random rand = new Random();
+
         private DispatcherTimer timer;
 
         public GameEngine(IGameRenderer renderer)
@@ -53,7 +60,10 @@
             this.Bullets = new List<GameObject>();
             this.Birds = new List<GameObject>();
             this.CollisionDetector = new SimpleCollisionDetector();
+            this.Generator = new ItemGenerator();
         }
+
+        public ItemGenerator Generator { get; set; }
 
         private void UIActionHandler(object sender, KeyDownEventArgs e)
         {
@@ -125,14 +135,27 @@
             this.KillIfColliding();
             this.RemoveBirdsOutofScreen();
             this.RemoveNotAliveGameObjects();
+            this.GenerateItem();
             this.AddBird();
 
+            foreach (var gameObj in this.GameObjects)
+            {
+                this.renderer.Draw(gameObj);
+                gameObj.Move();
+            }
+
+        }
+
+        private void GenerateItem()
+        {
+            if (rand.Next(250) < GenerateBirdChanse)
+            {
+                this.GameObjects.Add(this.Generator.GenerateItems(rand.Next(0, this.renderer.ScreenWidth - 10), 0));
+            }
         }
 
         public void AddBird()
         {
-            Random rand = new Random();
-
             int left = rand.Next(0, this.renderer.ScreenWidth - BirdWidth);
             int top = 0;
             Bird newBird = birdFactory.Get(left, top);
@@ -141,12 +164,6 @@
             {
                 this.GameObjects.Add(newBird);
                 this.Birds.Add(newBird);
-            }
-            
-            foreach (var gameObj in this.GameObjects)
-            {
-                this.renderer.Draw(gameObj);
-                gameObj.Move();
             }
         }
 

@@ -1,4 +1,5 @@
-﻿using EatThatChicken.Enumerations;
+﻿using System.Windows.Controls;
+using EatThatChicken.Enumerations;
 
 namespace EatThatChicken.GameObjects.Birds
 {
@@ -14,5 +15,11 @@ namespace EatThatChicken.GameObjects.Birds
 
         public AngryBird(Size bounds, Position position)
             :base(AngryBirdDefaultHealth, bounds, position, moveaction) { }
+
+        public override void Draw(Canvas playGroundCanvas)
+        {
+            var image = this.CreateImage("/Images/Birds/angry.png", this.Position, this.Bounds);
+            playGroundCanvas.Children.Add(image);
+        }
     }
 }

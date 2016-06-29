@@ -1,10 +1,10 @@
-﻿namespace EatThatChicken.GameObjects.Factories.BirdsFactories
-{
-    using System;
-    using EatThatChicken.GameObjects.Birds;
-    using EatThatChicken.Contracts;
+﻿using System;
+using EatThatChicken.Contracts;
+using EatThatChicken.GameObjects.Birds;
 
-    public class BirdsFactory: IGameObjectFactory<Bird>
+namespace EatThatChicken.Factories.BirdsFactories
+{
+    public class BirdsFactory : IGameObjectFactory<Bird>
     {
         static readonly Random rand = new Random();
         private const int Count = 100;

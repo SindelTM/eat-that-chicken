@@ -1,8 +1,8 @@
 ﻿using EatThatChicken.Contracts;
-using EatThatChicken.Enumerations;
+using EatThatChicken.GameObjects;
 using EatThatChicken.GameObjects.Birds;
 
-namespace EatThatChicken.GameObjects.Factories.BirdsFactories
+namespace EatThatChicken.Factories.BirdsFactories
 {
     public class MuscleBirdFactory : IGameObjectFactory<MuscleBird>
     {

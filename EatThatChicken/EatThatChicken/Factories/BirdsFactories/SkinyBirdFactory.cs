@@ -1,7 +1,8 @@
 ﻿using EatThatChicken.Contracts;
+using EatThatChicken.GameObjects;
 using EatThatChicken.GameObjects.Birds;
 
-namespace EatThatChicken.GameObjects.Factories.BirdsFactories
+namespace EatThatChicken.Factories.BirdsFactories
 {
     public class SkinyBirdFactory : IGameObjectFactory<SkinyBird>
     {
