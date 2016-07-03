@@ -16,13 +16,7 @@
   
     public class GameEngine
     {
-        //TODO Use Move() method when implemented
-        //const int HunterSpeed = 15;
-        //TODO Use Hunter Factory when implemented
-        const int HunterHeight = 190;
-        const int HunterWidth = 90;
-        const int HunterPoints = 100;
-
+        
         const int BirdWidth = 60; // This is used to locate where to show up new Bird
 
 
@@ -33,6 +27,7 @@
         private BulletFactory bulletFactory = new BulletFactory();
         private BirdsFactory birdFactory = new BirdsFactory();
         public ItemGenerator Generator { get; set; }
+        private HunterFactory hunterFactory = new HunterFactory();
         private Hunter Hunter { get; set; }
 
         private List<GameObject> GameObjects { get; set; }
@@ -71,7 +66,7 @@
             }
             else if (e.Action == GameAction.MoveRight)
             {
-                if (this.Hunter.Position.Left < this.renderer.ScreenWidth - HunterWidth)
+                if (this.Hunter.Position.Left < this.renderer.ScreenWidth - this.Hunter.Bounds.Width)
                 {
                     this.Hunter.MoveRight();
                 }
@@ -94,17 +89,9 @@
         {
             if (Trigger == WeaponMode.On)
             {
-                var left = this.Hunter.Position.Left + HunterWidth / 2;
+                var left = this.Hunter.Position.Left + this.Hunter.Bounds.Width / 2;
                 var top = this.Hunter.Position.Top;
                 Bullet newBullet = bulletFactory.Get(left, top);
-
-                //foreach (var bullet in Bullets)
-                //{
-                //    if (!this.renderer.IsInRange(bullet.Position))
-                //    {
-                //        bullet.IsAlive = false;
-                //    }
-                //}
 
                 this.GameObjects.Add(newBullet);
                 this.Bullets.Add(newBullet);
@@ -114,15 +101,7 @@
         public void InitGame()
         {
             this.GameObjects.Clear();
-
-            var left = (this.renderer.ScreenWidth - HunterWidth) / 2;
-            var top = this.renderer.ScreenHeight - HunterHeight;
-            Position position = new Position(left, top);
-
-            Size bounds = new Size(HunterWidth, HunterHeight);
-
-            // TO DO add Hunter
-            this.Hunter = new Hunter(bounds, position);
+            this.Hunter = hunterFactory.Get(this.renderer.ScreenHeight, this.renderer.ScreenWidth);
             this.GameObjects.Add(Hunter);
             this.timer = new DispatcherTimer();
             timer.Interval = TimeSpan.FromMilliseconds(TimerIntervalMillis);
