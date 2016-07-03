@@ -219,19 +219,7 @@
 
             for (int index = 0; index < BirdsInTop.Count - 1; index++)
             {
-
-                if (index == 0)
-                {
-                    currentSpace = BirdsInTop[index].Position.Left;
-                }
-                else if (index == BirdsInTop.Count - 2)
-                {
-                    currentSpace = renderer.ScreenWidth - BirdsInTop[index + 1].Position.Left;
-                }
-                else
-                {
-                    currentSpace = BirdsInTop[index + 1].Position.Left - BirdsInTop[index].Position.Left;
-                }
+                currentSpace = BirdsInTop[index + 1].Position.Left - BirdsInTop[index].Position.Left;
                 
                 if (currentSpace > BirdsInTop[index].Bounds.Width * 3 && currentSpace > maxSpace)
                 {
