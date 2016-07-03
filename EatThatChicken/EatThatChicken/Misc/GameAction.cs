@@ -4,6 +4,8 @@
     {
         MoveLeft,
         MoveRight,
-        Fire
+        Fire,
+        StopMoving,
+        StopFire
     }
 }

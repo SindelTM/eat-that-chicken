@@ -16,7 +16,7 @@ namespace EatThatChicken.Renderers
     using EatThatChicken.GameObjects.Hunters;
     using EatThatChicken.Misc;
     using EatThatChicken.View;
-
+    using System.Collections.Generic;
 
     class WPFGameRenderer : IGameRenderer
     {
@@ -37,6 +37,7 @@ namespace EatThatChicken.Renderers
         }
 
         private Canvas playGroundCanvas;
+        public event EventHandler<KeyDownEventArgs> UIAction;
 
         public WPFGameRenderer(Canvas playGroundCanvas)
         {
@@ -47,41 +48,47 @@ namespace EatThatChicken.Renderers
                 var key = args.Key;
                 if (key == Key.Left)
                 {
-                    this.UIAction(this, new KeyDownEventArgs(GameAction.MoveLeft));
+                        this.UIAction(this, new KeyDownEventArgs(GameAction.MoveLeft));
                 }
                 else if (key == Key.Right)
                 {
-                    this.UIAction(this, new KeyDownEventArgs(GameAction.MoveRight));
+                        this.UIAction(this, new KeyDownEventArgs(GameAction.MoveRight));
                 }
                 else if (key == Key.Space)
                 {
-                    this.UIAction(this, new KeyDownEventArgs(GameAction.Fire));
+                        this.UIAction(this, new KeyDownEventArgs(GameAction.Fire));
+                }
+            };
+
+            (this.playGroundCanvas.Parent as GameFieldWindow).KeyUp += (sender, args) =>
+            {
+                var key = args.Key;
+                if (key == Key.Left)
+                {
+                        this.UIAction(this, new KeyDownEventArgs(GameAction.StopMoving));
+                }
+                else if (key == Key.Right)
+                {
+                        this.UIAction(this, new KeyDownEventArgs(GameAction.StopMoving));
+                    
+                }
+                else if (key == Key.Space)
+                {
+                        this.UIAction(this, new KeyDownEventArgs(GameAction.StopFire));
                 }
             };
         }
-
-        public event EventHandler<KeyDownEventArgs> UIAction;
-
+        
         public void Clear()
         {
             this.playGroundCanvas.Children.Clear();
         }
 
-        public void Draw(params GameObject[] gameObjects)
+        public void Draw(IEnumerable<IGameObject> gameObjects)
         {
             foreach (var gameObject in gameObjects)
             {
-                var rect = new Rectangle
-                {
-                    Width = gameObject.Bounds.Width,
-                    Height = gameObject.Bounds.Height
-                };
-
-                Canvas.SetLeft(rect, gameObject.Position.Left);
-                Canvas.SetTop(rect, gameObject.Position.Top);
-
                 gameObject.Draw(this.playGroundCanvas);
-                this.playGroundCanvas.Children.Add(rect);
             }
         }
 

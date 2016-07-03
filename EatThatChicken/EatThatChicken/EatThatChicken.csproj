@@ -65,6 +65,7 @@
     <Compile Include="Contracts\IUpdateable.cs" />
     <Compile Include="Engines\GameEngine.cs" />
     <Compile Include="Enumerations\MoveType.cs" />
+    <Compile Include="Enumerations\WeaponMode.cs" />
     <Compile Include="Factories\BirdsFactories\AngryBirdFactory.cs" />
     <Compile Include="Factories\BirdsFactories\BirdFactory.cs" />
     <Compile Include="Factories\BirdsFactories\MuscleBirdFactory.cs" />

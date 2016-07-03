@@ -4,7 +4,7 @@
 
     public class MoveAction
     {
-        public MoveType Left { get; }
+        public MoveType Left { get; set; }
 
         public MoveType Top { get; }
 

@@ -6,7 +6,7 @@ namespace EatThatChicken.GameObjects.GameItems
     [Item]
     public class Bomb : Item
     {
-        private const int defaultSpeed = 6;
+        private const int defaultSpeed = 1;
         private const MoveType defaultTop = MoveType.Decremental;
         private const MoveType defaultLeft = MoveType.None;
 

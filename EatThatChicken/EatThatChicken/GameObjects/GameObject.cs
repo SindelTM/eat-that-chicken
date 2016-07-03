@@ -29,12 +29,23 @@ namespace EatThatChicken.GameObjects
         public Position Position { get; set; }
         public virtual bool IsAlive { get; set; }
 
-        public void Update()
+        public virtual void OutOfScreenUpdate(int screenHeight, int screenWidth)
         {
-            throw new System.NotImplementedException();
+            int bottom = this.Position.Top + this.Bounds.Height;
+            int top = this.Position.Top;
+            int rightSide = this.Position.Left + this.Bounds.Width;
+            int leftSide = this.Position.Left;
+
+            if ((bottom < 0) || (top > screenHeight) || (rightSide < 0) || (leftSide > screenWidth))
+            {
+                this.IsAlive = false;
+            }
         }
 
-        
+        public void Update()
+        {
+            throw new NotImplementedException();
+        }
 
         public abstract void Draw(Canvas playgroundCanvas);
 

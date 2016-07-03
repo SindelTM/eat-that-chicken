@@ -5,7 +5,7 @@ namespace EatThatChicken.GameObjects.Birds
 {
     public class AngryBird: Bird
     {
-        private const int defaultSpeed = 6;
+        private const int defaultSpeed = 1;
         private const MoveType defaultTop = MoveType.Decremental;
         private const MoveType defaultLeft = MoveType.None;
 

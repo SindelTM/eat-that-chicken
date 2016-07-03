@@ -1,27 +1,23 @@
-﻿using System.Threading;
-using EatThatChicken.Contracts;
-using EatThatChicken.Factories;
-using EatThatChicken.Factories.BirdsFactories;
-using EatThatChicken.Factories.ItemsFactory;
-using EatThatChicken.GameObjects.GameItems;
-
-namespace EatThatChicken.Engines
+﻿namespace EatThatChicken.Engines
 {
     using System;
     using System.Collections.Generic;
     using System.Windows.Threading;
+    using Contracts;
+    using Factories;
+    using Factories.BirdsFactories;
+    using Factories.ItemsFactory;
     using GameObjects;
     using GameObjects.Birds;
     using GameObjects.Bullets;
     using GameObjects.Hunters;
+    using Enumerations;
     using Misc;
-    using Renderers;
-
-
+  
     public class GameEngine
     {
         //TODO Use Move() method when implemented
-        const int HunterSpeed = 15;
+        //const int HunterSpeed = 15;
         //TODO Use Hunter Factory when implemented
         const int HunterHeight = 190;
         const int HunterWidth = 90;
@@ -29,27 +25,26 @@ namespace EatThatChicken.Engines
 
         const int BirdWidth = 60; // This is used to locate where to show up new Bird
 
-        const int TimerIntervalMillis = 150;
-        const int GenerateBirdChanse = 20;
+
+        const int TimerIntervalMillis = 30;
+        const int GenerateBirdChanse = 5;
+
 
         private BulletFactory bulletFactory = new BulletFactory();
-
         private BirdsFactory birdFactory = new BirdsFactory();
-
+        public ItemGenerator Generator { get; set; }
         private Hunter Hunter { get; set; }
 
         private List<GameObject> GameObjects { get; set; }
-
         private List<GameObject> Bullets { get; set; }
-
         private List<GameObject> Birds { get; set; }
 
         private IGameRenderer renderer { get; set; }
+        private WeaponMode Trigger { get; set; }
 
         public ICollisionDetector CollisionDetector { get; private set; }
 
         private Random rand = new Random();
-
         private DispatcherTimer timer;
 
         public GameEngine(IGameRenderer renderer)
@@ -61,9 +56,9 @@ namespace EatThatChicken.Engines
             this.Birds = new List<GameObject>();
             this.CollisionDetector = new SimpleCollisionDetector();
             this.Generator = new ItemGenerator();
+            this.Trigger = WeaponMode.Off;
         }
 
-        public ItemGenerator Generator { get; set; }
 
         private void UIActionHandler(object sender, KeyDownEventArgs e)
         {
@@ -83,26 +78,37 @@ namespace EatThatChicken.Engines
             }
             else if (e.Action == GameAction.Fire)
             {
-                FireBullet();
+                this.Trigger = WeaponMode.On;
+            }
+            else if (e.Action == GameAction.StopMoving)
+            {
+                this.Hunter.StopMove();
+            }
+            else if (e.Action == GameAction.StopFire)
+            {
+                this.Trigger = WeaponMode.Off;
             }
         }
 
         private void FireBullet()
         {
-            var left = this.Hunter.Position.Left + HunterWidth / 2;
-            var top = this.Hunter.Position.Top;
-            Bullet newBullet = bulletFactory.Get(left, top);
-
-            foreach (var bullet in Bullets)
+            if (Trigger == WeaponMode.On)
             {
-                if (!this.renderer.IsInRange(bullet.Position))
-                {
-                    bullet.IsAlive = false;
-                }
-            }
+                var left = this.Hunter.Position.Left + HunterWidth / 2;
+                var top = this.Hunter.Position.Top;
+                Bullet newBullet = bulletFactory.Get(left, top);
 
-            this.GameObjects.Add(newBullet);
-            this.Bullets.Add(newBullet);
+                //foreach (var bullet in Bullets)
+                //{
+                //    if (!this.renderer.IsInRange(bullet.Position))
+                //    {
+                //        bullet.IsAlive = false;
+                //    }
+                //}
+
+                this.GameObjects.Add(newBullet);
+                this.Bullets.Add(newBullet);
+            }
         }
 
         public void InitGame()
@@ -131,19 +137,14 @@ namespace EatThatChicken.Engines
         private void GameLoop(object sender, EventArgs args)
         {
             this.renderer.Clear();
-            this.renderer.Draw(this.Hunter);
+            this.GameObjects.ForEach(x => x.Move());
+            this.GameObjects.ForEach(x => x.OutOfScreenUpdate(this.renderer.ScreenHeight, this.renderer.ScreenWidth));
             this.KillIfColliding();
-            this.RemoveBirdsOutofScreen();
             this.RemoveNotAliveGameObjects();
             this.GenerateItem();
             this.AddBird();
-
-            foreach (var gameObj in this.GameObjects)
-            {
-                this.renderer.Draw(gameObj);
-                gameObj.Move();
-            }
-
+            this.FireBullet();
+            this.renderer.Draw(GameObjects);
         }
 
         private void GenerateItem()
@@ -156,12 +157,11 @@ namespace EatThatChicken.Engines
 
         public void AddBird()
         {
-            int left = rand.Next(0, this.renderer.ScreenWidth - BirdWidth);
-            int top = 0;
-            Bird newBird = birdFactory.Get(left, top);
-
             if (rand.Next(100) < GenerateBirdChanse)
             {
+                int left = rand.Next(0, this.renderer.ScreenWidth - BirdWidth);
+                int top = 0;
+                Bird newBird = birdFactory.Get(left, top);
                 this.GameObjects.Add(newBird);
                 this.Birds.Add(newBird);
             }
@@ -190,18 +190,5 @@ namespace EatThatChicken.Engines
             this.Birds.RemoveAll(bird => !bird.IsAlive);
             this.Bullets.RemoveAll(bullet => !bullet.IsAlive);
         }
-
-        private void RemoveBirdsOutofScreen()
-        {
-            foreach (var bird in this.Birds)
-            {
-                if (bird.Position.Top > (this.Hunter.Position.Top + this.Hunter.Bounds.Height))
-                {
-                    bird.IsAlive = false;
-                    break;
-                }
-            }
-        }
-
     }
 }
