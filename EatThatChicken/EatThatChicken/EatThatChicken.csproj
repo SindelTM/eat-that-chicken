@@ -96,6 +96,10 @@
     <Compile Include="View\GameFieldWindow.xaml.cs">
       <DependentUpon>GameFieldWindow.xaml</DependentUpon>
     </Compile>
+    <Page Include="View\Instructions.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="View\MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -107,6 +111,9 @@
     <Compile Include="GameObjects\Position.cs" />
     <Compile Include="GameObjects\Size.cs" />
     <Compile Include="GameObjects\GameObject.cs" />
+    <Compile Include="View\Instructions.xaml.cs">
+      <DependentUpon>Instructions.xaml</DependentUpon>
+    </Compile>
     <Compile Include="View\MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
@@ -169,7 +176,12 @@
     <Resource Include="Images\chicken-leg.png" />
     <Resource Include="Images\heart.png" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Resource Include="Images\background-galaxy.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\instructions.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

@@ -1,6 +1,9 @@
 ﻿using EatThatChicken.Common;
 using System.Windows.Input;
 using EatThatChicken.View;
+using System.Windows.Media;
+using System.Windows.Media.Imaging;
+using System;
 
 namespace EatThatChicken.ViewModel
 {
@@ -11,14 +14,14 @@ namespace EatThatChicken.ViewModel
         //field startCommand,exitCommand-btnStart,btnExit
         private CommandBase startCommand;
         private CommandBase exitCommand;
-
+        private CommandBase openInstructions;
         //constructor 
         public MainViewModel(View.MainWindow window)
         {
             mainWindow = window;
         }
 
-        //property btnStart,btnExit
+        //property btnStart,btnExit,openInstructions
         public ICommand StartCommand
         {
             get
@@ -31,7 +34,6 @@ namespace EatThatChicken.ViewModel
                 return this.startCommand;
             }
         }
-
         public ICommand ExitCommand
         {
             get
@@ -43,26 +45,46 @@ namespace EatThatChicken.ViewModel
                 return this.exitCommand;
             }
         }
-
-        //methods for opening/closing windows btnStart,btnExit
+        public ICommand OpenInstructions
+        {
+            get
+            {
+                if (this.openInstructions == null)
+                {
+                    this.openInstructions = new CommandBase(this.OpenInstructionsMethod, this.CanExecuteOpenInstructions);
+                }
+                return this.openInstructions;
+            }
+        }
+        //methods for opening/closing windows btnStart,btnExit,openInstructions
         private void StartGame(object param)
         {
             GameFieldWindow gameFieldWindow = new GameFieldWindow();
             gameFieldWindow.Show();
             mainWindow.Close();
         }
-
-        private bool CanExecuteStartCommand(object param)
+        private void OpenInstructionsMethod(object param)
         {
-            return true;
+            Instructions instructions = new Instructions();
+            instructions.Show();
+            mainWindow.Close();
         }
-
         private void ExitGame(object param)
         {
             mainWindow.Close();
         }
-
+        
+        private bool CanExecuteStartCommand(object param)
+        {
+            return true;
+        }
+    
         private bool CanExecuteExitCommand(object param)
+        {
+            return true;
+        }
+        
+        private bool CanExecuteOpenInstructions(object obj)
         {
             return true;
         }
