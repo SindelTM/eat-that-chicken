@@ -1,14 +1,16 @@
-﻿using System;
-using EatThatChicken.GameObjects;
-using EatThatChicken.Misc;
-
-namespace EatThatChicken.Contracts
+﻿namespace EatThatChicken.Contracts
 {
+    using System;
+    using GameObjects;
+    using Misc;
+
     public interface IGameRenderer
     {
         int ScreenWidth { get; }
 
         int ScreenHeight { get; }
+
+        void UpdateScore(uint score);
 
         void Clear();
 

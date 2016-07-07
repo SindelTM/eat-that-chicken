@@ -3,7 +3,7 @@
   <Class Name="EatThatChicken.GameObjects.GameObject" Collapsed="true">
     <Position X="10.25" Y="0.75" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AQQAAAAAAIAAAACgAAAAAAAAAAAAAAAAAAAAAAAAAgA=</HashCode>
+      <HashCode>AQQAAAAAAIAAAgCgAAAAAAAAAAAAAAAAAAAAAAAAAgA=</HashCode>
       <FileName>GameObjects\GameObject.cs</FileName>
     </TypeIdentifier>
     <Lollipop Position="0.2" />
@@ -19,14 +19,14 @@
   <Class Name="EatThatChicken.GameObjects.Birds.AngryBird" Collapsed="true">
     <Position X="1.25" Y="3.5" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAAAAAIAAAAAAAAAAAIAAAAoAAABAAAAAAAAAAAAAAA=</HashCode>
+      <HashCode>AAAAAAAAAAAAAgAAAAAAAAAIAAAAAgAAAAAAAAAAAAA=</HashCode>
       <FileName>GameObjects\Birds\AngryBird.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="EatThatChicken.GameObjects.Birds.Bird" Collapsed="true">
     <Position X="4.75" Y="2" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AQAACAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <HashCode>AQAACAAAAAAAAAgAAAAAAAAAAAAIAAAACAAAAAAAAAA=</HashCode>
       <FileName>GameObjects\Birds\Bird.cs</FileName>
     </TypeIdentifier>
     <Lollipop Position="0.2" />
@@ -34,28 +34,28 @@
   <Class Name="EatThatChicken.GameObjects.Birds.MuscleBird" Collapsed="true">
     <Position X="8" Y="3.5" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAAAAAIAAAAAAAAAAAIAAAAgAAABAAAAAACAAAAAAAA=</HashCode>
+      <HashCode>AAAAAAAAAAACAgAAAAAAAAAAAAAAAAAAAACAAAAAAAA=</HashCode>
       <FileName>GameObjects\Birds\MuscleBird.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="EatThatChicken.GameObjects.Birds.NaughtyBird" Collapsed="true">
     <Position X="3.5" Y="3.5" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAAAAAIAAAAAAAAAAAIAAAAgAAABAAAAAAAAAAABAAA=</HashCode>
+      <HashCode>AAAAAAAAEAAAAgAAAAAAAAAAAAAAAAAAAAAAAAABAAA=</HashCode>
       <FileName>GameObjects\Birds\NaughtyBird.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="EatThatChicken.GameObjects.Birds.SkinyBird" Collapsed="true">
     <Position X="5.75" Y="3.5" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAAAAAIAAAAAAAAAAAIAAAAgAAEBAAAAAAAAAAAAAAA=</HashCode>
+      <HashCode>AAAAAAAAAAAAAgAAAAAAAAAAAAAAAAAAAAAABAAAAAg=</HashCode>
       <FileName>GameObjects\Birds\SkinyBird.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="EatThatChicken.GameObjects.Bullets.Bullet" Collapsed="true">
     <Position X="12.5" Y="2" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAAAAAAAAAAAAAAAAAIAAAAgAAABAAAAAAAAAAAAAAA=</HashCode>
+      <HashCode>AAAAAAAAAAAAAgAAAAIAAAAgAAABAAAAAAAAAAAAAAA=</HashCode>
       <FileName>GameObjects\Bullets\Bullet.cs</FileName>
     </TypeIdentifier>
   </Class>
@@ -110,28 +110,29 @@
   <Class Name="EatThatChicken.GameObjects.GameItems.Bomb" Collapsed="true">
     <Position X="10.25" Y="2" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAAAAAIAAAAAAAAAAAIAAAAgAAABAAAAAAAAAAAAAAA=</HashCode>
+      <HashCode>AAAAAAAAAAAAAgAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>GameObjects\GameItems\Bomb.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="EatThatChicken.GameObjects.GameItems.ChickenLeg" Collapsed="true">
     <Position X="14.75" Y="2" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAAAAAIAAAAAAAAAAAIAAAAgAAABAAAAAAAAAAAAAAA=</HashCode>
+      <HashCode>AAAAAAAAAAAAAggAEAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>GameObjects\GameItems\ChickenLeg.cs</FileName>
     </TypeIdentifier>
+    <Lollipop Position="0.2" />
   </Class>
   <Class Name="EatThatChicken.GameObjects.GameItems.Heart" Collapsed="true">
     <Position X="17" Y="2" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAAAAAIAAAAAAAAAAAIAAAAgAAABAAAAAAAAAAAAAAA=</HashCode>
+      <HashCode>AAAAAAAAAAAAAgAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>GameObjects\GameItems\Heart.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="EatThatChicken.GameObjects.Hunters.Hunter" Collapsed="true">
     <Position X="19.25" Y="2" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAIQAAAAAAAAAA=</HashCode>
+      <HashCode>AAAAAAAAAAAAAgAAAAAAAAAAAAAAAAAIQAAAAAAAAAA=</HashCode>
       <FileName>GameObjects\Hunters\Hunter.cs</FileName>
     </TypeIdentifier>
     <Lollipop Position="0.2" />

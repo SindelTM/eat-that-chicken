@@ -32,7 +32,7 @@ namespace EatThatChicken.Engines
 
         private List<GameObject> Bullets { get; }
 
-        private List<GameObject> Birds { get; }
+        private List<Bird> Birds { get; }
 
         private IGameRenderer renderer { get; }
 
@@ -48,7 +48,7 @@ namespace EatThatChicken.Engines
             this.renderer.UIAction += UIActionHandler;
             this.GameObjects = new List<GameObject>();
             this.Bullets = new List<GameObject>();
-            this.Birds = new List<GameObject>();
+            this.Birds = new List<Bird>();
             this.CollisionDetector = new SimpleCollisionDetector();
             this.Generator = new ItemGenerator();
         }
@@ -174,11 +174,11 @@ namespace EatThatChicken.Engines
                     {
                         bullet.IsAlive = false;
                         bird.IsAlive = false;
+                        this.renderer.UpdateScore(bird.Score);
                         break;
                     }
                 }
             }            
-
         }
 
         private void RemoveNotAliveGameObjects()

@@ -1,18 +1,20 @@
-﻿using System.Windows.Controls;
-using EatThatChicken.Enumerations;
-
-namespace EatThatChicken.GameObjects.GameItems
+﻿namespace EatThatChicken.GameObjects.GameItems
 {
+    using System.Windows.Controls;
+    using Contracts;
+
     [Item]
-    public class ChickenLeg : Item
+    public class ChickenLeg : Item, IScorable
     {
         private const int ChickenLegDefaultScore = 4;
 
         public ChickenLeg(int speed, Size bounds, Position position)
-            :base(ChickenLegDefaultScore, bounds, position, speed)
+            : base(bounds, position, speed)
         {
-            
+            this.Score = ChickenLegDefaultScore;
         }
+
+        public uint Score { get; }
 
         public override void Draw(Canvas playgroundCanvas)
         {

@@ -6,10 +6,8 @@ namespace EatThatChicken.GameObjects.GameItems
     [Item]
     class Heart : Item
     {
-        private const int HeartDefaultScore = 6;
-
         public Heart(int speed, Size bounds, Position position)
-            :base(HeartDefaultScore, bounds, position, speed)
+            :base(bounds, position, speed)
         {
 
         }

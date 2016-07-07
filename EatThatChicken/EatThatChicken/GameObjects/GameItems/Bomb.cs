@@ -6,10 +6,8 @@ namespace EatThatChicken.GameObjects.GameItems
     [Item]
     public class Bomb : Item
     {
-        private const uint BombDefaultScore = 0;
-
         public Bomb(int speed, Size bounds, Position position)
-            : base(BombDefaultScore, bounds, position, speed) { }
+            : base(bounds, position, speed) { }
 
 
         public override void Draw(Canvas playgroundCanvas)

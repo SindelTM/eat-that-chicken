@@ -20,6 +20,8 @@ namespace EatThatChicken.Renderers
 
     class WPFGameRenderer : IGameRenderer
     {
+        private uint score = 0;
+
         public int ScreenHeight
         {
             get
@@ -89,6 +91,12 @@ namespace EatThatChicken.Renderers
         {
             return 0 <= position.Left && position.Left <= this.ScreenWidth &&
                 0 <= position.Top-200 && position.Top <= this.ScreenHeight;
+        }
+
+        public void UpdateScore(uint score)
+        {
+            this.score += score;
+            //TODO Implement score visualisation in window
         }
     }
 }
