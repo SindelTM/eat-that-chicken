@@ -1,9 +1,10 @@
-﻿using System;
-using EatThatChicken.Contracts;
-using EatThatChicken.GameObjects.Birds;
-
+﻿
 namespace EatThatChicken.Factories.BirdsFactories
 {
+    using System;
+    using Contracts;
+    using GameObjects.Birds;
+
     public class BirdsFactory : IGameObjectFactory<Bird>
     {
         static readonly Random rand = new Random();

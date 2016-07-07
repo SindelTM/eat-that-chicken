@@ -4,12 +4,10 @@ using System.Windows.Media.Imaging;
 
 namespace EatThatChicken.GameObjects
 {
-    using EatThatChicken.Contracts;
+    using Contracts;
 
     public abstract class GameObject : IGameObject
     {
-        protected readonly MoveAction moveAction;
-
         protected GameObject()
         {
             this.IsAlive = true;
@@ -20,10 +18,10 @@ namespace EatThatChicken.GameObjects
         {
             this.Bounds = bounds;
             this.Position = position;
-            this.moveAction = moveAction;
+            this.MoveAction = moveAction;
         }
 
-        public MoveAction MoveAction { get; }
+        protected MoveAction MoveAction { get; }
 
         public Size Bounds { get; set; }
         public Position Position { get; set; }
@@ -31,7 +29,7 @@ namespace EatThatChicken.GameObjects
 
         public void Update()
         {
-            throw new System.NotImplementedException();
+            throw new NotImplementedException();
         }
 
         
@@ -57,8 +55,8 @@ namespace EatThatChicken.GameObjects
 
         public virtual void Move()
         {
-            int left = this.Position.Left - ((int)this.moveAction.Left * this.moveAction.Speed);
-            int top = this.Position.Top - ((int)this.moveAction.Top * this.moveAction.Speed);
+            int left = this.Position.Left - ((int)this.MoveAction.Left * this.MoveAction.Speed);
+            int top = this.Position.Top - ((int)this.MoveAction.Top * this.MoveAction.Speed);
 
             this.Position = new Position(left, top);
         }

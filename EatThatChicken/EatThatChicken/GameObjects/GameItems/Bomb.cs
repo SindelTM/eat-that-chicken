@@ -6,14 +6,10 @@ namespace EatThatChicken.GameObjects.GameItems
     [Item]
     public class Bomb : Item
     {
-        private const int defaultSpeed = 6;
-        private const MoveType defaultTop = MoveType.Decremental;
-        private const MoveType defaultLeft = MoveType.None;
+        private const uint BombDefaultScore = 0;
 
-        private static MoveAction moveaction = new MoveAction(defaultLeft, defaultTop, defaultSpeed);
-
-        public Bomb(Size bounds, Position position)
-            : base(bounds, position, moveaction) { }
+        public Bomb(int speed, Size bounds, Position position)
+            : base(BombDefaultScore, bounds, position, speed) { }
 
 
         public override void Draw(Canvas playgroundCanvas)

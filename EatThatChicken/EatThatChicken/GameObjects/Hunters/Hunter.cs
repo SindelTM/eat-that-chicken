@@ -7,19 +7,19 @@ namespace EatThatChicken.GameObjects.Hunters
 
     public class Hunter : GameObject, IHunter
     {
-        public Hunter(Size bounds, Position position)
-            : base(bounds, position, new MoveAction(15)) { }
+        public Hunter(Size bounds, Position position, int speed)
+            : base(bounds, position, new MoveAction(speed)) { }
 
         public void MoveLeft()
         {
-            int left = this.Position.Left - ((int)MoveType.Incremental * this.moveAction.Speed);
+            int left = this.Position.Left - ((int)MoveType.Incremental * this.MoveAction.Speed);
 
             this.Position = new Position(left, this.Position.Top);
         }
 
         public void MoveRight()
         {
-            int left = this.Position.Left - ((int)MoveType.Decremental * this.moveAction.Speed);
+            int left = this.Position.Left - ((int)MoveType.Decremental * this.MoveAction.Speed);
 
             this.Position = new Position(left, this.Position.Top);
         }

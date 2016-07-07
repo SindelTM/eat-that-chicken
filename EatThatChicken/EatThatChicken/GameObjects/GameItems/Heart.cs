@@ -6,14 +6,10 @@ namespace EatThatChicken.GameObjects.GameItems
     [Item]
     class Heart : Item
     {
-        private const int defaultSpeed = 6;
-        private const MoveType defaultTop = MoveType.Decremental;
-        private const MoveType defaultLeft = MoveType.None;
+        private const int HeartDefaultScore = 6;
 
-        private static MoveAction moveaction = new MoveAction(defaultLeft, defaultTop, defaultSpeed);
-
-        public Heart(Size bounds, Position position)
-            :base(bounds, position, moveaction)
+        public Heart(int speed, Size bounds, Position position)
+            :base(HeartDefaultScore, bounds, position, speed)
         {
 
         }

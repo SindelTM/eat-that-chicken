@@ -1,16 +1,19 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace EatThatChicken.GameObjects.GameItems
+﻿namespace EatThatChicken.GameObjects.GameItems
 {
-    public abstract class Item : GameObject
+    using Contracts;
+    using Enumerations;
+
+    public abstract class Item : GameObject, IScorable
     {
-        protected Item(Size bounds, Position position, MoveAction moveAction) 
-            : base(bounds, position, moveAction)
+        private const MoveType Top = MoveType.Decremental;
+        private const MoveType Left = MoveType.None;
+
+        protected Item(uint score, Size bounds, Position position, int speed) 
+            : base(bounds, position, new MoveAction(Left, Top, speed))
         {
+            this.Score = score;
         }
+
+        public uint Score { get; }
     }
 }

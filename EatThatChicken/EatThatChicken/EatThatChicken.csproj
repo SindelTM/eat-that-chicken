@@ -62,6 +62,8 @@
     <Compile Include="Contracts\IGameObjectFactory.cs" />
     <Compile Include="Contracts\IHunter.cs" />
     <Compile Include="Contracts\IMoveable.cs" />
+    <Compile Include="Contracts\IRecordable.cs" />
+    <Compile Include="Contracts\IScorable.cs" />
     <Compile Include="Contracts\IUpdateable.cs" />
     <Compile Include="Engines\GameEngine.cs" />
     <Compile Include="Enumerations\MoveType.cs" />
@@ -71,6 +73,7 @@
     <Compile Include="Factories\BirdsFactories\NaughtyBirdFactory.cs" />
     <Compile Include="Factories\BirdsFactories\SkinyBirdFactory.cs" />
     <Compile Include="Factories\BulletFactory.cs" />
+    <Compile Include="Factories\HunterFactory.cs" />
     <Compile Include="Factories\ItemsFactory\ItemGenerator.cs" />
     <Compile Include="GameObjects\Birds\AngryBird.cs" />
     <Compile Include="GameObjects\Birds\Bird.cs" />

@@ -6,14 +6,10 @@ namespace EatThatChicken.GameObjects.GameItems
     [Item]
     public class ChickenLeg : Item
     {
-        private const int defaultSpeed = 6;
-        private const MoveType defaultTop = MoveType.Decremental;
-        private const MoveType defaultLeft = MoveType.None;
+        private const int ChickenLegDefaultScore = 4;
 
-        private static MoveAction moveaction = new MoveAction(defaultLeft, defaultTop, defaultSpeed);
-
-        public ChickenLeg(Size bounds, Position position)
-            :base(bounds, position, moveaction)
+        public ChickenLeg(int speed, Size bounds, Position position)
+            :base(ChickenLegDefaultScore, bounds, position, speed)
         {
             
         }

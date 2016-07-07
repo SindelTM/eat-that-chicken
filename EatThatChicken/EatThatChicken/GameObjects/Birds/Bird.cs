@@ -1,14 +1,20 @@
 ﻿namespace EatThatChicken.GameObjects.Birds
 {
-    using EatThatChicken.Contracts;
-
-    public abstract class Bird : GameObject, IMoveable
+    using Contracts;
+    using Enumerations;
+    public abstract class Bird : GameObject, IMoveable, IScorable
     {
-        protected Bird(int health, Size bounds, Position position, MoveAction moveAction) 
-            : base(bounds, position, moveAction)
+        private const MoveType Top = MoveType.Decremental;
+        private const MoveType Left = MoveType.None;
+
+        protected Bird(int health, uint score, Size bounds, Position position, int speed)
+            : base(bounds, position, new MoveAction(Left, Top, speed))
         {
             this.Health = health;
+            this.Score = score;
         }
+
+        public uint Score { get; }
 
         protected int Health { get; set; }
 

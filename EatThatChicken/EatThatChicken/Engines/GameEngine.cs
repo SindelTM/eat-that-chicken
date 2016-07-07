@@ -1,9 +1,7 @@
-﻿using System.Threading;
-using EatThatChicken.Contracts;
+﻿using EatThatChicken.Contracts;
 using EatThatChicken.Factories;
 using EatThatChicken.Factories.BirdsFactories;
 using EatThatChicken.Factories.ItemsFactory;
-using EatThatChicken.GameObjects.GameItems;
 
 namespace EatThatChicken.Engines
 {
@@ -15,40 +13,32 @@ namespace EatThatChicken.Engines
     using GameObjects.Bullets;
     using GameObjects.Hunters;
     using Misc;
-    using Renderers;
 
 
     public class GameEngine
     {
-        //TODO Use Move() method when implemented
-        const int HunterSpeed = 15;
-        //TODO Use Hunter Factory when implemented
-        const int HunterHeight = 190;
-        const int HunterWidth = 90;
-        const int HunterPoints = 100;
+        private const int TimerIntervalMillis = 150;
+        private const int GenerateBirdChanse = 20;
 
-        const int BirdWidth = 60; // This is used to locate where to show up new Bird
+        private readonly HunterFactory hunterFactory = new HunterFactory();
 
-        const int TimerIntervalMillis = 150;
-        const int GenerateBirdChanse = 20;
+        private readonly BulletFactory bulletFactory = new BulletFactory();
 
-        private BulletFactory bulletFactory = new BulletFactory();
-
-        private BirdsFactory birdFactory = new BirdsFactory();
+        private readonly BirdsFactory birdFactory = new BirdsFactory();
 
         private Hunter Hunter { get; set; }
 
-        private List<GameObject> GameObjects { get; set; }
+        private List<GameObject> GameObjects { get; }
 
-        private List<GameObject> Bullets { get; set; }
+        private List<GameObject> Bullets { get; }
 
-        private List<GameObject> Birds { get; set; }
+        private List<GameObject> Birds { get; }
 
-        private IGameRenderer renderer { get; set; }
+        private IGameRenderer renderer { get; }
 
         public ICollisionDetector CollisionDetector { get; private set; }
 
-        private Random rand = new Random();
+        private readonly Random rand = new Random();
 
         private DispatcherTimer timer;
 
@@ -76,7 +66,7 @@ namespace EatThatChicken.Engines
             }
             else if (e.Action == GameAction.MoveRight)
             {
-                if (this.Hunter.Position.Left < this.renderer.ScreenWidth - HunterWidth)
+                if (this.Hunter.Position.Left < this.renderer.ScreenWidth - this.Hunter.Bounds.Width)
                 {
                     this.Hunter.MoveRight();
                 }
@@ -89,7 +79,7 @@ namespace EatThatChicken.Engines
 
         private void FireBullet()
         {
-            var left = this.Hunter.Position.Left + HunterWidth / 2;
+            var left = this.Hunter.Position.Left + this.Hunter.Bounds.Width / 2;
             var top = this.Hunter.Position.Top;
             Bullet newBullet = bulletFactory.Get(left, top);
 
@@ -109,14 +99,18 @@ namespace EatThatChicken.Engines
         {
             this.GameObjects.Clear();
 
-            var left = (this.renderer.ScreenWidth - HunterWidth) / 2;
-            var top = this.renderer.ScreenHeight - HunterHeight;
-            Position position = new Position(left, top);
-
-            Size bounds = new Size(HunterWidth, HunterHeight);
-
             // TO DO add Hunter
-            this.Hunter = new Hunter(bounds, position);
+            this.Hunter = this.hunterFactory.Get(0, 0);
+
+            var hunterWidth = this.Hunter.Bounds.Width;
+            var hunterHeight = this.Hunter.Bounds.Height;
+
+            var left = (this.renderer.ScreenWidth - hunterWidth) / 2;
+            var top = this.renderer.ScreenHeight - hunterHeight;
+            var position = new Position(left, top);
+
+            this.Hunter.Position = position;
+
             this.GameObjects.Add(Hunter);
             this.timer = new DispatcherTimer();
             timer.Interval = TimeSpan.FromMilliseconds(TimerIntervalMillis);
@@ -156,9 +150,12 @@ namespace EatThatChicken.Engines
 
         public void AddBird()
         {
-            int left = rand.Next(0, this.renderer.ScreenWidth - BirdWidth);
+            int left = rand.Next(0, this.renderer.ScreenWidth);
             int top = 0;
             Bird newBird = birdFactory.Get(left, top);
+
+            left -= newBird.Bounds.Width;
+            newBird.Position = new Position(left, top);
 
             if (rand.Next(100) < GenerateBirdChanse)
             {

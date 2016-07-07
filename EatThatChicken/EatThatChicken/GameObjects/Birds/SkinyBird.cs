@@ -1,21 +1,15 @@
-﻿using System.Windows.Controls;
-
-namespace EatThatChicken.GameObjects.Birds
+﻿namespace EatThatChicken.GameObjects.Birds
 {
-    using EatThatChicken.Enumerations;
+    using System.Windows.Controls;
 
     public class SkinyBird: Bird
     {
-        private const int defaultSpeed = 6;
-        private const MoveType defaultTop = MoveType.Decremental;
-        private const MoveType defaultLeft = MoveType.None;
+        private const int SkinnyBirdDefaultHealth = 1;
 
-        private static MoveAction moveaction = new MoveAction(defaultLeft, defaultTop, defaultSpeed);
+        private const uint SkinnyBirdDefaultScore = 1;
 
-        private const int SkinnyBirdHealth = 1;
-
-        public SkinyBird(Size bounds, Position position)
-            : base(SkinnyBirdHealth, bounds, position, moveaction) { }
+        public SkinyBird(Size bounds, Position position, int speed)
+            : base(SkinnyBirdDefaultHealth, SkinnyBirdDefaultScore, bounds, position, speed) { }
 
         public override void Draw(Canvas playGroundCanvas)
         {

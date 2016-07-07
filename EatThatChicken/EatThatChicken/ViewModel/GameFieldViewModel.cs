@@ -16,5 +16,10 @@
             this.Engine.InitGame();
             this.Engine.StartGame();
         }
+
+        private void EndGame(int score)
+        {
+
+        }
     }
 }
