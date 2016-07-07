@@ -56,6 +56,8 @@
       <SubType>Designer</SubType>
     </ApplicationDefinition>
     <Compile Include="Common\CommandBase.cs" />
+    <Compile Include="Common\ErrorMessages.cs" />
+    <Compile Include="Common\Validator.cs" />
     <Compile Include="Contracts\IAttackable.cs" />
     <Compile Include="Contracts\ICollidable.cs" />
     <Compile Include="Contracts\IGameObject.cs" />

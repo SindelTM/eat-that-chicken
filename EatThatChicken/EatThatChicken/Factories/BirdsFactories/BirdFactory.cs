@@ -9,20 +9,16 @@ namespace EatThatChicken.Factories.BirdsFactories
     {
         static readonly Random rand = new Random();
         private const int Count = 100;
-
-        // 30 skinyBirds
+        
         private const int SkinyBirdAppearanceMin = 0;
         private const int SkinyBirdAppearanceMax = 30;
-
-        // 30 angryBird
+        
         private const int AngryBirdAppearanceMin = 31;
         private const int AngryBirdAppearanceMax = 60;
-
-        // 15 muscleBird
+        
         private const int MuscleBirdAppearanceMin = 61;
         private const int MuscleBirdAppearanceMax = 76;
-
-        // 25 naughthyBird
+        
         private const int NaughtyBirdAppearanceMin = 77;
         private const int NaughtyBirdAppearanceMax = 100;
 

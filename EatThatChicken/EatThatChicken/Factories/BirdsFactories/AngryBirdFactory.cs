@@ -7,7 +7,6 @@ namespace EatThatChicken.Factories.BirdsFactories
 
     public class AngryBirdFactory : IGameObjectFactory<AngryBird>
     {
-        // TODO: see if width, height is enough
         private const int AngryBirdBoundsWidth = 60;
         private const int AngryBirdBoundsHeight = 70;
 

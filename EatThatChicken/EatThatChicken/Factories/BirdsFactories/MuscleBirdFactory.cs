@@ -6,7 +6,6 @@
 
     public class MuscleBirdFactory : IGameObjectFactory<MuscleBird>
     {
-        // TODO: see if width, height is enough
         private const int MuscleBirdBoundsWidth = 60;
         private const int MuscleBirdBoundsHeight = 70;
 

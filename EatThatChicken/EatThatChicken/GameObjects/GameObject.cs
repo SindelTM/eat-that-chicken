@@ -24,15 +24,15 @@ namespace EatThatChicken.GameObjects
         protected MoveAction MoveAction { get; }
 
         public Size Bounds { get; set; }
+
         public Position Position { get; set; }
+
         public virtual bool IsAlive { get; set; }
 
         public void Update()
         {
             throw new NotImplementedException();
         }
-
-        
 
         public abstract void Draw(Canvas playgroundCanvas);
 

@@ -6,7 +6,6 @@
 
     public class NaughtyBirdFactory : IGameObjectFactory<NaughtyBird>
     {
-        // TODO: see if width, height is enough
         private const int NaughtyBirdBoundsWidth = 60;
         private const int NaughtyBirdBoundsHeight = 70;
 
