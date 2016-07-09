@@ -66,7 +66,12 @@
     <Compile Include="Contracts\IMoveable.cs" />
     <Compile Include="Contracts\IRecordable.cs" />
     <Compile Include="Contracts\IScorable.cs" />
+    <Compile Include="Contracts\ISerializer.cs" />
     <Compile Include="Contracts\IUpdateable.cs" />
+    <Compile Include="Models\Exceptions\RecordSerializationException.cs" />
+    <Compile Include="Models\HighScoreContainer.cs" />
+    <Compile Include="Models\Player.cs" />
+    <Compile Include="Models\Serialization\RecordSerializer.cs" />
     <Compile Include="Engines\GameEngine.cs" />
     <Compile Include="Enumerations\MoveType.cs" />
     <Compile Include="Factories\BirdsFactories\AngryBirdFactory.cs" />
@@ -187,6 +192,7 @@
   <ItemGroup>
     <Resource Include="Images\instructions.png" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
