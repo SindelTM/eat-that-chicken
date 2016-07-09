@@ -9,10 +9,13 @@ namespace EatThatChicken.GameObjects.Birds
     {
         private const int NaughtyBirdDefaultHealth = 2;
 
-        private const uint NaughtyBirdDefaultScore = 2;
+        private const int NaughtyBirdDefaultScore = 2;
 
         public NaughtyBird(Size bounds, Position position, int speed)
-            : base(NaughtyBirdDefaultHealth, NaughtyBirdDefaultScore, bounds, position, speed) { }
+            : base(NaughtyBirdDefaultHealth, NaughtyBirdDefaultScore, bounds, position, speed)
+        {
+            this.PointAffect = NaughtyBirdDefaultScore;
+        }
 
         public override void Draw(Canvas playgroundCanvas)
         {

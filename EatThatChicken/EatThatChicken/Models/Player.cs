@@ -11,9 +11,9 @@
 
         public string Name { get; }
 
-        public uint Score { get; }
+        public int Score { get; }
 
-        public Player(DateTime date, string name, uint score)
+        public Player(DateTime date, string name, int score)
         {
             Validator.CheckIsNull(date);
             this.Date = date;

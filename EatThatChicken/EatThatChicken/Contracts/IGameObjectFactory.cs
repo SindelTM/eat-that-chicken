@@ -3,6 +3,6 @@
     public interface IGameObjectFactory<T>
         where T : IGameObject
     {
-             T Get(int left, int top);
+             T CreateBullet(int left, int top);
     }
 }

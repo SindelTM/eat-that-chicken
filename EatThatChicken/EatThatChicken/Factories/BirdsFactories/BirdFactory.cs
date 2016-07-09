@@ -22,29 +22,29 @@ namespace EatThatChicken.Factories.BirdsFactories
         private const int NaughtyBirdAppearanceMin = 77;
         private const int NaughtyBirdAppearanceMax = 100;
 
-        public Bird Get(int left, int top)
+        public Bird CreateBullet(int left, int top)
         {
             int number = rand.Next(0, Count + 1);
 
             if (SkinyBirdAppearanceMin <= number && number <= SkinyBirdAppearanceMax)
             {
                 var skinyBird = new SkinyBirdFactory();
-                return skinyBird.Get(left, top);
+                return skinyBird.CreateBullet(left, top);
             }
             else if (AngryBirdAppearanceMin <= number && number <= AngryBirdAppearanceMax)
             {
                 var angryBird = new AngryBirdFactory();
-                return angryBird.Get(left, top);
+                return angryBird.CreateBullet(left, top);
             }
             else if (MuscleBirdAppearanceMin <= number && number <= MuscleBirdAppearanceMax)
             {
                 var muscleBird = new MuscleBirdFactory();
-                return muscleBird.Get(left, top);
+                return muscleBird.CreateBullet(left, top);
             }
             else
             {
                 var naughthyBird = new NaughtyBirdFactory();
-                return naughthyBird.Get(left, top);
+                return naughthyBird.CreateBullet(left, top);
             }
         }
     }

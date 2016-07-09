@@ -30,6 +30,8 @@ namespace EatThatChicken.GameObjects
 
         public virtual bool IsAlive { get; set; }
 
+        public int PointAffect { get; set; }
+
         public void Update()
         {
             throw new NotImplementedException();

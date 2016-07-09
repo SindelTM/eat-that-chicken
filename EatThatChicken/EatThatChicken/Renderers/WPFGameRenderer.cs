@@ -1,4 +1,7 @@
-﻿using EatThatChicken.Common;
+﻿using System.Collections.Generic;
+using System.Globalization;
+using System.Windows.Documents;
+using EatThatChicken.Common;
 using EatThatChicken.Contracts;
 using EatThatChicken.GameObjects.GameItems;
 
@@ -21,7 +24,7 @@ namespace EatThatChicken.Renderers
 
     class WPFGameRenderer : IGameRenderer
     {
-        private uint score = 0;
+        private int score = 0;
 
         public int ScreenHeight
         {
@@ -70,7 +73,7 @@ namespace EatThatChicken.Renderers
             this.playGroundCanvas.Children.Clear();
         }
 
-        public void Draw(params GameObject[] gameObjects)
+        public void Draw(params IGameObject[] gameObjects)
         {
             foreach (var gameObject in gameObjects)
             {
@@ -86,6 +89,8 @@ namespace EatThatChicken.Renderers
                 gameObject.Draw(this.playGroundCanvas);
                 this.playGroundCanvas.Children.Add(rect);
             }
+
+            //this.UpdateScore(hunter);
         }
 
         public bool IsInRange(Position position)
@@ -94,10 +99,29 @@ namespace EatThatChicken.Renderers
                 0 <= position.Top-200 && position.Top <= this.ScreenHeight;
         }
 
-        public void UpdateScore(uint score)
+        public void UpdateScore(Hunter hunter)
         {
-            this.score += score;
-            //TODO Implement score visualisation in window
+            var points = $"Points of Player: {hunter.Points}";
+            var lifes = $"Lifes: {hunter.NumberOfLifes}";
+
+            this.ShowScoreOnScreen(850, 50, points, Color.FromRgb(255,255,255));
+            this.ShowScoreOnScreen(850, 70, lifes, Color.FromRgb(255,255,255));
+        }
+
+        private void ShowScoreOnScreen(double x, double y, string text, Color color)
+        {
+            TextBlock textBlock = new TextBlock(new Bold());
+
+            textBlock.Text = text;
+
+            textBlock.Foreground = new SolidColorBrush(color);
+
+            Canvas.SetLeft(textBlock, x);
+
+            Canvas.SetTop(textBlock, y);
+
+           this.playGroundCanvas.Children.Add(textBlock);
+
         }
     }
 }

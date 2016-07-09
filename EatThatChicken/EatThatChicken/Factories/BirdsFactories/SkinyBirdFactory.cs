@@ -11,7 +11,7 @@ namespace EatThatChicken.Factories.BirdsFactories
 
         private const int SkinyBirdSpeed = 6;
 
-        public SkinyBird Get(int left, int top)
+        public SkinyBird CreateBullet(int left, int top)
         {
             Position position = new Position(left, top);
             Size bounds = new Size(SkinyBirdBoundsWidth, SkinyBirdBoundsHeight);

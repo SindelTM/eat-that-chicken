@@ -1,5 +1,6 @@
 ﻿using System.Windows.Controls;
 using EatThatChicken.Common;
+using EatThatChicken.Contracts;
 using EatThatChicken.Enumerations;
 
 namespace EatThatChicken.GameObjects.GameItems
@@ -11,6 +12,11 @@ namespace EatThatChicken.GameObjects.GameItems
             :base(bounds, position, speed)
         {
 
+        }
+
+        public override void AffectHunter(IHunter hunter)
+        {
+            hunter.NumberOfLifes++;
         }
 
         public override void Draw(Canvas playgroundCanvas)

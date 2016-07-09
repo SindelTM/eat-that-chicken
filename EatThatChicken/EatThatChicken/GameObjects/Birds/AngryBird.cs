@@ -6,12 +6,15 @@ namespace EatThatChicken.GameObjects.Birds
 {
     public class AngryBird: Bird
     {
-        private const uint AngryBirdDefaulScore = 3;
+        private const int AngryBirdDefaulScore = 3;
 
-        private const int AngryBirdDefaultHealth = 3; 
+        private const int AngryBirdDefaultHealth = 3;
 
         public AngryBird(Size bounds, Position position, int speed)
-            :base(AngryBirdDefaultHealth, AngryBirdDefaulScore, bounds, position, speed) { }
+            : base(AngryBirdDefaultHealth, AngryBirdDefaulScore, bounds, position, speed)
+        {
+            this.PointAffect = AngryBirdDefaulScore;
+        }
 
         public override void Draw(Canvas playGroundCanvas)
         {

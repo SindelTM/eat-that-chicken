@@ -1,4 +1,5 @@
-﻿using EatThatChicken.Common;
+﻿using System.Windows.Controls;
+using EatThatChicken.Common;
 
 namespace EatThatChicken.Contracts
 {
@@ -8,6 +9,12 @@ namespace EatThatChicken.Contracts
     {
         Position Position { get; set; }
 
+        Size Bounds { get; set; }
+
         bool IsAlive { get; set; }
+
+        int PointAffect { get; set; }
+
+        void Draw(Canvas playgroundCanvas);
     }
 }

@@ -3,20 +3,20 @@
     using Common;
     using Contracts;
     using Enumerations;
-    public abstract class Bird : GameObject, IMoveable, IScorable
+    public abstract class Bird : GameObject, IMoveable, IScorable, IAffectableGameObject
     {
         private const MoveType Top = MoveType.Decremental;
         private const MoveType Left = MoveType.None;
         private int health;
 
-        protected Bird(int health, uint score, Size bounds, Position position, int speed)
+        protected Bird(int health, int score, Size bounds, Position position, int speed)
             : base(bounds, position, new MoveAction(Left, Top, speed))
         {
             this.Health = health;
             this.Score = score;
         }
 
-        public uint Score { get; }
+        public int Score { get; }
 
         protected int Health { get; set; }
 
@@ -33,6 +33,11 @@
                     --this.Health;
                 }
             }
+        }
+
+        public virtual void AffectHunter(IHunter hunter)
+        {
+            hunter.NumberOfLifes--;
         }
     }
 }

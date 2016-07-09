@@ -8,7 +8,7 @@ namespace EatThatChicken.GameObjects.GameItems
     [Item]
     public class ChickenLeg : Item, IScorable
     {
-        private const int ChickenLegDefaultScore = 4;
+        private const int ChickenLegDefaultScore = 10;
 
         public ChickenLeg(int speed, Size bounds, Position position)
             : base(bounds, position, speed)
@@ -16,7 +16,7 @@ namespace EatThatChicken.GameObjects.GameItems
             this.PointAffect = ChickenLegDefaultScore;
         }
 
-        public uint Score { get; }
+        public int Score { get; }
 
         public override void Draw(Canvas playgroundCanvas)
         {

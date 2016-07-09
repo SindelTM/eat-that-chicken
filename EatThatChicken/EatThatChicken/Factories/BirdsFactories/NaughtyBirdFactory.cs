@@ -13,7 +13,7 @@ namespace EatThatChicken.Factories.BirdsFactories
 
         private const int NaughtyBirdSpeed = 6;
 
-        public NaughtyBird Get(int left, int top)
+        public NaughtyBird CreateBullet(int left, int top)
         {
             Position position = new Position(left, top);
             Size bounds = new Size(NaughtyBirdBoundsWidth, NaughtyBirdBoundsWidth);

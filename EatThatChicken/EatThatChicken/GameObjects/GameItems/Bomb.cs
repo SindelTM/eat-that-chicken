@@ -1,5 +1,6 @@
 ﻿using System.Windows.Controls;
 using EatThatChicken.Common;
+using EatThatChicken.Contracts;
 using EatThatChicken.Enumerations;
 
 namespace EatThatChicken.GameObjects.GameItems
@@ -7,14 +8,17 @@ namespace EatThatChicken.GameObjects.GameItems
     [Item]
     public class Bomb : Item
     {
-        private const int DefaultPointToTake = -50;
+        
 
         public Bomb(int speed, Size bounds, Position position)
             : base(bounds, position, speed)
         {
-            this.PointAffect = DefaultPointToTake;
         }
 
+        public override void AffectHunter(IHunter hunter)
+        {
+            hunter.NumberOfLifes--;
+        }
 
         public override void Draw(Canvas playgroundCanvas)
         {

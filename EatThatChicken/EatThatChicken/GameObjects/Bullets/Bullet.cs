@@ -2,13 +2,15 @@
 using System.Windows.Controls;
 using System.Windows.Media;
 using EatThatChicken.Common;
+using EatThatChicken.Contracts;
+using EatThatChicken.GameObjects.Birds;
 using Size = EatThatChicken.Common.Size;
 
 namespace EatThatChicken.GameObjects.Bullets
 {
     using Enumerations;
 
-    public class Bullet : GameObject
+    public class Bullet : GameObject, IAffectableGameObject
     {
         private const int defaultSpeed = 40;
         private const MoveType defaultTop = MoveType.Incremental;
@@ -30,6 +32,11 @@ namespace EatThatChicken.GameObjects.Bullets
             Canvas.SetLeft(rect, this.Position.Left);
             Canvas.SetTop(rect, this.Position.Top);
             playGroundCanvas.Children.Add(rect);
+        }
+
+        public void AffectHunter(IHunter hunter)
+        {
+            //TODO: Implement logic for bullets
         }
     }
 }

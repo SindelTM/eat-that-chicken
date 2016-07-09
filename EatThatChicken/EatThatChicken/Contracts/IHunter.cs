@@ -1,9 +1,13 @@
 ﻿namespace EatThatChicken.Contracts
 {
-    interface IHunter : IGameObject
+    public interface IHunter : IGameObject
     {
         void MoveLeft();
 
         void MoveRight();
+
+        int Points { get; set; }
+
+        uint NumberOfLifes { get; set; }
     }
 }

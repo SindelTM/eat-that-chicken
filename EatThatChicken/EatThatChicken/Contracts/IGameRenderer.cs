@@ -1,4 +1,5 @@
 ﻿using EatThatChicken.Common;
+using EatThatChicken.GameObjects.Hunters;
 
 namespace EatThatChicken.Contracts
 {
@@ -12,11 +13,11 @@ namespace EatThatChicken.Contracts
 
         int ScreenHeight { get; }
 
-        void UpdateScore(uint score);
+        void UpdateScore(Hunter hunter);
 
         void Clear();
 
-        void Draw(params GameObject[] gameObjects);
+        void Draw(params IGameObject[] gameObjects);
 
         bool IsInRange(Position position);
 

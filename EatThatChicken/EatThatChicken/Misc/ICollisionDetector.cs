@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using EatThatChicken.Contracts;
 using EatThatChicken.GameObjects.Hunters;
 
 namespace EatThatChicken.Misc
@@ -7,8 +8,8 @@ namespace EatThatChicken.Misc
 
     public interface ICollisionDetector
     {
-        bool AreCollided(GameObject firstGameObject, GameObject secondGameObject);
+        bool AreCollided(IGameObject firstGameObject, IGameObject secondGameObject);
 
-        void HandleCollision(Hunter hunter, List<GameObject> gameObjects);
+        void HandleCollision(Hunter hunter, IList<IGameObject> gameObjects);
     }
 }

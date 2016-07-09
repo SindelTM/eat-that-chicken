@@ -2,6 +2,6 @@
 {
     public interface IScorable
     {
-        uint Score { get; }
+        int Score { get; }
     }
 }

@@ -17,7 +17,7 @@ namespace EatThatChicken.Factories
                           
         private const int HunterSpeed = 10;
 
-        public Hunter Get(int left, int top)
+        public Hunter CreateBullet(int left, int top)
         {
             Position position = new Position(left, top);
             Size bounds = new Size(HunterBoundsWidth, HunterBoundsHeight);

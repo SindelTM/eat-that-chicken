@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using EatThatChicken.Common;
+using EatThatChicken.Contracts;
 using EatThatChicken.GameObjects.Birds;
 using EatThatChicken.GameObjects.GameItems;
 using EatThatChicken.GameObjects.Hunters;
@@ -35,7 +36,7 @@ namespace EatThatChicken.Misc
             public int Bottom { get; set; }
         }
 
-        public virtual bool AreCollided(GameObject firstGameObject, GameObject secondGameObject)
+        public virtual bool AreCollided(IGameObject firstGameObject, IGameObject secondGameObject)
         {
             GameObjectBounds firstGameOnjectBounds = this.GetObjectBounds(firstGameObject);
 
@@ -45,7 +46,7 @@ namespace EatThatChicken.Misc
             return shouldDie;
         }
 
-        protected GameObjectBounds GetObjectBounds(GameObject gameObject)
+        protected GameObjectBounds GetObjectBounds(IGameObject gameObject)
         {
             int gameObjectLeft = gameObject.Position.Left;
             int gameObjectRight = gameObject.Position.Left + gameObject.Bounds.Width;
@@ -64,17 +65,19 @@ namespace EatThatChicken.Misc
                 (firstGameObjectBounds.Left <= secondGameObjectBounds.Right && secondGameObjectBounds.Right <= firstGameObjectBounds.Right));
         }
 
-        public void HandleCollision(Hunter hunter, List<GameObject> gameObjects)
+                                                    //IList<IAffectableGameObject>
+        public void HandleCollision(Hunter hunter, IList<IGameObject> gameObjects)
         {
             foreach (var gameObject in gameObjects)
             {
-                if (this.AreCollided(hunter, gameObject))
+                if (this.AreCollided(hunter, gameObject) && !(gameObject is Hunter))
                 {
-                    if (gameObject is Item)
-                    {
-                        hunter.Points += ((Item)gameObject).PointAffect;
-                        gameObject.IsAlive = false;
-                    }
+                    var objectAsAffectableGameObject = gameObject as IAffectableGameObject;
+
+                    //null propagation => C# 6.0
+                    objectAsAffectableGameObject?.AffectHunter(hunter);
+
+                    gameObject.IsAlive = false;
                 }
             }
         }

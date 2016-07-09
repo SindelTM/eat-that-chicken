@@ -18,7 +18,7 @@ namespace EatThatChicken.Factories.ItemsFactory
         private const int ItemDefaultWidth = 20;
         private const int ItemDefaultHeight = 20;
 
-        public GameObject GenerateItems(int left, int top, Hunter hunter)
+        public Item GenerateItems(int left, int top, Hunter hunter)
         {
             var allItems = Assembly.GetExecutingAssembly().GetTypes()
                 .Where(t => t.IsClass)
@@ -30,7 +30,7 @@ namespace EatThatChicken.Factories.ItemsFactory
             Size bounds = new Size(ItemDefaultWidth, ItemDefaultHeight);
             var entity =
                    Activator.CreateInstance(allItems[entityIndex], ItemDefaultSpeed, bounds, new Position(left, top)) as
-                   GameObject;
+                   Item;
 
             return entity;
 

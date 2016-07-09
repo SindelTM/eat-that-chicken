@@ -1,6 +1,5 @@
 ﻿using EatThatChicken.Common;
 using EatThatChicken.Contracts;
-using EatThatChicken.Core;
 using EatThatChicken.Factories;
 using EatThatChicken.Factories.BirdsFactories;
 using EatThatChicken.Factories.ItemsFactory;
@@ -30,17 +29,17 @@ namespace EatThatChicken.Engines
 
         private Hunter Hunter { get; set; }
 
-        private List<GameObject> GameObjects { get; }
+        private List<IGameObject> GameObjects { get; }
 
         private List<GameObject> Bullets { get; }
 
         private List<Bird> Birds { get; }
-
+        
         private IGameRenderer renderer { get; }
 
         public ICollisionDetector CollisionDetector { get; private set; }
 
-        private CollisionHandler Collision { get; set; }
+        private IList<IAffectableGameObject> AffectableGameObjects { get; set; } 
 
         private readonly Random rand = new Random();
 
@@ -50,12 +49,12 @@ namespace EatThatChicken.Engines
         {
             this.renderer = renderer;
             this.renderer.UIAction += UIActionHandler;
-            this.GameObjects = new List<GameObject>();
+            this.GameObjects = new List<IGameObject>();
             this.Bullets = new List<GameObject>();
             this.Birds = new List<Bird>();
             this.CollisionDetector = new SimpleCollisionDetector();
+            this.AffectableGameObjects = new List<IAffectableGameObject>();
             this.Generator = new ItemGenerator();
-            this.Collision = new CollisionHandler();
         }
 
         public ItemGenerator Generator { get; set; }
@@ -86,7 +85,7 @@ namespace EatThatChicken.Engines
         {
             var left = this.Hunter.Position.Left + this.Hunter.Bounds.Width / 2;
             var top = this.Hunter.Position.Top;
-            Bullet newBullet = bulletFactory.Get(left, top);
+            Bullet newBullet = bulletFactory.CreateBullet(left, top);
 
             foreach (var bullet in Bullets)
             {
@@ -105,7 +104,7 @@ namespace EatThatChicken.Engines
             this.GameObjects.Clear();
 
             // TO DO add Hunter
-            this.Hunter = this.hunterFactory.Get(0, 0);
+            this.Hunter = this.hunterFactory.CreateBullet(0, 0);
 
             var hunterWidth = this.Hunter.Bounds.Width;
             var hunterHeight = this.Hunter.Bounds.Height;
@@ -137,20 +136,22 @@ namespace EatThatChicken.Engines
             this.RemoveNotAliveGameObjects();
             this.GenerateItem();
             this.AddBird();
-
+            this.renderer.UpdateScore(this.Hunter);
             foreach (var gameObj in this.GameObjects)
             {
                 this.renderer.Draw(gameObj);
                 gameObj.Move();
+                
             }
-
         }
 
         private void GenerateItem()
         {
             if (rand.Next(250) < GenerateBirdChanse)
             {
-                this.GameObjects.Add(this.Generator.GenerateItems(rand.Next(0, this.renderer.ScreenWidth - 10), 0, this.Hunter));
+                var item = this.Generator.GenerateItems(rand.Next(0, this.renderer.ScreenWidth - 10), 0, this.Hunter);
+                this.GameObjects.Add(item);
+                this.AffectableGameObjects.Add(item);
             }
         }
 
@@ -158,7 +159,7 @@ namespace EatThatChicken.Engines
         {
             int left = rand.Next(0, this.renderer.ScreenWidth);
             int top = 0;
-            Bird newBird = birdFactory.Get(left, top);
+            Bird newBird = birdFactory.CreateBullet(left, top);
 
             left -= newBird.Bounds.Width;
             newBird.Position = new Position(left, top);
@@ -167,6 +168,7 @@ namespace EatThatChicken.Engines
             {
                 this.GameObjects.Add(newBird);
                 this.Birds.Add(newBird);
+                this.AffectableGameObjects.Add(newBird);
             }
         }
 
@@ -180,7 +182,6 @@ namespace EatThatChicken.Engines
                     {
                         bullet.IsAlive = false;
                         bird.IsAlive = false;
-                        this.renderer.UpdateScore(bird.Score);
                         break;
                     }
                 }

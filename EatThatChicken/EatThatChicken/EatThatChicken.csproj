@@ -64,13 +64,13 @@
     <Compile Include="Contracts\IGameObject.cs" />
     <Compile Include="Contracts\IGameObjectFactory.cs" />
     <Compile Include="Contracts\IHunter.cs" />
+    <Compile Include="Contracts\IAffectableGameObject.cs" />
     <Compile Include="Contracts\IMoveable.cs" />
     <Compile Include="Contracts\IRecordable.cs" />
     <Compile Include="Contracts\IScorable.cs" />
     <Compile Include="Contracts\ISerializer.cs" />
     <Compile Include="Contracts\IUpdateable.cs" />
     <Compile Include="Models\Exceptions\RecordSerializationException.cs" />
-    <Compile Include="Core\CollisionHandler.cs" />
     <Compile Include="Models\HighScoreContainer.cs" />
     <Compile Include="Models\Player.cs" />
     <Compile Include="Models\Serialization\RecordSerializer.cs" />
@@ -197,7 +197,9 @@
   <ItemGroup>
     <Resource Include="muscle.ico" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Folder Include="Core\" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
