@@ -13,7 +13,7 @@ namespace EatThatChicken.Factories.BirdsFactories
 
         private const int MuscleBirdSpeed = 6;
 
-        public MuscleBird CreateBullet(int left, int top)
+        public MuscleBird Create(int left, int top)
         {
             Position position = new Position(left, top);
             Size bounds = new Size(MuscleBirdBoundsWidth, MuscleBirdBoundsHeight);

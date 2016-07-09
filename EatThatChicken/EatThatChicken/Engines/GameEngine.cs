@@ -31,7 +31,7 @@ namespace EatThatChicken.Engines
 
         private List<IGameObject> GameObjects { get; }
 
-        private List<GameObject> Bullets { get; }
+        private List<IGameObject> Bullets { get; }
 
         private List<Bird> Birds { get; }
         
@@ -50,7 +50,7 @@ namespace EatThatChicken.Engines
             this.renderer = renderer;
             this.renderer.UIAction += UIActionHandler;
             this.GameObjects = new List<IGameObject>();
-            this.Bullets = new List<GameObject>();
+            this.Bullets = new List<IGameObject>();
             this.Birds = new List<Bird>();
             this.CollisionDetector = new SimpleCollisionDetector();
             this.AffectableGameObjects = new List<IAffectableGameObject>();
@@ -85,7 +85,7 @@ namespace EatThatChicken.Engines
         {
             var left = this.Hunter.Position.Left + this.Hunter.Bounds.Width / 2;
             var top = this.Hunter.Position.Top;
-            Bullet newBullet = bulletFactory.CreateBullet(left, top);
+            Bullet newBullet = bulletFactory.Create(left, top);
 
             foreach (var bullet in Bullets)
             {
@@ -104,7 +104,7 @@ namespace EatThatChicken.Engines
             this.GameObjects.Clear();
 
             // TO DO add Hunter
-            this.Hunter = this.hunterFactory.CreateBullet(0, 0);
+            this.Hunter = this.hunterFactory.Create(0, 0);
 
             var hunterWidth = this.Hunter.Bounds.Width;
             var hunterHeight = this.Hunter.Bounds.Height;
@@ -159,7 +159,7 @@ namespace EatThatChicken.Engines
         {
             int left = rand.Next(0, this.renderer.ScreenWidth);
             int top = 0;
-            Bird newBird = birdFactory.CreateBullet(left, top);
+            Bird newBird = birdFactory.Create(left, top);
 
             left -= newBird.Bounds.Width;
             newBird.Position = new Position(left, top);

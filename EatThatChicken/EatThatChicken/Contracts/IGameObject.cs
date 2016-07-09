@@ -5,7 +5,7 @@ namespace EatThatChicken.Contracts
 {
     using GameObjects;
 
-    public interface IGameObject : IUpdateable, IMoveable
+    public interface IGameObject : IMoveable
     {
         Position Position { get; set; }
 

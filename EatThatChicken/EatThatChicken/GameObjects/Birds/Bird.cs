@@ -3,7 +3,7 @@
     using Common;
     using Contracts;
     using Enumerations;
-    public abstract class Bird : GameObject, IMoveable, IScorable, IAffectableGameObject
+    public abstract class Bird : GameObject, IMoveable, IAffectableGameObject
     {
         private const MoveType Top = MoveType.Decremental;
         private const MoveType Left = MoveType.None;
@@ -13,10 +13,7 @@
             : base(bounds, position, new MoveAction(Left, Top, speed))
         {
             this.Health = health;
-            this.Score = score;
         }
-
-        public int Score { get; }
 
         protected int Health { get; set; }
 

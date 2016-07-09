@@ -6,7 +6,7 @@ namespace EatThatChicken.GameObjects.GameItems
     using Contracts;
 
     [Item]
-    public class ChickenLeg : Item, IScorable
+    public class ChickenLeg : Item
     {
         private const int ChickenLegDefaultScore = 10;
 
@@ -15,8 +15,6 @@ namespace EatThatChicken.GameObjects.GameItems
         {
             this.PointAffect = ChickenLegDefaultScore;
         }
-
-        public int Score { get; }
 
         public override void Draw(Canvas playgroundCanvas)
         {

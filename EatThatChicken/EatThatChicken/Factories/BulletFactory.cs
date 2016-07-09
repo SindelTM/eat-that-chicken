@@ -10,7 +10,7 @@ namespace EatThatChicken.Factories
         const int bulletWidth = 10;
         const int bulletHeight = 30;
 
-        public Bullet CreateBullet(int left, int top)
+        public Bullet Create(int left, int top)
         {
             Position position = new Position(left - (bulletWidth / 2), top);
             Size bounds = new Size(bulletWidth, bulletHeight);

@@ -13,7 +13,7 @@ namespace EatThatChicken.Factories.BirdsFactories
 
         private const int AngryBirdSpeed = 6;
 
-        public AngryBird CreateBullet(int left, int top)
+        public AngryBird Create(int left, int top)
         {
             Position position = new Position(left, top);
             Size bounds = new Size(AngryBirdBoundsWidth, AngryBirdBoundsHeight);

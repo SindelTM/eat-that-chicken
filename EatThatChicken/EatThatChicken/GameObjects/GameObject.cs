@@ -32,11 +32,6 @@ namespace EatThatChicken.GameObjects
 
         public int PointAffect { get; set; }
 
-        public void Update()
-        {
-            throw new NotImplementedException();
-        }
-
         public abstract void Draw(Canvas playgroundCanvas);
 
         public Image CreateImage(string path, Position position, Size bounds)

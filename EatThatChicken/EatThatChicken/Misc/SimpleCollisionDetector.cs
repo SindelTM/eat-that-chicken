@@ -1,14 +1,10 @@
 ﻿using System.Collections.Generic;
 using EatThatChicken.Common;
 using EatThatChicken.Contracts;
-using EatThatChicken.GameObjects.Birds;
-using EatThatChicken.GameObjects.GameItems;
 using EatThatChicken.GameObjects.Hunters;
 
 namespace EatThatChicken.Misc
 {
-    using EatThatChicken.GameObjects;
-
     public class SimpleCollisionDetector : ICollisionDetector
     {
         protected struct GameObjectBounds

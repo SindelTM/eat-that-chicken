@@ -8,8 +8,6 @@ namespace EatThatChicken.GameObjects.GameItems
     [Item]
     public class Bomb : Item
     {
-        
-
         public Bomb(int speed, Size bounds, Position position)
             : base(bounds, position, speed)
         {

@@ -13,8 +13,6 @@ namespace EatThatChicken.GameObjects.GameItems
         protected Item(Size bounds, Position position, int speed) 
             : base(bounds, position, new MoveAction(Left, Top, speed)) { }
 
-        public int PointAffect { get; set; }
-
         public virtual void AffectHunter(IHunter hunter)
         {
             hunter.Points += this.PointAffect;

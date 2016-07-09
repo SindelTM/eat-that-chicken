@@ -11,7 +11,6 @@ namespace EatThatChicken.GameObjects.GameItems
         public Heart(int speed, Size bounds, Position position)
             :base(bounds, position, speed)
         {
-
         }
 
         public override void AffectHunter(IHunter hunter)
