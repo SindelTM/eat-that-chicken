@@ -1,6 +1,8 @@
 ﻿using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Media;
+using EatThatChicken.Common;
+using Size = EatThatChicken.Common.Size;
 
 namespace EatThatChicken.GameObjects.Bullets
 {

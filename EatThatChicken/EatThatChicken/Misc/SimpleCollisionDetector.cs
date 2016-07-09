@@ -1,4 +1,10 @@
-﻿namespace EatThatChicken.Misc
+﻿using System.Collections.Generic;
+using EatThatChicken.Common;
+using EatThatChicken.GameObjects.Birds;
+using EatThatChicken.GameObjects.GameItems;
+using EatThatChicken.GameObjects.Hunters;
+
+namespace EatThatChicken.Misc
 {
     using EatThatChicken.GameObjects;
 
@@ -43,7 +49,7 @@
         {
             int gameObjectLeft = gameObject.Position.Left;
             int gameObjectRight = gameObject.Position.Left + gameObject.Bounds.Width;
-            int gameObjectTop = gameObject.Position.Top;
+            int gameObjectTop = gameObject.Position.Top + 50;
             int gameObjectBottom = gameObject.Position.Top + gameObject.Bounds.Height;
             GameObjectBounds gameObjectBounds = new GameObjectBounds(gameObjectLeft, gameObjectTop, gameObjectRight, gameObjectBottom);
             return gameObjectBounds;
@@ -51,8 +57,26 @@
 
         private bool SimpleCollision(GameObjectBounds firstGameObjectBounds, GameObjectBounds secondGameObjectBounds)
         {
-            return ((firstGameObjectBounds.Top <= secondGameObjectBounds.Top && secondGameObjectBounds.Top <= firstGameObjectBounds.Bottom) || (firstGameObjectBounds.Top <= secondGameObjectBounds.Bottom && secondGameObjectBounds.Bottom <= firstGameObjectBounds.Bottom)) &&
-                   ((firstGameObjectBounds.Left <= secondGameObjectBounds.Left && secondGameObjectBounds.Left <= firstGameObjectBounds.Right) || (firstGameObjectBounds.Left <= secondGameObjectBounds.Right && secondGameObjectBounds.Right <= firstGameObjectBounds.Right));
+            return
+                ((firstGameObjectBounds.Top <= secondGameObjectBounds.Top && secondGameObjectBounds.Top <= firstGameObjectBounds.Bottom) ||
+                (firstGameObjectBounds.Top <= secondGameObjectBounds.Bottom && secondGameObjectBounds.Bottom <= firstGameObjectBounds.Bottom)) &&
+                ((firstGameObjectBounds.Left <= secondGameObjectBounds.Left && secondGameObjectBounds.Left <= firstGameObjectBounds.Right) ||
+                (firstGameObjectBounds.Left <= secondGameObjectBounds.Right && secondGameObjectBounds.Right <= firstGameObjectBounds.Right));
+        }
+
+        public void HandleCollision(Hunter hunter, List<GameObject> gameObjects)
+        {
+            foreach (var gameObject in gameObjects)
+            {
+                if (this.AreCollided(hunter, gameObject))
+                {
+                    if (gameObject is Item)
+                    {
+                        hunter.Points += ((Item)gameObject).PointAffect;
+                        gameObject.IsAlive = false;
+                    }
+                }
+            }
         }
     }
 }

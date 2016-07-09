@@ -1,4 +1,6 @@
-﻿namespace EatThatChicken.GameObjects.GameItems
+﻿using EatThatChicken.Common;
+
+namespace EatThatChicken.GameObjects.GameItems
 {
     using System.Windows.Controls;
     using Contracts;
@@ -11,7 +13,7 @@
         public ChickenLeg(int speed, Size bounds, Position position)
             : base(bounds, position, speed)
         {
-            this.Score = ChickenLegDefaultScore;
+            this.PointAffect = ChickenLegDefaultScore;
         }
 
         public uint Score { get; }

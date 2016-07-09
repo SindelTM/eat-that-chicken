@@ -1,4 +1,8 @@
-﻿namespace EatThatChicken.Factories.ItemsFactory
+﻿using EatThatChicken.Common;
+using EatThatChicken.Contracts;
+using EatThatChicken.GameObjects.Hunters;
+
+namespace EatThatChicken.Factories.ItemsFactory
 {
     using System;
     using System.Linq;
@@ -10,11 +14,11 @@
     {
         private Random Rand = new Random();
 
-        private const int ItemDefaultSpeed = 6;
+        private const int ItemDefaultSpeed = 10;
         private const int ItemDefaultWidth = 20;
         private const int ItemDefaultHeight = 20;
 
-        public GameObject GenerateItems(int left, int top)
+        public GameObject GenerateItems(int left, int top, Hunter hunter)
         {
             var allItems = Assembly.GetExecutingAssembly().GetTypes()
                 .Where(t => t.IsClass)

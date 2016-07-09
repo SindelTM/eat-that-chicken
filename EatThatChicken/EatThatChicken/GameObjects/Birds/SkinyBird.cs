@@ -1,4 +1,6 @@
-﻿namespace EatThatChicken.GameObjects.Birds
+﻿using EatThatChicken.Common;
+
+namespace EatThatChicken.GameObjects.Birds
 {
     using System.Windows.Controls;
 

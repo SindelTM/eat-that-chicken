@@ -1,4 +1,6 @@
-﻿using EatThatChicken.Contracts;
+﻿using EatThatChicken.Common;
+using EatThatChicken.Contracts;
+using EatThatChicken.Core;
 using EatThatChicken.Factories;
 using EatThatChicken.Factories.BirdsFactories;
 using EatThatChicken.Factories.ItemsFactory;
@@ -38,6 +40,8 @@ namespace EatThatChicken.Engines
 
         public ICollisionDetector CollisionDetector { get; private set; }
 
+        private CollisionHandler Collision { get; set; }
+
         private readonly Random rand = new Random();
 
         private DispatcherTimer timer;
@@ -51,6 +55,7 @@ namespace EatThatChicken.Engines
             this.Birds = new List<Bird>();
             this.CollisionDetector = new SimpleCollisionDetector();
             this.Generator = new ItemGenerator();
+            this.Collision = new CollisionHandler();
         }
 
         public ItemGenerator Generator { get; set; }
@@ -127,6 +132,7 @@ namespace EatThatChicken.Engines
             this.renderer.Clear();
             this.renderer.Draw(this.Hunter);
             this.KillIfColliding();
+            this.CollisionDetector.HandleCollision(this.Hunter, this.GameObjects);
             this.RemoveBirdsOutofScreen();
             this.RemoveNotAliveGameObjects();
             this.GenerateItem();
@@ -144,7 +150,7 @@ namespace EatThatChicken.Engines
         {
             if (rand.Next(250) < GenerateBirdChanse)
             {
-                this.GameObjects.Add(this.Generator.GenerateItems(rand.Next(0, this.renderer.ScreenWidth - 10), 0));
+                this.GameObjects.Add(this.Generator.GenerateItems(rand.Next(0, this.renderer.ScreenWidth - 10), 0, this.Hunter));
             }
         }
 

@@ -1,4 +1,5 @@
 ﻿using System.Windows.Controls;
+using EatThatChicken.Common;
 
 namespace EatThatChicken.GameObjects.Hunters
 {
@@ -7,8 +8,17 @@ namespace EatThatChicken.GameObjects.Hunters
 
     public class Hunter : GameObject, IHunter
     {
+        public const uint InitialNumberOfLifes = 3;
+
         public Hunter(Size bounds, Position position, int speed)
-            : base(bounds, position, new MoveAction(speed)) { }
+            : base(bounds, position, new MoveAction(speed))
+        {
+            this.NumberOfLifes = InitialNumberOfLifes;
+        }
+
+        public int Points { get; set; }
+
+        public uint NumberOfLifes { get; set; }
 
         public void MoveLeft()
         {

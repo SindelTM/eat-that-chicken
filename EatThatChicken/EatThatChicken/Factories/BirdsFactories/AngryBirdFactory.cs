@@ -1,4 +1,5 @@
-﻿using EatThatChicken.Contracts;
+﻿using EatThatChicken.Common;
+using EatThatChicken.Contracts;
 using EatThatChicken.Enumerations;
 using EatThatChicken.GameObjects;
 namespace EatThatChicken.Factories.BirdsFactories

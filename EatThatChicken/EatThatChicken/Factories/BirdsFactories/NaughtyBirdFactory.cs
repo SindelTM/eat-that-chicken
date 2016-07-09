@@ -1,4 +1,6 @@
-﻿namespace EatThatChicken.Factories.BirdsFactories
+﻿using EatThatChicken.Common;
+
+namespace EatThatChicken.Factories.BirdsFactories
 {
     using Contracts;
     using GameObjects;

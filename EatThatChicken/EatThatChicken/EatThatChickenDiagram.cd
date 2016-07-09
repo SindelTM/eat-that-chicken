@@ -1,7 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <ClassDiagram MajorVersion="1" MinorVersion="1">
   <Class Name="EatThatChicken.GameObjects.GameObject" Collapsed="true">
-    <Position X="10.25" Y="0.75" Width="1.5" />
+    <Position X="3.5" Y="0.5" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AQQAAAAAAIAAAgCgAAAAAAAAAAAAAAAAAAAAAAAAAgA=</HashCode>
       <FileName>GameObjects\GameObject.cs</FileName>
@@ -9,7 +9,7 @@
     <Lollipop Position="0.2" />
   </Class>
   <Class Name="EatThatChicken.Common.CommandBase" Collapsed="true" BaseTypeListCollapsed="true">
-    <Position X="21.75" Y="1.75" Width="1.5" />
+    <Position X="11" Y="6.25" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAACAAAAAAAAQEAABAAAAAAAAAAAAAAAAAAEA=</HashCode>
       <FileName>Common\CommandBase.cs</FileName>
@@ -17,105 +17,57 @@
     <Lollipop Position="0.2" Collapsed="true" />
   </Class>
   <Class Name="EatThatChicken.GameObjects.Birds.AngryBird" Collapsed="true">
-    <Position X="1.25" Y="3.5" Width="1.5" />
+    <Position X="0.5" Y="3.5" Width="1.25" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAgAAAAAAAAAIAAAAAgAAAAAAAAAAAAA=</HashCode>
       <FileName>GameObjects\Birds\AngryBird.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="EatThatChicken.GameObjects.Birds.Bird" Collapsed="true">
-    <Position X="4.75" Y="2" Width="1.5" />
+    <Position X="1.75" Y="2" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AQAACAAAAAAAAAgAAAAAAAAAAAAIAAAACAAAAAAAAAA=</HashCode>
+      <HashCode>AQAACAAAAAAAAAgAAAAAAAAAAAAIAAAACAAAAAAAAAg=</HashCode>
       <FileName>GameObjects\Birds\Bird.cs</FileName>
     </TypeIdentifier>
     <Lollipop Position="0.2" />
   </Class>
   <Class Name="EatThatChicken.GameObjects.Birds.MuscleBird" Collapsed="true">
-    <Position X="8" Y="3.5" Width="1.5" />
+    <Position X="5" Y="3.5" Width="1.25" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAACAgAAAAAAAAAAAAAAAAAAAACAAAAAAAA=</HashCode>
       <FileName>GameObjects\Birds\MuscleBird.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="EatThatChicken.GameObjects.Birds.NaughtyBird" Collapsed="true">
-    <Position X="3.5" Y="3.5" Width="1.5" />
+    <Position X="2" Y="3.5" Width="1.25" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAEAAAAgAAAAAAAAAAAAAAAAAAAAAAAAABAAA=</HashCode>
       <FileName>GameObjects\Birds\NaughtyBird.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="EatThatChicken.GameObjects.Birds.SkinyBird" Collapsed="true">
-    <Position X="5.75" Y="3.5" Width="1.5" />
+    <Position X="3.5" Y="3.5" Width="1.25" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAgAAAAAAAAAAAAAAAAAAAAAABAAAAAg=</HashCode>
       <FileName>GameObjects\Birds\SkinyBird.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="EatThatChicken.GameObjects.Bullets.Bullet" Collapsed="true">
-    <Position X="12.5" Y="2" Width="1.5" />
+    <Position X="5" Y="2" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAgAAAAIAAAAgAAABAAAAAAAAAAAAAAA=</HashCode>
       <FileName>GameObjects\Bullets\Bullet.cs</FileName>
     </TypeIdentifier>
   </Class>
-  <Class Name="EatThatChicken.GameObjects.Factories.BulletFactory" Collapsed="true" BaseTypeListCollapsed="true">
-    <Position X="25.25" Y="0.75" Width="1.5" />
-    <TypeIdentifier>
-      <HashCode>AAAAAAAQAAAAAABAAAAAAAAAAAAQAAAAAAAAAAAAAAA=</HashCode>
-      <FileName>GameObjects\Factories\BulletFactory.cs</FileName>
-    </TypeIdentifier>
-    <Lollipop Position="0.2" Collapsed="true" />
-  </Class>
-  <Class Name="EatThatChicken.GameObjects.Factories.BirdsFactories.AngryBirdFactory" Collapsed="true" BaseTypeListCollapsed="true">
-    <Position X="21.75" Y="0.75" Width="1.5" />
-    <TypeIdentifier>
-      <HashCode>AAAAAAAAAAAAAABAAAAABAAAAEAAAAAAAAAAAAAAAAA=</HashCode>
-      <FileName>GameObjects\Factories\BirdsFactories\AngryBirdFactory.cs</FileName>
-    </TypeIdentifier>
-    <Lollipop Position="0.2" Collapsed="true" />
-  </Class>
-  <Class Name="EatThatChicken.GameObjects.Factories.BirdsFactories.BirdsFactory" Collapsed="true" BaseTypeListCollapsed="true">
-    <Position X="23.5" Y="0.75" Width="1.5" />
-    <TypeIdentifier>
-      <HashCode>AEAAAIAAAAIAACDAAgAAAAQQAAAAAAAAAEAAABAAAAA=</HashCode>
-      <FileName>GameObjects\Factories\BirdsFactories\BirdsFactory.cs</FileName>
-    </TypeIdentifier>
-    <Lollipop Position="0.2" Collapsed="true" />
-  </Class>
-  <Class Name="EatThatChicken.GameObjects.Factories.BirdsFactories.MuscleBirdFactory" Collapsed="true" BaseTypeListCollapsed="true">
-    <Position X="23.5" Y="1.75" Width="1.5" />
-    <TypeIdentifier>
-      <HashCode>AAAAABAAAAAAAABAAAAAAAAAAAAAAAAAAAAAAAAAAgA=</HashCode>
-      <FileName>GameObjects\Factories\BirdsFactories\MuscleBirdFactory.cs</FileName>
-    </TypeIdentifier>
-    <Lollipop Position="0.2" Collapsed="true" />
-  </Class>
-  <Class Name="EatThatChicken.GameObjects.Factories.BirdsFactories.NaughtyBirdFactory" Collapsed="true" BaseTypeListCollapsed="true">
-    <Position X="25.25" Y="1.75" Width="1.5" />
-    <TypeIdentifier>
-      <HashCode>AAQAAAAAAAAACABAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
-      <FileName>GameObjects\Factories\BirdsFactories\NaughtyBirdFactory.cs</FileName>
-    </TypeIdentifier>
-    <Lollipop Position="0.2" Collapsed="true" />
-  </Class>
-  <Class Name="EatThatChicken.GameObjects.Factories.BirdsFactories.SkinyBirdFactory" Collapsed="true" BaseTypeListCollapsed="true">
-    <Position X="21.75" Y="2.75" Width="1.5" />
-    <TypeIdentifier>
-      <HashCode>AAAAAAAAAAAAAABAAAAAgAAAAAAAAAAAAACAAAAAAAA=</HashCode>
-      <FileName>GameObjects\Factories\BirdsFactories\SkinyBirdFactory.cs</FileName>
-    </TypeIdentifier>
-    <Lollipop Position="0.2" Collapsed="true" />
-  </Class>
   <Class Name="EatThatChicken.GameObjects.GameItems.Bomb" Collapsed="true">
-    <Position X="10.25" Y="2" Width="1.5" />
+    <Position X="6.75" Y="3.5" Width="1.25" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAgAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>GameObjects\GameItems\Bomb.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="EatThatChicken.GameObjects.GameItems.ChickenLeg" Collapsed="true">
-    <Position X="14.75" Y="2" Width="1.5" />
+    <Position X="8.25" Y="3.5" Width="1.25" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAggAEAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>GameObjects\GameItems\ChickenLeg.cs</FileName>
@@ -123,71 +75,78 @@
     <Lollipop Position="0.2" />
   </Class>
   <Class Name="EatThatChicken.GameObjects.GameItems.Heart" Collapsed="true">
-    <Position X="17" Y="2" Width="1.5" />
+    <Position X="9.75" Y="3.5" Width="1.25" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAgAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>GameObjects\GameItems\Heart.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="EatThatChicken.GameObjects.Hunters.Hunter" Collapsed="true">
-    <Position X="19.25" Y="2" Width="1.5" />
+    <Position X="11" Y="2" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAgAAAAAAAAAAAAAAAAAIQAAAAAAAAAA=</HashCode>
       <FileName>GameObjects\Hunters\Hunter.cs</FileName>
     </TypeIdentifier>
     <Lollipop Position="0.2" />
   </Class>
-  <Struct Name="EatThatChicken.GameObjects.Position" Collapsed="true">
-    <Position X="21.75" Y="4" Width="1.5" />
+  <Class Name="EatThatChicken.GameObjects.GameItems.Item" Collapsed="true">
+    <Position X="7.75" Y="2" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAIAAAACAAAAAAAAAA=</HashCode>
+      <FileName>GameObjects\GameItems\Item.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Struct Name="EatThatChicken.GameObjects.Position">
+    <Position X="6.25" Y="6" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAIAAAACAAAAAAAAAA=</HashCode>
       <FileName>GameObjects\Position.cs</FileName>
     </TypeIdentifier>
   </Struct>
-  <Struct Name="EatThatChicken.GameObjects.Size" Collapsed="true">
-    <Position X="23.5" Y="4" Width="1.5" />
+  <Struct Name="EatThatChicken.GameObjects.Size">
+    <Position X="8.25" Y="6" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAABAAAAAAAAAAAAEAAAAAAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>GameObjects\Size.cs</FileName>
     </TypeIdentifier>
   </Struct>
-  <Interface Name="EatThatChicken.Contracts.IAttackable" Collapsed="true">
-    <Position X="21.75" Y="5.25" Width="1.5" />
+  <Interface Name="EatThatChicken.Contracts.IAttackable">
+    <Position X="10.75" Y="4.5" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAIAAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>Contracts\IAttackable.cs</FileName>
     </TypeIdentifier>
   </Interface>
   <Interface Name="EatThatChicken.Contracts.ICollidable">
-    <Position X="0.5" Y="4.75" Width="1.5" />
+    <Position X="0.5" Y="6.5" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAgA=</HashCode>
       <FileName>Contracts\ICollidable.cs</FileName>
     </TypeIdentifier>
   </Interface>
   <Interface Name="EatThatChicken.Contracts.IGameObject" Collapsed="true">
-    <Position X="0.5" Y="6.5" Width="1.5" />
+    <Position X="0.5" Y="4.75" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AQAAAAAAAAAAAAAgAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>Contracts\IGameObject.cs</FileName>
     </TypeIdentifier>
   </Interface>
   <Interface Name="EatThatChicken.Contracts.IMoveable">
-    <Position X="10.5" Y="4.75" Width="1.5" />
+    <Position X="2.25" Y="6.5" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>Contracts\IMoveable.cs</FileName>
     </TypeIdentifier>
   </Interface>
   <Interface Name="EatThatChicken.Contracts.IUpdateable">
-    <Position X="12.75" Y="4.75" Width="1.5" />
+    <Position X="4" Y="6.5" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>Contracts\IUpdateable.cs</FileName>
     </TypeIdentifier>
   </Interface>
-  <Interface Name="EatThatChicken.Contracts.IGameObjectFactory&lt;T&gt;" Collapsed="true">
-    <Position X="23.5" Y="5.25" Width="1.5" />
+  <Interface Name="EatThatChicken.Contracts.IGameObjectFactory&lt;T&gt;">
+    <Position X="6.25" Y="4.5" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAABAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>Contracts\IGameObjectFactory.cs</FileName>
