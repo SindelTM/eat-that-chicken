@@ -1,4 +1,6 @@
-﻿namespace EatThatChicken.Contracts
+﻿using EatThatChicken.Common;
+
+namespace EatThatChicken.Contracts
 {
     using System;
     using GameObjects;

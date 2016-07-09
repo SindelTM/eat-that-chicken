@@ -1,4 +1,5 @@
-﻿using EatThatChicken.Contracts;
+﻿using EatThatChicken.Common;
+using EatThatChicken.Contracts;
 using EatThatChicken.Core;
 using EatThatChicken.Factories;
 using EatThatChicken.Factories.BirdsFactories;

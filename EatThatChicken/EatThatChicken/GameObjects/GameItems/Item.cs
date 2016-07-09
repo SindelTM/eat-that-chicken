@@ -1,4 +1,6 @@
-﻿namespace EatThatChicken.GameObjects.GameItems
+﻿using EatThatChicken.Common;
+
+namespace EatThatChicken.GameObjects.GameItems
 {
     using Enumerations;
 

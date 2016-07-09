@@ -1,4 +1,5 @@
 ﻿using System.Windows.Controls;
+using EatThatChicken.Common;
 
 namespace EatThatChicken.GameObjects.Birds
 {

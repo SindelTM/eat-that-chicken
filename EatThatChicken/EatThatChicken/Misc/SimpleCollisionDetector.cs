@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using EatThatChicken.Common;
 using EatThatChicken.GameObjects.Birds;
 using EatThatChicken.GameObjects.GameItems;
 using EatThatChicken.GameObjects.Hunters;

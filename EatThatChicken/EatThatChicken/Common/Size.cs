@@ -1,4 +1,4 @@
-﻿namespace EatThatChicken.GameObjects
+﻿namespace EatThatChicken.Common
 {
     public struct Size
     {

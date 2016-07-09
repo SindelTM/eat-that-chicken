@@ -34,6 +34,9 @@
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationIcon>muscle.ico</ApplicationIcon>
+  </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
     <Reference Include="System.Data" />
@@ -58,8 +61,6 @@
     <Compile Include="Common\CommandBase.cs" />
     <Compile Include="Common\ErrorMessages.cs" />
     <Compile Include="Common\Validator.cs" />
-    <Compile Include="Contracts\IAttackable.cs" />
-    <Compile Include="Contracts\ICollidable.cs" />
     <Compile Include="Contracts\IGameObject.cs" />
     <Compile Include="Contracts\IGameObjectFactory.cs" />
     <Compile Include="Contracts\IHunter.cs" />
@@ -90,7 +91,7 @@
     <Compile Include="GameObjects\GameItems\Item.cs" />
     <Compile Include="Common\ItemAttribute.cs" />
     <Compile Include="GameObjects\Hunters\Hunter.cs" />
-    <Compile Include="GameObjects\MoveAction.cs" />
+    <Compile Include="Common\MoveAction.cs" />
     <Compile Include="Misc\GameAction.cs" />
     <Compile Include="Misc\ICollisionDetector.cs" />
     <Compile Include="Misc\KeyDownEventArgs.cs" />
@@ -114,8 +115,8 @@
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="GameObjects\Position.cs" />
-    <Compile Include="GameObjects\Size.cs" />
+    <Compile Include="Common\Position.cs" />
+    <Compile Include="Common\Size.cs" />
     <Compile Include="GameObjects\GameObject.cs" />
     <Compile Include="View\Instructions.xaml.cs">
       <DependentUpon>Instructions.xaml</DependentUpon>
@@ -187,6 +188,9 @@
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Images\instructions.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="muscle.ico" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

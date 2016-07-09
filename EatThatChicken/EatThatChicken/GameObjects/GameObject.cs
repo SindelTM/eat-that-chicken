@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Windows.Controls;
 using System.Windows.Media.Imaging;
+using EatThatChicken.Common;
 
 namespace EatThatChicken.GameObjects
 {
@@ -36,7 +37,7 @@ namespace EatThatChicken.GameObjects
 
         public abstract void Draw(Canvas playgroundCanvas);
 
-        public Image CreateImage(string path, Position position, GameObjects.Size bounds)
+        public Image CreateImage(string path, Position position, Size bounds)
         {
             Image image = new Image();
             BitmapImage bitmap = new BitmapImage();
