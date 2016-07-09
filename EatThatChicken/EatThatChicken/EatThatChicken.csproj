@@ -67,6 +67,7 @@
     <Compile Include="Contracts\IRecordable.cs" />
     <Compile Include="Contracts\IScorable.cs" />
     <Compile Include="Contracts\IUpdateable.cs" />
+    <Compile Include="Core\CollisionHandler.cs" />
     <Compile Include="Engines\GameEngine.cs" />
     <Compile Include="Enumerations\MoveType.cs" />
     <Compile Include="Factories\BirdsFactories\AngryBirdFactory.cs" />
@@ -87,7 +88,7 @@
     <Compile Include="GameObjects\GameItems\ChickenLeg.cs" />
     <Compile Include="GameObjects\GameItems\Heart.cs" />
     <Compile Include="GameObjects\GameItems\Item.cs" />
-    <Compile Include="GameObjects\GameItems\ItemAttribute.cs" />
+    <Compile Include="Common\ItemAttribute.cs" />
     <Compile Include="GameObjects\Hunters\Hunter.cs" />
     <Compile Include="GameObjects\MoveAction.cs" />
     <Compile Include="Misc\GameAction.cs" />

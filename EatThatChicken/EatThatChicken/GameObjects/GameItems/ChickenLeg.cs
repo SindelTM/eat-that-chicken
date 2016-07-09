@@ -11,7 +11,7 @@
         public ChickenLeg(int speed, Size bounds, Position position)
             : base(bounds, position, speed)
         {
-            this.Score = ChickenLegDefaultScore;
+            this.PointAffect = ChickenLegDefaultScore;
         }
 
         public uint Score { get; }
