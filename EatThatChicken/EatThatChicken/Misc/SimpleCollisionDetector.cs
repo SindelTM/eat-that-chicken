@@ -1,11 +1,11 @@
-﻿using System.Collections.Generic;
-using EatThatChicken.Common;
-using EatThatChicken.Contracts;
-using EatThatChicken.GameObjects.Hunters;
-using System.Linq;
-
-namespace EatThatChicken.Misc
+﻿namespace EatThatChicken.Misc
 {
+    using System.Collections.Generic;
+
+    using EatThatChicken.Common;
+    using EatThatChicken.Contracts;
+    using EatThatChicken.GameObjects.Hunters;
+
     public class SimpleCollisionDetector : ICollisionDetector
     {
         protected struct GameObjectBounds

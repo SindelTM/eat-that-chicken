@@ -1,8 +1,8 @@
-﻿using System.Windows.Controls;
-using EatThatChicken.Common;
+﻿using EatThatChicken.Common;
 
 namespace EatThatChicken.GameObjects.Hunters
 {
+    using Common;
     using Contracts;
     using Enumerations;
 

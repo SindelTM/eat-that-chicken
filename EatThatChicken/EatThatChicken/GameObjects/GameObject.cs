@@ -1,11 +1,7 @@
-﻿using System;
-using System.Windows.Controls;
-using System.Windows.Media.Imaging;
-using EatThatChicken.Common;
-
-namespace EatThatChicken.GameObjects
+﻿namespace EatThatChicken.GameObjects
 {
     using Contracts;
+    using Common;
 
     public abstract class GameObject : IGameObject
     {
