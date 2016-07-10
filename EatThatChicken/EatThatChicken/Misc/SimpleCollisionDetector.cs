@@ -78,7 +78,7 @@ namespace EatThatChicken.Misc
         }
 
         //IList<IAffectableGameObject>
-        public void HandleCollision(Hunter hunter, IEnumerable<IGameObject> gameObjects)
+        public void HandleCollision(Hunter hunter, IList<IGameObject> gameObjects)
         {
             foreach (var gameObject in gameObjects)
             {

@@ -34,6 +34,8 @@ namespace EatThatChicken.Engines
         private List<IGameObject> Bullets { get; }
 
         private List<IGameObject> Birds { get; }
+
+        private List<IGameObject> Items { get;}
         
         private IGameRenderer renderer { get; }
 
@@ -52,6 +54,7 @@ namespace EatThatChicken.Engines
             this.GameObjects = new List<IGameObject>();
             this.Bullets = new List<IGameObject>();
             this.Birds = new List<IGameObject>();
+            this.Items = new List<IGameObject>();
             this.CollisionDetector = new SimpleCollisionDetector();
             this.AffectableGameObjects = new List<IAffectableGameObject>();
             this.Generator = new ItemGenerator();
@@ -122,7 +125,7 @@ namespace EatThatChicken.Engines
         {
             this.renderer.Clear();
             this.CollisionDetector.KillIfColliding(this.Bullets, this.Birds);
-            this.CollisionDetector.HandleCollision(this.Hunter, this.GameObjects);
+            this.CollisionDetector.HandleCollision(this.Hunter, this.Items);
             this.RemoveGameObjectsOutofScreen();
             this.RemoveNotAliveGameObjects();
             this.GenerateItem();
@@ -139,6 +142,7 @@ namespace EatThatChicken.Engines
             {
                 var item = this.Generator.GenerateItems(rand.Next(0, this.renderer.ScreenWidth - 10), 0, this.Hunter);
                 this.GameObjects.Add(item);
+                this.Items.Add(item);
                 this.AffectableGameObjects.Add(item);
             }
         }
@@ -167,6 +171,7 @@ namespace EatThatChicken.Engines
             this.GameObjects.RemoveAll(go => !go.IsAlive);
             this.Birds.RemoveAll(bird => !bird.IsAlive);
             this.Bullets.RemoveAll(bullet => !bullet.IsAlive);
+            this.Items.RemoveAll(item => !item.IsAlive);
         }
 
         private void RemoveGameObjectsOutofScreen()

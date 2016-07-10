@@ -12,6 +12,6 @@ namespace EatThatChicken.Misc
 
         void KillIfColliding(IList<IGameObject> bullets, IList<IGameObject> birds);
 
-        void HandleCollision(Hunter hunter, IEnumerable<IGameObject> gameObjects);
+        void HandleCollision(Hunter hunter, IList<IGameObject> gameObjects);
     }
 }
