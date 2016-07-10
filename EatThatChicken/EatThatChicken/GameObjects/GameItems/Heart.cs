@@ -15,7 +15,10 @@ namespace EatThatChicken.GameObjects.GameItems
 
         public override void AffectHunter(IHunter hunter)
         {
-            hunter.NumberOfLifes++;
+            if (hunter.NumberOfLifes >= 1 && hunter.NumberOfLifes < 3)
+            {
+                hunter.NumberOfLifes++;
+            }
         }
     }
 }

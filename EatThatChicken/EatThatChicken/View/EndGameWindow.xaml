@@ -1,0 +1,16 @@
+﻿<Window x:Class="EatThatChicken.View.EndGameWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:EatThatChicken.View"
+        mc:Ignorable="d"
+        Title="EndGameWindow" Height="600" Width="1000" ResizeMode="NoResize"  WindowStartupLocation="CenterScreen">
+    <Grid>
+        <Grid.Background>
+            <ImageBrush ImageSource="/Images/endWindowBackground.png"/>
+        </Grid.Background>
+        <TextBox x:Name="nameTextBox" HorizontalAlignment="Left" Height="30" Margin="143,401,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="271"/>
+        <Button x:Name="button" Content="TRY AGAIN!" HorizontalAlignment="Left" Margin="726,504,0,0" VerticalAlignment="Top" Width="229" Click="button_Click"/>
+    </Grid>
+</Window>

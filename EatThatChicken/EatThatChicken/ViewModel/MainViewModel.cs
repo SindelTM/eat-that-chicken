@@ -73,17 +73,17 @@ namespace EatThatChicken.ViewModel
         {
             mainWindow.Close();
         }
-        
+
         private bool CanExecuteStartCommand(object param)
         {
             return true;
         }
-    
+
         private bool CanExecuteExitCommand(object param)
         {
             return true;
         }
-        
+
         private bool CanExecuteOpenInstructions(object obj)
         {
             return true;

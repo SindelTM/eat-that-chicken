@@ -14,7 +14,7 @@ namespace EatThatChicken.Engines
     using GameObjects.Bullets;
     using GameObjects.Hunters;
     using Misc;
-
+    using View;
 
     public class GameEngine
     {
@@ -35,13 +35,13 @@ namespace EatThatChicken.Engines
 
         private List<IGameObject> Birds { get; }
 
-        private List<IGameObject> Items { get;}
-        
+        private List<IGameObject> Items { get; }
+
         private IGameRenderer renderer { get; }
 
         public ICollisionDetector CollisionDetector { get; private set; }
 
-        private IList<IAffectableGameObject> AffectableGameObjects { get; set; } 
+        private IList<IAffectableGameObject> AffectableGameObjects { get; set; }
 
         private readonly Random rand = new Random();
 
@@ -69,7 +69,7 @@ namespace EatThatChicken.Engines
                 if (this.Hunter.Position.Left > 0)
                 {
                     this.Hunter.MoveLeft();
-                }        
+                }
             }
             else if (e.Action == GameAction.MoveRight)
             {
@@ -89,7 +89,7 @@ namespace EatThatChicken.Engines
             var left = this.Hunter.Position.Left + this.Hunter.Bounds.Width / 2;
             var top = this.Hunter.Position.Top;
             Bullet newBullet = bulletFactory.Create(left, top);
-            
+
             this.GameObjects.Add(newBullet);
             this.Bullets.Add(newBullet);
         }
@@ -122,17 +122,19 @@ namespace EatThatChicken.Engines
         }
 
         private void GameLoop(object sender, EventArgs args)
-        { 
+        {
             if (CollisionDetector.isHunterColliding(this.Hunter, this.Birds))
             {
-                if (Hunter.NumberOfLifes <= 0)
+                if (this.Hunter.NumberOfLifes > 0 && this.Hunter.NumberOfLifes <= 3)
+                {
+                    this.Hunter.NumberOfLifes--;
+                }
+                else if (this.Hunter.NumberOfLifes == 0)
                 {
                     this.timer.Stop();
+                    EndGameWindow win = new EndGameWindow();
+                    win.Show();
                 }
-                else
-                {
-                    Hunter.NumberOfLifes--;
-                }              
             }
             this.renderer.Clear();
             this.CollisionDetector.KillIfColliding(this.Bullets, this.Birds);
@@ -144,7 +146,7 @@ namespace EatThatChicken.Engines
             this.renderer.UpdateScore(this.Hunter);
             this.renderer.Draw(this.GameObjects);
             this.GameObjects.ForEach(x => x.Move());
-            
+
         }
 
         private void GenerateItem()
@@ -174,9 +176,7 @@ namespace EatThatChicken.Engines
                 this.AffectableGameObjects.Add(newBird);
             }
         }
-
-
-
+        
         private void RemoveNotAliveGameObjects()
         {
             this.GameObjects.RemoveAll(go => !go.IsAlive);
@@ -190,7 +190,7 @@ namespace EatThatChicken.Engines
             foreach (var gameObject in this.GameObjects)
             {
                 if ((gameObject.Position.Top > this.renderer.ScreenHeight) ||
-                    (gameObject.Position.Top  + gameObject.Bounds.Height < 0) ||
+                    (gameObject.Position.Top + gameObject.Bounds.Height < 0) ||
                     (gameObject.Position.Left > this.renderer.ScreenWidth) ||
                     (gameObject.Position.Left + gameObject.Bounds.Width < 0))
                 {

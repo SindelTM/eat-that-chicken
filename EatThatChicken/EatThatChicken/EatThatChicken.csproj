@@ -105,9 +105,16 @@
     <Compile Include="Renderers\WPFGameRenderer.cs" />
     <Compile Include="ViewModel\MainViewModel.cs" />
     <Compile Include="ViewModel\GameFieldViewModel.cs" />
+    <Compile Include="View\EndGameWindow.xaml.cs">
+      <DependentUpon>EndGameWindow.xaml</DependentUpon>
+    </Compile>
     <Compile Include="View\GameFieldWindow.xaml.cs">
       <DependentUpon>GameFieldWindow.xaml</DependentUpon>
     </Compile>
+    <Page Include="View\EndGameWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="View\Instructions.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -202,6 +209,9 @@
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Images\Bullet.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\endWindowBackground.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
