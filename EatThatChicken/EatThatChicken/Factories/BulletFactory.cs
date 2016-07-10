@@ -12,7 +12,7 @@ namespace EatThatChicken.Factories
 
         public Bullet Create(int left, int top)
         {
-            Position position = new Position(left - (bulletWidth / 2), top);
+            Position position = new Position(left - (bulletWidth / 2), top - bulletHeight);
             Size bounds = new Size(bulletWidth, bulletHeight);
 
             return new Bullet(bounds, position);

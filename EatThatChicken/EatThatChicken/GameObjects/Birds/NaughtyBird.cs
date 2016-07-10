@@ -16,11 +16,5 @@ namespace EatThatChicken.GameObjects.Birds
         {
             this.PointAffect = NaughtyBirdDefaultScore;
         }
-
-        public override void Draw(Canvas playgroundCanvas)
-        {
-            var image = this.CreateImage("/Images/Birds/naughty.png", this.Position, this.Bounds);
-            playgroundCanvas.Children.Add(image);
-        }
     }
 }

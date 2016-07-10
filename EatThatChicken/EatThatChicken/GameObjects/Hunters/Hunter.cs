@@ -33,11 +33,5 @@ namespace EatThatChicken.GameObjects.Hunters
 
             this.Position = new Position(left, this.Position.Top);
         }
-
-        public override void Draw(Canvas playgroundCanvas)
-        {
-            var image = this.CreateImage("/Images/Hunter.png", this.Position, this.Bounds);
-            playgroundCanvas.Children.Add(image);
-        }
     }
 }

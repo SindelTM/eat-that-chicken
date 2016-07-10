@@ -8,7 +8,6 @@ using EatThatChicken.GameObjects.GameItems;
 namespace EatThatChicken.Renderers
 {
     using System;
-    using System.Windows;
     using System.Windows.Controls;
     using System.Windows.Input;
     using System.Windows.Media;
@@ -25,6 +24,7 @@ namespace EatThatChicken.Renderers
     class WPFGameRenderer : IGameRenderer
     {
         private int score = 0;
+        private Dictionary<string, string> avatar = new Dictionary<string, string>();
 
         public int ScreenHeight
         {
@@ -47,6 +47,16 @@ namespace EatThatChicken.Renderers
         public WPFGameRenderer(Canvas playGroundCanvas)
         {
             this.playGroundCanvas = playGroundCanvas;
+
+            this.avatar.Add("Hunter", "/Images/Hunter.png");
+            this.avatar.Add("Bullet", "/Images/Bullet.png");
+            this.avatar.Add("AngryBird", "/Images/Birds/angry.png");
+            this.avatar.Add("MuscleBird", "/Images/Birds/muscle.png");
+            this.avatar.Add("NaughtyBird", "/Images/Birds/naughty.png");
+            this.avatar.Add("SkinyBird", "/Images/Birds/skiny.png");
+            this.avatar.Add("Bomb", "/Images/bomb.png");
+            this.avatar.Add("ChickenLeg", "/Images/chicken-leg.png");
+            this.avatar.Add("Heart", "/Images/heart.png");
 
             (this.playGroundCanvas.Parent as GameFieldWindow).KeyDown += (sender, args) =>
             {
@@ -73,21 +83,12 @@ namespace EatThatChicken.Renderers
             this.playGroundCanvas.Children.Clear();
         }
 
-        public void Draw(params IGameObject[] gameObjects)
+        public void Draw(IEnumerable<IGameObject> gameObjects)
         {
             foreach (var gameObject in gameObjects)
             {
-                var rect = new Rectangle
-                {
-                    Width = gameObject.Bounds.Width,
-                    Height = gameObject.Bounds.Height
-                };
-
-                Canvas.SetLeft(rect, gameObject.Position.Left);
-                Canvas.SetTop(rect, gameObject.Position.Top);
-
-                gameObject.Draw(this.playGroundCanvas);
-                this.playGroundCanvas.Children.Add(rect);
+                var image = this.CreateImage(avatar[gameObject.GetType().Name], gameObject.Position, gameObject.Bounds);
+                this.playGroundCanvas.Children.Add(image);
             }
 
             //this.UpdateScore(hunter);
@@ -122,6 +123,23 @@ namespace EatThatChicken.Renderers
 
            this.playGroundCanvas.Children.Add(textBlock);
 
+        }
+
+        public Image CreateImage(string path, Position position, Size bounds)
+        {
+            Image image = new Image();
+            BitmapImage bitmap = new BitmapImage();
+            bitmap.BeginInit();
+            bitmap.UriSource = new Uri(path, UriKind.RelativeOrAbsolute);
+            bitmap.EndInit();
+
+            image.Source = bitmap;
+            image.Width = bounds.Width;
+            image.Height = bounds.Height;
+
+            Canvas.SetLeft(image, position.Left);
+            Canvas.SetTop(image, position.Top);
+            return image;
         }
     }
 }

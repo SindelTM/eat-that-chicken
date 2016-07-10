@@ -14,7 +14,5 @@ namespace EatThatChicken.Contracts
         bool IsAlive { get; set; }
 
         int PointAffect { get; set; }
-
-        void Draw(Canvas playgroundCanvas);
     }
 }

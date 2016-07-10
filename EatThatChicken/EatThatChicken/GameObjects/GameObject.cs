@@ -31,26 +31,7 @@ namespace EatThatChicken.GameObjects
         public virtual bool IsAlive { get; set; }
 
         public int PointAffect { get; set; }
-
-        public abstract void Draw(Canvas playgroundCanvas);
-
-        public Image CreateImage(string path, Position position, Size bounds)
-        {
-            Image image = new Image();
-            BitmapImage bitmap = new BitmapImage();
-            bitmap.BeginInit();
-            bitmap.UriSource = new Uri(path, UriKind.RelativeOrAbsolute);
-            bitmap.EndInit();
-
-            image.Source = bitmap;
-            image.Width = bounds.Width;
-            image.Height = bounds.Height;
-
-            Canvas.SetLeft(image, position.Left);
-            Canvas.SetTop(image, position.Top);
-            return image;
-        }
-
+        
         public virtual void Move()
         {
             int left = this.Position.Left - ((int)this.MoveAction.Left * this.MoveAction.Speed);

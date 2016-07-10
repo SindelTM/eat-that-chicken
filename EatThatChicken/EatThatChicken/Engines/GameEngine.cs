@@ -87,13 +87,13 @@ namespace EatThatChicken.Engines
             var top = this.Hunter.Position.Top;
             Bullet newBullet = bulletFactory.Create(left, top);
 
-            foreach (var bullet in Bullets)
-            {
-                if (!this.renderer.IsInRange(bullet.Position))
-                {
-                    bullet.IsAlive = false;
-                }
-            }
+            //foreach (var bullet in Bullets)
+            //{
+            //    if (!this.renderer.IsInRange(bullet.Position))
+            //    {
+            //        bullet.IsAlive = false;
+            //    }
+            //}
 
             this.GameObjects.Add(newBullet);
             this.Bullets.Add(newBullet);
@@ -129,7 +129,6 @@ namespace EatThatChicken.Engines
         private void GameLoop(object sender, EventArgs args)
         {
             this.renderer.Clear();
-            this.renderer.Draw(this.Hunter);
             this.KillIfColliding();
             this.CollisionDetector.HandleCollision(this.Hunter, this.GameObjects);
             this.RemoveBirdsOutofScreen();
@@ -137,12 +136,9 @@ namespace EatThatChicken.Engines
             this.GenerateItem();
             this.AddBird();
             this.renderer.UpdateScore(this.Hunter);
-            foreach (var gameObj in this.GameObjects)
-            {
-                this.renderer.Draw(gameObj);
-                gameObj.Move();
-                
-            }
+            this.renderer.Draw(this.GameObjects);
+            this.GameObjects.ForEach(x => x.Move());
+            
         }
 
         private void GenerateItem()
@@ -202,7 +198,7 @@ namespace EatThatChicken.Engines
                 if (bird.Position.Top > (this.Hunter.Position.Top + this.Hunter.Bounds.Height))
                 {
                     bird.IsAlive = false;
-                    break;
+                   // break;
                 }
             }
         }

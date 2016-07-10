@@ -15,11 +15,5 @@ namespace EatThatChicken.GameObjects.GameItems
         {
             this.PointAffect = ChickenLegDefaultScore;
         }
-
-        public override void Draw(Canvas playgroundCanvas)
-        {
-            var image = this.CreateImage("/Images/chicken-leg.png", this.Position, this.Bounds);
-            playgroundCanvas.Children.Add(image);
-        }
     }
 }

@@ -17,11 +17,5 @@ namespace EatThatChicken.GameObjects.GameItems
         {
             hunter.NumberOfLifes--;
         }
-
-        public override void Draw(Canvas playgroundCanvas)
-        {
-            var image = this.CreateImage("/Images/bomb.png", this.Position, this.Bounds);
-            playgroundCanvas.Children.Add(image);
-        }
     }
 }

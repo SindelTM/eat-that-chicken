@@ -19,21 +19,6 @@ namespace EatThatChicken.GameObjects.Bullets
         public Bullet(Size bounds, Position position)
             : base(bounds, position, new MoveAction(defaultLeft, defaultTop, defaultSpeed)) { }
 
-        public override void Draw(Canvas playGroundCanvas)
-        {
-            var rect = new Border
-            {
-                Width = this.Bounds.Width,
-                Height = this.Bounds.Height,
-                Background = Brushes.White,
-                CornerRadius = new CornerRadius(10, 10, 0, 0)
-            };
-
-            Canvas.SetLeft(rect, this.Position.Left);
-            Canvas.SetTop(rect, this.Position.Top);
-            playGroundCanvas.Children.Add(rect);
-        }
-
         public void AffectHunter(IHunter hunter)
         {
             //TODO: Implement logic for bullets

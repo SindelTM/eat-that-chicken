@@ -6,7 +6,7 @@ namespace EatThatChicken.Contracts
     using System;
     using GameObjects;
     using Misc;
-
+    using System.Collections.Generic;
     public interface IGameRenderer
     {
         int ScreenWidth { get; }
@@ -17,7 +17,7 @@ namespace EatThatChicken.Contracts
 
         void Clear();
 
-        void Draw(params IGameObject[] gameObjects);
+        void Draw(IEnumerable<IGameObject> gameObjects);
 
         bool IsInRange(Position position);
 

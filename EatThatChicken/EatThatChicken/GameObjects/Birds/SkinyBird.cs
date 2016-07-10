@@ -15,11 +15,5 @@ namespace EatThatChicken.GameObjects.Birds
         {
             this.PointAffect = SkinnyBirdDefaultScore;
         }
-
-        public override void Draw(Canvas playGroundCanvas)
-        {
-            var image = this.CreateImage("/Images/Birds/skiny.png", this.Position, this.Bounds);
-            playGroundCanvas.Children.Add(image);
-        }
     }
 }

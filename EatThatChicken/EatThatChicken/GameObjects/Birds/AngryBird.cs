@@ -15,11 +15,5 @@ namespace EatThatChicken.GameObjects.Birds
         {
             this.PointAffect = AngryBirdDefaulScore;
         }
-
-        public override void Draw(Canvas playGroundCanvas)
-        {
-            var image = this.CreateImage("/Images/Birds/angry.png", this.Position, this.Bounds);
-            playGroundCanvas.Children.Add(image);
-        }
     }
 }
