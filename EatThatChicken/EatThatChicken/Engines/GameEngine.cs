@@ -86,15 +86,7 @@ namespace EatThatChicken.Engines
             var left = this.Hunter.Position.Left + this.Hunter.Bounds.Width / 2;
             var top = this.Hunter.Position.Top;
             Bullet newBullet = bulletFactory.Create(left, top);
-
-            //foreach (var bullet in Bullets)
-            //{
-            //    if (!this.renderer.IsInRange(bullet.Position))
-            //    {
-            //        bullet.IsAlive = false;
-            //    }
-            //}
-
+            
             this.GameObjects.Add(newBullet);
             this.Bullets.Add(newBullet);
         }
@@ -131,7 +123,7 @@ namespace EatThatChicken.Engines
             this.renderer.Clear();
             this.KillIfColliding();
             this.CollisionDetector.HandleCollision(this.Hunter, this.GameObjects);
-            this.RemoveBirdsOutofScreen();
+            this.RemoveGameObjectsOutofScreen();
             this.RemoveNotAliveGameObjects();
             this.GenerateItem();
             this.AddBird();
@@ -191,14 +183,16 @@ namespace EatThatChicken.Engines
             this.Bullets.RemoveAll(bullet => !bullet.IsAlive);
         }
 
-        private void RemoveBirdsOutofScreen()
+        private void RemoveGameObjectsOutofScreen()
         {
-            foreach (var bird in this.Birds)
+            foreach (var gameObject in this.GameObjects)
             {
-                if (bird.Position.Top > (this.Hunter.Position.Top + this.Hunter.Bounds.Height))
+                if ((gameObject.Position.Top > this.renderer.ScreenHeight) ||
+                    (gameObject.Position.Top  + gameObject.Bounds.Height < 0) ||
+                    (gameObject.Position.Left > this.renderer.ScreenWidth) ||
+                    (gameObject.Position.Left + gameObject.Bounds.Width < 0))
                 {
-                    bird.IsAlive = false;
-                   // break;
+                    gameObject.IsAlive = false;
                 }
             }
         }

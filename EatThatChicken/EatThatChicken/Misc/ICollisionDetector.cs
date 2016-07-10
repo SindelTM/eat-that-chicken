@@ -10,6 +10,6 @@ namespace EatThatChicken.Misc
     {
         bool AreCollided(IGameObject firstGameObject, IGameObject secondGameObject);
 
-        void HandleCollision(Hunter hunter, IList<IGameObject> gameObjects);
+        void HandleCollision(Hunter hunter, IEnumerable<IGameObject> gameObjects);
     }
 }
