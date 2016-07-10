@@ -122,7 +122,18 @@ namespace EatThatChicken.Engines
         }
 
         private void GameLoop(object sender, EventArgs args)
-        {
+        { 
+            if (CollisionDetector.isHunterColliding(this.Hunter, this.Birds))
+            {
+                if (Hunter.NumberOfLifes <= 0)
+                {
+                    this.timer.Stop();
+                }
+                else
+                {
+                    Hunter.NumberOfLifes--;
+                }              
+            }
             this.renderer.Clear();
             this.CollisionDetector.KillIfColliding(this.Bullets, this.Birds);
             this.CollisionDetector.HandleCollision(this.Hunter, this.Items);

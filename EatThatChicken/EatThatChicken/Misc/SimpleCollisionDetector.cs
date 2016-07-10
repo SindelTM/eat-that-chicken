@@ -2,6 +2,7 @@
 using EatThatChicken.Common;
 using EatThatChicken.Contracts;
 using EatThatChicken.GameObjects.Hunters;
+using System.Linq;
 
 namespace EatThatChicken.Misc
 {
@@ -75,6 +76,19 @@ namespace EatThatChicken.Misc
                     }
                 }
             }
+        }
+
+        public bool isHunterColliding(IHunter hunter, IList<IGameObject> birds)
+        {
+            foreach (var bird in birds)
+            {
+                if (AreCollided(hunter, bird))
+                {
+                    bird.IsAlive = false;
+                    return true;
+                }
+            }
+            return false;
         }
 
         //IList<IAffectableGameObject>
