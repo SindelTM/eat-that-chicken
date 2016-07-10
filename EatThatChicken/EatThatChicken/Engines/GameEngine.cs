@@ -33,7 +33,7 @@ namespace EatThatChicken.Engines
 
         private List<IGameObject> Bullets { get; }
 
-        private List<Bird> Birds { get; }
+        private List<IGameObject> Birds { get; }
         
         private IGameRenderer renderer { get; }
 
@@ -51,7 +51,7 @@ namespace EatThatChicken.Engines
             this.renderer.UIAction += UIActionHandler;
             this.GameObjects = new List<IGameObject>();
             this.Bullets = new List<IGameObject>();
-            this.Birds = new List<Bird>();
+            this.Birds = new List<IGameObject>();
             this.CollisionDetector = new SimpleCollisionDetector();
             this.AffectableGameObjects = new List<IAffectableGameObject>();
             this.Generator = new ItemGenerator();
@@ -121,7 +121,7 @@ namespace EatThatChicken.Engines
         private void GameLoop(object sender, EventArgs args)
         {
             this.renderer.Clear();
-            this.KillIfColliding();
+            this.CollisionDetector.KillIfColliding(this.Bullets, this.Birds);
             this.CollisionDetector.HandleCollision(this.Hunter, this.GameObjects);
             this.RemoveGameObjectsOutofScreen();
             this.RemoveNotAliveGameObjects();
@@ -160,21 +160,7 @@ namespace EatThatChicken.Engines
             }
         }
 
-        private void KillIfColliding()
-        {
-            foreach (var bullet in this.Bullets)
-            {
-                foreach (var bird in this.Birds)
-                {
-                    if (CollisionDetector.AreCollided(bird, bullet))
-                    {
-                        bullet.IsAlive = false;
-                        bird.IsAlive = false;
-                        break;
-                    }
-                }
-            }            
-        }
+
 
         private void RemoveNotAliveGameObjects()
         {

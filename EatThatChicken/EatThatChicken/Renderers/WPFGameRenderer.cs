@@ -1,24 +1,18 @@
-﻿using System.Collections.Generic;
-using System.Globalization;
-using System.Windows.Documents;
-using EatThatChicken.Common;
-using EatThatChicken.Contracts;
-using EatThatChicken.GameObjects.GameItems;
-
-namespace EatThatChicken.Renderers
+﻿namespace EatThatChicken.Renderers
 {
     using System;
+    using System.Collections.Generic;
     using System.Windows.Controls;
+    using System.Windows.Documents;
     using System.Windows.Input;
     using System.Windows.Media;
     using System.Windows.Media.Imaging;
-    using System.Windows.Shapes;
-    using EatThatChicken.GameObjects;
-    using EatThatChicken.GameObjects.Birds;
-    using EatThatChicken.GameObjects.Bullets;
+    using EatThatChicken.Common;
+    using EatThatChicken.Contracts;
     using EatThatChicken.GameObjects.Hunters;
     using EatThatChicken.Misc;
     using EatThatChicken.View;
+
 
 
     class WPFGameRenderer : IGameRenderer

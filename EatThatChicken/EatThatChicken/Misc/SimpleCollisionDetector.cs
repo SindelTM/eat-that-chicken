@@ -61,7 +61,23 @@ namespace EatThatChicken.Misc
                 (firstGameObjectBounds.Left <= secondGameObjectBounds.Right && secondGameObjectBounds.Right <= firstGameObjectBounds.Right));
         }
 
-                                                    //IList<IAffectableGameObject>
+        public void KillIfColliding(IList<IGameObject> bullets, IList<IGameObject> birds)
+        {
+            foreach (var bullet in bullets)
+            {
+                foreach (var bird in birds)
+                {
+                    if (AreCollided(bird, bullet))
+                    {
+                        bullet.IsAlive = false;
+                        bird.IsAlive = false;
+                        break;
+                    }
+                }
+            }
+        }
+
+        //IList<IAffectableGameObject>
         public void HandleCollision(Hunter hunter, IEnumerable<IGameObject> gameObjects)
         {
             foreach (var gameObject in gameObjects)
