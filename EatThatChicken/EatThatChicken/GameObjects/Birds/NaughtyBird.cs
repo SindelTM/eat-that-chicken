@@ -14,7 +14,6 @@ namespace EatThatChicken.GameObjects.Birds
         public NaughtyBird(Size bounds, Position position, int speed)
             : base(NaughtyBirdDefaultHealth, NaughtyBirdDefaultScore, bounds, position, speed)
         {
-            this.PointAffect = NaughtyBirdDefaultScore;
         }
     }
 }

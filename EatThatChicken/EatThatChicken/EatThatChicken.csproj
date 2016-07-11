@@ -61,6 +61,9 @@
     <Compile Include="Common\CommandBase.cs" />
     <Compile Include="Common\ErrorMessages.cs" />
     <Compile Include="Common\Validator.cs" />
+    <Compile Include="Contracts\IBird.cs" />
+    <Compile Include="Contracts\IBullet.cs" />
+    <Compile Include="Contracts\IBulletAffectable.cs" />
     <Compile Include="Contracts\IGameObject.cs" />
     <Compile Include="Contracts\IGameObjectFactory.cs" />
     <Compile Include="Contracts\IHunter.cs" />
@@ -71,7 +74,8 @@
     <Compile Include="Contracts\ISerializer.cs" />
     <Compile Include="Contracts\IUpdateable.cs" />
     <Compile Include="Contracts\IWPFGameRenderer.cs" />
-    <Compile Include="Misc\EndGameEventArgs.cs" />
+    <Compile Include="Miscellaneous\EndGameEventArgs.cs" />
+    <Compile Include="Miscellaneous\SimpleCollisionDetector.cs" />
     <Compile Include="Models\Exceptions\RecordSerializationException.cs" />
     <Compile Include="Models\HighScoreContainer.cs" />
     <Compile Include="Models\Player.cs" />
@@ -99,11 +103,11 @@
     <Compile Include="Common\ItemAttribute.cs" />
     <Compile Include="GameObjects\Hunters\Hunter.cs" />
     <Compile Include="Common\MoveAction.cs" />
-    <Compile Include="Misc\GameAction.cs" />
-    <Compile Include="Misc\ICollisionDetector.cs" />
-    <Compile Include="Misc\KeyDownEventArgs.cs" />
+    <Compile Include="Miscellaneous\GameAction.cs" />
+    <Compile Include="Miscellaneous\ICollisionDetector.cs" />
+    <Compile Include="Miscellaneous\KeyDownEventArgs.cs" />
     <Compile Include="GameObjects\Bullets\Bullet.cs" />
-    <Compile Include="Misc\SimpleCollisionDetector.cs" />
+    <Compile Include="Miscellaneous\GameObjectBounds.cs" />
     <Compile Include="Renderers\WPFGameRenderer.cs" />
     <Compile Include="ViewModel\EndGameViewModel.cs" />
     <Compile Include="ViewModel\MainViewModel.cs" />

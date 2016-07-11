@@ -29,9 +29,9 @@
 
         private List<IGameObject> GameObjects { get; }
 
-        private List<IGameObject> Bullets { get; }
+        private List<IBullet> Bullets { get; }
 
-        private List<IGameObject> Birds { get; }
+        private List<IBird> Birds { get; }
 
         private List<IGameObject> Items { get; }
 
@@ -50,8 +50,8 @@
             this.renderer = renderer;
             this.renderer.UIAction += UIActionHandler;
             this.GameObjects = new List<IGameObject>();
-            this.Bullets = new List<IGameObject>();
-            this.Birds = new List<IGameObject>();
+            this.Bullets = new List<IBullet>();
+            this.Birds = new List<IBird>();
             this.Items = new List<IGameObject>();
             this.CollisionDetector = new SimpleCollisionDetector();
             this.AffectableGameObjects = new List<IAffectableGameObject>();
@@ -111,7 +111,7 @@
             this.GameObjects.Add(Hunter);
             this.timer = new DispatcherTimer();
             timer.Interval = TimeSpan.FromMilliseconds(TimerIntervalMillis);
-            timer.Tick += this.GameLoop;
+            timer.Tick += this.LoopGame;
         }
 
         public void StartGame()
@@ -119,9 +119,9 @@
             this.timer.Start();
         }
 
-        private void GameLoop(object sender, EventArgs args)
+        private void LoopGame(object sender, EventArgs args)
         {
-            if (CollisionDetector.isHunterColliding(this.Hunter, this.Birds))
+            if (CollisionDetector.IsHunterColliding(this.Hunter, this.Birds))
             {
                 if (this.Hunter.NumberOfLifes > 0 && this.Hunter.NumberOfLifes <= 3)
                 {
@@ -134,16 +134,24 @@
                 }
             }
             this.renderer.Clear();
-            this.CollisionDetector.KillIfColliding(this.Bullets, this.Birds);
-            this.CollisionDetector.HandleCollision(this.Hunter, this.Items);
+            this.CollisionDetector.HandleCollisions(this.Bullets, this.Birds, this.Hunter, this.Items);
             this.RemoveGameObjectsOutofScreen();
             this.RemoveNotAliveGameObjects();
             this.GenerateItem();
-            this.AddBird();
+            this.GenerateBird();
             this.renderer.UpdateScore(this.Hunter);
             this.renderer.Draw(this.GameObjects);
             this.GameObjects.ForEach(x => x.Move());
+        }
 
+        private bool CheckIfHunterAlive()
+        {
+            if (this.Hunter.NumberOfLifes > 0)
+            {
+                return true;
+            }
+
+            return false;
         }
 
         private void GenerateItem()
@@ -157,7 +165,7 @@
             }
         }
 
-        public void AddBird()
+        public void GenerateBird()
         {
             int left = rand.Next(0, this.renderer.ScreenWidth);
             int top = 0;

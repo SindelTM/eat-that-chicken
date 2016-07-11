@@ -13,7 +13,6 @@ namespace EatThatChicken.GameObjects.Birds
         public AngryBird(Size bounds, Position position, int speed)
             : base(AngryBirdDefaultHealth, AngryBirdDefaulScore, bounds, position, speed)
         {
-            this.PointAffect = AngryBirdDefaulScore;
         }
     }
 }

@@ -25,15 +25,14 @@ namespace EatThatChicken.Factories.ItemsFactory
                 .Where(t => t.GetCustomAttributes(typeof(ItemAttribute), false).Any())
                 .ToArray();
 
-            int entityIndex = Rand.Next(0, allItems.Length);
+            int randomIndex = Rand.Next(0, allItems.Length);
 
             Size bounds = new Size(ItemDefaultWidth, ItemDefaultHeight);
-            var entity =
-                   Activator.CreateInstance(allItems[entityIndex], ItemDefaultSpeed, bounds, new Position(left, top)) as
+            var item =
+                   Activator.CreateInstance(allItems[randomIndex], ItemDefaultSpeed, bounds, new Position(left, top)) as
                    Item;
 
-            return entity;
-
+            return item;
         }
     }
 }

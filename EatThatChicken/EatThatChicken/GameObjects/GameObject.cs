@@ -5,17 +5,12 @@
 
     public abstract class GameObject : IGameObject
     {
-        protected GameObject()
-        {
-            this.IsAlive = true;
-        }
-
         protected GameObject(Size bounds, Position position, MoveAction moveAction)
-            : this()
         {
             this.Bounds = bounds;
             this.Position = position;
             this.MoveAction = moveAction;
+            this.IsAlive = true;
         }
 
         protected MoveAction MoveAction { get; }

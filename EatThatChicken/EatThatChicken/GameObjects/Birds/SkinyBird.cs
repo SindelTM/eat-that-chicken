@@ -13,7 +13,6 @@ namespace EatThatChicken.GameObjects.Birds
         public SkinyBird(Size bounds, Position position, int speed)
             : base(SkinnyBirdDefaultHealth, SkinnyBirdDefaultScore, bounds, position, speed)
         {
-            this.PointAffect = SkinnyBirdDefaultScore;
         }
     }
 }

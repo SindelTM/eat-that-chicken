@@ -3,19 +3,19 @@
     using Common;
     using Contracts;
     using Enumerations;
-    public abstract class Bird : GameObject, IMoveable, IAffectableGameObject
+    public abstract class Bird : GameObject, IBird
     {
         private const MoveType Top = MoveType.Decremental;
         private const MoveType Left = MoveType.None;
-        private int health;
 
-        protected Bird(int health, int score, Size bounds, Position position, int speed)
+        protected Bird(int health, int pointAffect, Size bounds, Position position, int speed)
             : base(bounds, position, new MoveAction(Left, Top, speed))
         {
             this.Health = health;
+            this.PointAffect = pointAffect;
         }
 
-        protected int Health { get; set; }
+        protected int Health { get; private set; }
 
         public override bool IsAlive
         {
@@ -32,12 +32,17 @@
             }
         }
 
-        public virtual void AffectHunter(IHunter hunter)
+        public void AffectHunter(IHunter hunter)
         {
-            if (hunter.NumberOfLifes >= 1 && hunter.NumberOfLifes <= 3)
+            if (hunter.NumberOfLifes >= 1)
             {
                 hunter.NumberOfLifes--;
             }
+        }
+
+        public void AffectHunterPointsByBullet(IHunter hunter)
+        {
+            hunter.Points += this.PointAffect;
         }
     }
 }

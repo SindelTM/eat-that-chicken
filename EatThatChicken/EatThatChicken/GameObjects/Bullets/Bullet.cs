@@ -10,7 +10,7 @@ namespace EatThatChicken.GameObjects.Bullets
 {
     using Enumerations;
 
-    public class Bullet : GameObject, IAffectableGameObject
+    public class Bullet : GameObject, IBullet
     {
         private const int defaultSpeed = 40;
         private const MoveType defaultTop = MoveType.Incremental;
@@ -18,10 +18,5 @@ namespace EatThatChicken.GameObjects.Bullets
 
         public Bullet(Size bounds, Position position)
             : base(bounds, position, new MoveAction(defaultLeft, defaultTop, defaultSpeed)) { }
-
-        public void AffectHunter(IHunter hunter)
-        {
-            //TODO: Implement logic for bullets
-        }
     }
 }

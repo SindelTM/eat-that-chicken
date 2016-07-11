@@ -9,16 +9,13 @@ namespace EatThatChicken.GameObjects.GameItems
     class Heart : Item
     {
         public Heart(int speed, Size bounds, Position position)
-            :base(bounds, position, speed)
+            : base(bounds, position, speed)
         {
         }
 
         public override void AffectHunter(IHunter hunter)
         {
-            if (hunter.NumberOfLifes >= 1 && hunter.NumberOfLifes < 3)
-            {
-                hunter.NumberOfLifes++;
-            }
+            hunter.NumberOfLifes++;
         }
     }
 }
