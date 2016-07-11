@@ -1,4 +1,5 @@
 ﻿using EatThatChicken.Common;
+using EatThatChicken.Common.Structs;
 using EatThatChicken.Contracts;
 using EatThatChicken.GameObjects.Hunters;
 
@@ -18,7 +19,7 @@ namespace EatThatChicken.Factories.ItemsFactory
         private const int ItemDefaultWidth = 20;
         private const int ItemDefaultHeight = 20;
 
-        public Item GenerateItems(int left, int top, Hunter hunter)
+        public Item GenerateItems(int left, int top)
         {
             var allItems = Assembly.GetExecutingAssembly().GetTypes()
                 .Where(t => t.IsClass)

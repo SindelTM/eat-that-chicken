@@ -1,4 +1,4 @@
-﻿using EatThatChicken.Enumerations;
+﻿using EatThatChicken.Common.Enumerations;
 
 namespace EatThatChicken.Common
 {

@@ -1,9 +1,5 @@
-﻿namespace EatThatChicken.Misc
+﻿namespace EatThatChicken.Common.Structs
 {
-    using System.Collections.Generic;
-
-    using EatThatChicken.Common;
-
     public struct GameObjectBounds
     {
         public GameObjectBounds(Position topLeft, Position bottomRight)

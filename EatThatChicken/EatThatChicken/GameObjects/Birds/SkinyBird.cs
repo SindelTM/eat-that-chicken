@@ -1,8 +1,8 @@
-﻿using EatThatChicken.Common;
+﻿using EatThatChicken.Common.Structs;
 
 namespace EatThatChicken.GameObjects.Birds
 {
-    using System.Windows.Controls;
+    using EatThatChicken.Common;
 
     public class SkinyBird: Bird
     {

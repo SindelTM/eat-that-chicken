@@ -1,9 +1,8 @@
-﻿using System.Windows.Controls;
-using EatThatChicken.Common;
+﻿using EatThatChicken.Common.Structs;
 
 namespace EatThatChicken.GameObjects.Birds
 {
-    using EatThatChicken.Enumerations;
+    using EatThatChicken.Common;
 
     public class NaughtyBird : Bird
     {

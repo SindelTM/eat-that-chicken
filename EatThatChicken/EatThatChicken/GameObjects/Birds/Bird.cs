@@ -1,8 +1,11 @@
-﻿namespace EatThatChicken.GameObjects.Birds
+﻿using EatThatChicken.Common.Enumerations;
+using EatThatChicken.Common.Structs;
+
+namespace EatThatChicken.GameObjects.Birds
 {
     using Common;
     using Contracts;
-    using Enumerations;
+
     public abstract class Bird : GameObject, IBird
     {
         private const MoveType Top = MoveType.Decremental;
@@ -16,6 +19,8 @@
         }
 
         protected int Health { get; private set; }
+
+        public int PointAffect { get; private set; }
 
         public override bool IsAlive
         {

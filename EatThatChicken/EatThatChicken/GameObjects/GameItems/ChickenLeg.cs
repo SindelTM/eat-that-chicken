@@ -1,4 +1,5 @@
 ﻿using EatThatChicken.Common;
+using EatThatChicken.Common.Structs;
 
 namespace EatThatChicken.GameObjects.GameItems
 {
@@ -11,9 +12,8 @@ namespace EatThatChicken.GameObjects.GameItems
         private const int ChickenLegDefaultScore = 10;
 
         public ChickenLeg(int speed, Size bounds, Position position)
-            : base(bounds, position, speed)
+            : base(bounds, position, speed, ChickenLegDefaultScore)
         {
-            this.PointAffect = ChickenLegDefaultScore;
         }
     }
 }

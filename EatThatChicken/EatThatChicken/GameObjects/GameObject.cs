@@ -1,4 +1,6 @@
-﻿namespace EatThatChicken.GameObjects
+﻿using EatThatChicken.Common.Structs;
+
+namespace EatThatChicken.GameObjects
 {
     using Contracts;
     using Common;
@@ -20,8 +22,6 @@
         public Position Position { get; set; }
 
         public virtual bool IsAlive { get; set; }
-
-        public int PointAffect { get; set; }
         
         public virtual void Move()
         {

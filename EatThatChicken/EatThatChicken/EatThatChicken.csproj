@@ -72,16 +72,15 @@
     <Compile Include="Contracts\IRecordable.cs" />
     <Compile Include="Contracts\IScorable.cs" />
     <Compile Include="Contracts\ISerializer.cs" />
-    <Compile Include="Contracts\IUpdateable.cs" />
     <Compile Include="Contracts\IWPFGameRenderer.cs" />
-    <Compile Include="Miscellaneous\EndGameEventArgs.cs" />
-    <Compile Include="Miscellaneous\SimpleCollisionDetector.cs" />
+    <Compile Include="Common\Events\EndGameEventArgs.cs" />
+    <Compile Include="Core\SimpleCollisionDetector.cs" />
     <Compile Include="Models\Exceptions\RecordSerializationException.cs" />
     <Compile Include="Models\HighScoreContainer.cs" />
     <Compile Include="Models\Player.cs" />
     <Compile Include="Models\Serialization\RecordSerializer.cs" />
     <Compile Include="Engines\GameEngine.cs" />
-    <Compile Include="Enumerations\MoveType.cs" />
+    <Compile Include="Common\Enumerations\MoveType.cs" />
     <Compile Include="Factories\BirdsFactories\AngryBirdFactory.cs" />
     <Compile Include="Factories\BirdsFactories\BirdFactory.cs" />
     <Compile Include="Factories\BirdsFactories\MuscleBirdFactory.cs" />
@@ -103,11 +102,11 @@
     <Compile Include="Common\ItemAttribute.cs" />
     <Compile Include="GameObjects\Hunters\Hunter.cs" />
     <Compile Include="Common\MoveAction.cs" />
-    <Compile Include="Miscellaneous\GameAction.cs" />
-    <Compile Include="Miscellaneous\ICollisionDetector.cs" />
-    <Compile Include="Miscellaneous\KeyDownEventArgs.cs" />
+    <Compile Include="Common\Enumerations\GameAction.cs" />
+    <Compile Include="Contracts\ICollisionDetector.cs" />
+    <Compile Include="Common\Events\KeyDownEventArgs.cs" />
     <Compile Include="GameObjects\Bullets\Bullet.cs" />
-    <Compile Include="Miscellaneous\GameObjectBounds.cs" />
+    <Compile Include="Common\Structs\GameObjectBounds.cs" />
     <Compile Include="Renderers\WPFGameRenderer.cs" />
     <Compile Include="ViewModel\EndGameViewModel.cs" />
     <Compile Include="ViewModel\MainViewModel.cs" />
@@ -134,8 +133,8 @@
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="Common\Position.cs" />
-    <Compile Include="Common\Size.cs" />
+    <Compile Include="Common\Structs\Position.cs" />
+    <Compile Include="Common\Structs\Size.cs" />
     <Compile Include="GameObjects\GameObject.cs" />
     <Compile Include="View\Instructions.xaml.cs">
       <DependentUpon>Instructions.xaml</DependentUpon>
@@ -211,14 +210,15 @@
   <ItemGroup>
     <Resource Include="muscle.ico" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Core\" />
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <Resource Include="Images\Bullet.png" />
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Images\endWindowBackground.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\galaxy-1.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

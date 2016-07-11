@@ -8,7 +8,7 @@
         Title="Eat That Chicken" Height="600" Width="1000" ResizeMode="NoResize"  WindowStartupLocation="CenterScreen">
     <Canvas Name="PlayGroundCanvas">
         <Canvas.Background>
-            <ImageBrush ImageSource="/Images/galaxy.jpg"/>
+            <ImageBrush ImageSource="/Images/galaxy-1.png"/>
         </Canvas.Background>
     </Canvas>
 </Window>

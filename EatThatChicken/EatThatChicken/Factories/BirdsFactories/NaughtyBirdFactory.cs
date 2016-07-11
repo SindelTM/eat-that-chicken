@@ -1,4 +1,5 @@
 ﻿using EatThatChicken.Common;
+using EatThatChicken.Common.Structs;
 
 namespace EatThatChicken.Factories.BirdsFactories
 {

@@ -1,8 +1,8 @@
-﻿namespace EatThatChicken.Misc
-{
-    using System;
+﻿using System;
 
-    class EndGameEventArgs : EventArgs
+namespace EatThatChicken.Common.Events
+{
+    public class EndGameEventArgs : EventArgs
     {
         public EndGameEventArgs(int points)
         {

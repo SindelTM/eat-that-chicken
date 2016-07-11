@@ -1,4 +1,4 @@
-﻿namespace EatThatChicken.Enumerations
+﻿namespace EatThatChicken.Common.Enumerations
 {
     public enum MoveType
     {

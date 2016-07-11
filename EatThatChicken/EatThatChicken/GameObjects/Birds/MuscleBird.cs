@@ -1,10 +1,9 @@
-﻿using System.Windows.Controls;
-using EatThatChicken.Common;
-using EatThatChicken.Contracts;
-using EatThatChicken.Enumerations;
+﻿using EatThatChicken.Common.Structs;
 
 namespace EatThatChicken.GameObjects.Birds
 {
+    using EatThatChicken.Common;
+
     public class MuscleBird: Bird
     {
         private const int MusleBirdDefaultScore = 5;
@@ -14,7 +13,6 @@ namespace EatThatChicken.GameObjects.Birds
         public MuscleBird(Size bounds, Position position, int speed)
             : base(MuscleBirdDefaultHealth, MusleBirdDefaultScore, bounds, position, speed)
         {
-            this.PointAffect = MusleBirdDefaultScore;
         }
     }
 }

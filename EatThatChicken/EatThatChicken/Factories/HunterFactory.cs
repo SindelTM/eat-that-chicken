@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using EatThatChicken.Common;
+using EatThatChicken.Common.Structs;
 
 namespace EatThatChicken.Factories
 {

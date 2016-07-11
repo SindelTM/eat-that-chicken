@@ -1,10 +1,7 @@
-﻿namespace EatThatChicken.Misc
+﻿using System.Collections.Generic;
+
+namespace EatThatChicken.Contracts
 {
-    using System.Collections.Generic;
-
-    using EatThatChicken.Contracts;
-    using EatThatChicken.GameObjects.Hunters;
-
     public interface ICollisionDetector
     {
         void HandleCollisions(IList<IBullet> bullets, IList<IBird> birds, IHunter hunter,

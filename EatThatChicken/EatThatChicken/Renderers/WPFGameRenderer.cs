@@ -7,43 +7,26 @@
     using System.Windows.Input;
     using System.Windows.Media;
     using System.Windows.Media.Imaging;
-
-    using EatThatChicken.Common;
-    using EatThatChicken.Contracts;
-    using EatThatChicken.GameObjects.Hunters;
-    using EatThatChicken.Misc;
-    using EatThatChicken.View;
-
+    using Contracts;
+    using View;
+    using EatThatChicken.Common.Events;
+    using EatThatChicken.Common.Structs;
+    using EatThatChicken.Common.Enumerations;
 
 
-    class WPFGameRenderer : IWPFGameRenderer
+    public class WPFGameRenderer : IWPFGameRenderer
     {
+        public event EventHandler<KeyDownEventArgs> UIAction;
+        public event EventHandler<EndGameEventArgs> EndGameAction;
         private readonly Dictionary<string, string> avatars;
-
         private readonly Canvas playGroundCanvas;
-
-        public int ScreenHeight
-        {
-            get
-            {
-                return (int)(this.playGroundCanvas.Parent as GameFieldWindow).Height;
-            }
-        }
-
-        public int ScreenWidth
-        {
-            get
-            {
-                return (int)(this.playGroundCanvas.Parent as GameFieldWindow).Width;
-            }
-        }
 
         public WPFGameRenderer(Canvas playGroundCanvas)
         {
             this.playGroundCanvas = playGroundCanvas;
 
             this.avatars = new Dictionary<string, string>();
-            FillAvatars(this.avatars);
+            FillAvatars();
 
             (this.playGroundCanvas.Parent as GameFieldWindow).KeyDown += (sender, args) =>
             {
@@ -63,10 +46,23 @@
             };
         }
 
-        public event EventHandler<KeyDownEventArgs> UIAction;
-        public event EventHandler<EndGameEventArgs> EndGameAction;
+        public int ScreenHeight
+        {
+            get
+            {
+                return (int)(this.playGroundCanvas.Parent as GameFieldWindow).Height;
+            }
+        }
 
-        private void FillAvatars(Dictionary<string, string> avatars)
+        public int ScreenWidth
+        {
+            get
+            {
+                return (int)(this.playGroundCanvas.Parent as GameFieldWindow).Width;
+            }
+        }
+
+        private void FillAvatars()
         {
             avatars.Add("Hunter", "/Images/Hunter.png");
             avatars.Add("Bullet", "/Images/Bullet.png");
@@ -91,41 +87,36 @@
                 var image = this.CreateImage(avatars[gameObject.GetType().Name], gameObject.Position, gameObject.Bounds);
                 this.playGroundCanvas.Children.Add(image);
             }
-
-            //this.UpdateScore(hunter);
         }
 
-        public bool IsInRange(Position position)
+       /* public bool IsInRange(Position position)
         {
             return 0 <= position.Left && position.Left <= this.ScreenWidth &&
                 0 <= position.Top - 200 && position.Top <= this.ScreenHeight;
-        }
+        }*/
 
-        public void UpdateScore(Hunter hunter)
+        public void UpdateScoreOnRenderer(IHunter hunter)
         {
-            var points = $"Points of Player: {hunter.Points}";
-            var lifes = $"Lifes: {hunter.NumberOfLifes}";
+            var points = hunter.Points.ToString();
+            var lifes = hunter.NumberOfLifes.ToString();
 
-            this.ShowScoreOnScreen(850, 50, points, Color.FromRgb(255, 255, 255));
-            this.ShowScoreOnScreen(850, 70, lifes, Color.FromRgb(255, 255, 255));
+            this.ShowScoreOnScreen(900, 30, points, Color.FromRgb(255, 255, 255));
+            this.ShowScoreOnScreen(900, 60, lifes, Color.FromRgb(255, 255, 255));
         }
 
         private void ShowScoreOnScreen(double x, double y, string text, Color color)
         {
             TextBlock textBlock = new TextBlock(new Bold());
-
             textBlock.Text = text;
-
             textBlock.Foreground = new SolidColorBrush(color);
 
             Canvas.SetLeft(textBlock, x);
-
             Canvas.SetTop(textBlock, y);
 
             this.playGroundCanvas.Children.Add(textBlock);
         }
 
-        public Image CreateImage(string path, Position position, Size bounds)
+        private Image CreateImage(string path, Position position, Size bounds)
         {
             Image image = new Image();
             BitmapImage bitmap = new BitmapImage();

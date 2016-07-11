@@ -1,4 +1,4 @@
-﻿namespace EatThatChicken.Common
+﻿namespace EatThatChicken.Common.Structs
 {
     public struct Size
     {

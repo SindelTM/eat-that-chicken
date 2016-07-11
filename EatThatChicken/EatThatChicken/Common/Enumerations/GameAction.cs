@@ -1,4 +1,4 @@
-﻿namespace EatThatChicken.Misc
+﻿namespace EatThatChicken.Common.Enumerations
 {
     public enum GameAction
     {

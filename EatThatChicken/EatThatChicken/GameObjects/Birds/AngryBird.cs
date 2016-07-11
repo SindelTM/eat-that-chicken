@@ -1,9 +1,10 @@
 ﻿using System.Windows.Controls;
-using EatThatChicken.Common;
-using EatThatChicken.Enumerations;
+using EatThatChicken.Common.Structs;
 
 namespace EatThatChicken.GameObjects.Birds
 {
+    using EatThatChicken.Common;
+
     public class AngryBird: Bird
     {
         private const int AngryBirdDefaulScore = 3;

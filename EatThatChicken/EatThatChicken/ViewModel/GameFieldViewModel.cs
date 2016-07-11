@@ -3,7 +3,7 @@
     using EatThatChicken.Engines;
     using EatThatChicken.Renderers;
     using EatThatChicken.View;
-    using Misc;
+    using EatThatChicken.Common.Events;
 
     class GameFieldViewModel
     {

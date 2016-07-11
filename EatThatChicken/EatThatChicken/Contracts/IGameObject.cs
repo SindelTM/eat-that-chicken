@@ -1,5 +1,6 @@
 ﻿using System.Windows.Controls;
 using EatThatChicken.Common;
+using EatThatChicken.Common.Structs;
 
 namespace EatThatChicken.Contracts
 {
@@ -12,7 +13,5 @@ namespace EatThatChicken.Contracts
         Size Bounds { get; set; }
 
         bool IsAlive { get; set; }
-
-        int PointAffect { get; set; }
     }
 }

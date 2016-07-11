@@ -1,12 +1,15 @@
-﻿namespace EatThatChicken.Engines
+﻿using EatThatChicken.Common.Enumerations;
+using EatThatChicken.Common.Events;
+using EatThatChicken.Common.Structs;
+using EatThatChicken.Core;
+
+namespace EatThatChicken.Engines
 {
     using System;
     using System.Collections.Generic;
     using System.Windows.Threading;
     using GameObjects.Birds;
     using GameObjects.Bullets;
-    using GameObjects.Hunters;
-    using Misc;
     using EatThatChicken.Common;
     using EatThatChicken.Contracts;
     using EatThatChicken.Factories;
@@ -17,15 +20,27 @@
     public class GameEngine
     {
         private const int TimerIntervalMillis = 150;
-        private const int GenerateBirdChanse = 20;
+        private const int GenerationChanse = 20;
 
         private readonly HunterFactory hunterFactory = new HunterFactory();
-
         private readonly BulletFactory bulletFactory = new BulletFactory();
-
         private readonly BirdsFactory birdFactory = new BirdsFactory();
+        private readonly Random rand = new Random();
 
-        private Hunter Hunter { get; set; }
+        public GameEngine(IGameRenderer renderer)
+        {
+            this.Renderer = renderer;
+            this.Renderer.UIAction += UIActionHandler;
+            this.GameObjects = new List<IGameObject>();
+            this.Bullets = new List<IBullet>();
+            this.Birds = new List<IBird>();
+            this.Items = new List<IGameObject>();
+            this.CollisionDetector = new SimpleCollisionDetector();
+            this.AffectableGameObjects = new List<IAffectableGameObject>();
+            this.Generator = new ItemGenerator();
+        }
+
+        private IHunter Hunter { get; set; }
 
         private List<IGameObject> GameObjects { get; }
 
@@ -35,28 +50,13 @@
 
         private List<IGameObject> Items { get; }
 
-        private IGameRenderer renderer { get; }
+        private IGameRenderer Renderer { get; }
 
         private ICollisionDetector CollisionDetector { get; }
 
         private IList<IAffectableGameObject> AffectableGameObjects { get; }
 
-        private readonly Random rand = new Random();
-
         private DispatcherTimer timer;
-
-        public GameEngine(IGameRenderer renderer)
-        {
-            this.renderer = renderer;
-            this.renderer.UIAction += UIActionHandler;
-            this.GameObjects = new List<IGameObject>();
-            this.Bullets = new List<IBullet>();
-            this.Birds = new List<IBird>();
-            this.Items = new List<IGameObject>();
-            this.CollisionDetector = new SimpleCollisionDetector();
-            this.AffectableGameObjects = new List<IAffectableGameObject>();
-            this.Generator = new ItemGenerator();
-        }
 
         public ItemGenerator Generator { get; set; }
 
@@ -71,7 +71,7 @@
             }
             else if (e.Action == GameAction.MoveRight)
             {
-                if (this.Hunter.Position.Left < this.renderer.ScreenWidth - this.Hunter.Bounds.Width)
+                if (this.Hunter.Position.Left < this.Renderer.ScreenWidth - this.Hunter.Bounds.Width)
                 {
                     this.Hunter.MoveRight();
                 }
@@ -96,19 +96,8 @@
         {
             this.GameObjects.Clear();
 
-            // TO DO add Hunter
-            this.Hunter = this.hunterFactory.Create(0, 0);
-
-            var hunterWidth = this.Hunter.Bounds.Width;
-            var hunterHeight = this.Hunter.Bounds.Height;
-
-            var left = (this.renderer.ScreenWidth - hunterWidth) / 2;
-            var top = this.renderer.ScreenHeight - hunterHeight;
-            var position = new Position(left, top);
-
-            this.Hunter.Position = position;
-
-            this.GameObjects.Add(Hunter);
+            this.CreateHunter();
+            
             this.timer = new DispatcherTimer();
             timer.Interval = TimeSpan.FromMilliseconds(TimerIntervalMillis);
             timer.Tick += this.LoopGame;
@@ -123,28 +112,28 @@
         {
             if (CollisionDetector.IsHunterColliding(this.Hunter, this.Birds))
             {
-                if (this.Hunter.NumberOfLifes > 0 && this.Hunter.NumberOfLifes <= 3)
+                if (this.Hunter.NumberOfLifes > 0)
                 {
-                    this.Hunter.NumberOfLifes--;
+                    //this.Hunter.NumberOfLifes--;
                 }
                 else if (this.Hunter.NumberOfLifes == 0)
                 {
                     this.timer.Stop();
-                    this.renderer.EndGame(this.Hunter.Points);
+                    this.Renderer.EndGame(this.Hunter.Points);
                 }
             }
-            this.renderer.Clear();
+            this.Renderer.Clear();
             this.CollisionDetector.HandleCollisions(this.Bullets, this.Birds, this.Hunter, this.Items);
             this.RemoveGameObjectsOutofScreen();
             this.RemoveNotAliveGameObjects();
             this.GenerateItem();
             this.GenerateBird();
-            this.renderer.UpdateScore(this.Hunter);
-            this.renderer.Draw(this.GameObjects);
+            this.Renderer.UpdateScoreOnRenderer(this.Hunter);
+            this.Renderer.Draw(this.GameObjects);
             this.GameObjects.ForEach(x => x.Move());
         }
 
-        private bool CheckIfHunterAlive()
+        private bool CheckIfHunterIsAlive()
         {
             if (this.Hunter.NumberOfLifes > 0)
             {
@@ -156,9 +145,9 @@
 
         private void GenerateItem()
         {
-            if (rand.Next(250) < GenerateBirdChanse)
+            if (rand.Next(250) < GenerationChanse)
             {
-                var item = this.Generator.GenerateItems(rand.Next(0, this.renderer.ScreenWidth - 10), 0, this.Hunter);
+                var item = this.Generator.GenerateItems(rand.Next(0, this.Renderer.ScreenWidth - 10), 0);
                 this.GameObjects.Add(item);
                 this.Items.Add(item);
                 this.AffectableGameObjects.Add(item);
@@ -167,14 +156,14 @@
 
         public void GenerateBird()
         {
-            int left = rand.Next(0, this.renderer.ScreenWidth);
+            int left = rand.Next(0, this.Renderer.ScreenWidth);
             int top = 0;
             Bird newBird = birdFactory.Create(left, top);
 
             left -= newBird.Bounds.Width;
             newBird.Position = new Position(left, top);
 
-            if (rand.Next(100) < GenerateBirdChanse)
+            if (rand.Next(100) < GenerationChanse)
             {
                 this.GameObjects.Add(newBird);
                 this.Birds.Add(newBird);
@@ -194,9 +183,9 @@
         {
             foreach (var gameObject in this.GameObjects)
             {
-                if ((gameObject.Position.Top > this.renderer.ScreenHeight) ||
+                if ((gameObject.Position.Top > this.Renderer.ScreenHeight) ||
                     (gameObject.Position.Top + gameObject.Bounds.Height < 0) ||
-                    (gameObject.Position.Left > this.renderer.ScreenWidth) ||
+                    (gameObject.Position.Left > this.Renderer.ScreenWidth) ||
                     (gameObject.Position.Left + gameObject.Bounds.Width < 0))
                 {
                     gameObject.IsAlive = false;
@@ -204,5 +193,19 @@
             }
         }
 
+        private void CreateHunter()
+        {
+            this.Hunter = this.hunterFactory.Create(0, 0);
+
+            var hunterWidth = this.Hunter.Bounds.Width;
+            var hunterHeight = this.Hunter.Bounds.Height;
+
+            var left = (this.Renderer.ScreenWidth - hunterWidth) / 2;
+            var top = this.Renderer.ScreenHeight - hunterHeight;
+            var position = new Position(left, top);
+
+            this.Hunter.Position = position;
+            this.GameObjects.Add(Hunter);
+        }
     }
 }

@@ -1,11 +1,12 @@
 ﻿using EatThatChicken.Common;
+using EatThatChicken.Common.Events;
+using EatThatChicken.Common.Structs;
 using EatThatChicken.GameObjects.Hunters;
 
 namespace EatThatChicken.Contracts
 {
     using System;
     using GameObjects;
-    using Misc;
     using System.Collections.Generic;
     public interface IGameRenderer
     {
@@ -13,13 +14,13 @@ namespace EatThatChicken.Contracts
 
         int ScreenHeight { get; }
 
-        void UpdateScore(Hunter hunter);
+        void UpdateScoreOnRenderer(IHunter hunter);
 
         void Clear();
 
         void Draw(IEnumerable<IGameObject> gameObjects);
 
-        bool IsInRange(Position position);
+       // bool IsInRange(Position position);
 
         event EventHandler<KeyDownEventArgs> UIAction;
 

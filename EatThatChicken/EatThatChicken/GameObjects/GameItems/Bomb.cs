@@ -1,7 +1,7 @@
 ﻿using System.Windows.Controls;
 using EatThatChicken.Common;
+using EatThatChicken.Common.Structs;
 using EatThatChicken.Contracts;
-using EatThatChicken.Enumerations;
 
 namespace EatThatChicken.GameObjects.GameItems
 {
@@ -9,7 +9,7 @@ namespace EatThatChicken.GameObjects.GameItems
     public class Bomb : Item
     {
         public Bomb(int speed, Size bounds, Position position)
-            : base(bounds, position, speed)
+            : base(bounds, position, speed, 0)
         {
         }
 
