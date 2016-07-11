@@ -1,22 +1,19 @@
-﻿using EatThatChicken.Common;
-using System.Windows.Input;
-using EatThatChicken.View;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System;
-
-namespace EatThatChicken.ViewModel
+﻿namespace EatThatChicken.ViewModel
 {
+    using EatThatChicken.Common;
+    using System.Windows.Input;
+    using EatThatChicken.View;
+
     class MainViewModel
     {
-        private View.MainWindow mainWindow;
+        private MainWindow mainWindow;
 
         //field startCommand,exitCommand-btnStart,btnExit
         private CommandBase startCommand;
         private CommandBase exitCommand;
         private CommandBase openInstructions;
         //constructor 
-        public MainViewModel(View.MainWindow window)
+        public MainViewModel(MainWindow window)
         {
             mainWindow = window;
         }

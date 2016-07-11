@@ -1,20 +1,18 @@
-﻿using EatThatChicken.Common;
-using EatThatChicken.Contracts;
-using EatThatChicken.Factories;
-using EatThatChicken.Factories.BirdsFactories;
-using EatThatChicken.Factories.ItemsFactory;
-
-namespace EatThatChicken.Engines
+﻿namespace EatThatChicken.Engines
 {
     using System;
     using System.Collections.Generic;
     using System.Windows.Threading;
-    using GameObjects;
     using GameObjects.Birds;
     using GameObjects.Bullets;
     using GameObjects.Hunters;
     using Misc;
-    using View;
+    using EatThatChicken.Common;
+    using EatThatChicken.Contracts;
+    using EatThatChicken.Factories;
+    using EatThatChicken.Factories.BirdsFactories;
+    using EatThatChicken.Factories.ItemsFactory;
+
 
     public class GameEngine
     {
@@ -39,9 +37,9 @@ namespace EatThatChicken.Engines
 
         private IGameRenderer renderer { get; }
 
-        public ICollisionDetector CollisionDetector { get; private set; }
+        private ICollisionDetector CollisionDetector { get; }
 
-        private IList<IAffectableGameObject> AffectableGameObjects { get; set; }
+        private IList<IAffectableGameObject> AffectableGameObjects { get; }
 
         private readonly Random rand = new Random();
 
@@ -132,8 +130,7 @@ namespace EatThatChicken.Engines
                 else if (this.Hunter.NumberOfLifes == 0)
                 {
                     this.timer.Stop();
-                    EndGameWindow win = new EndGameWindow();
-                    win.Show();
+                    this.renderer.EndGame(this.Hunter.Points);
                 }
             }
             this.renderer.Clear();

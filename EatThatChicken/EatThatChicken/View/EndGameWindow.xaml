@@ -11,6 +11,6 @@
             <ImageBrush ImageSource="/Images/endWindowBackground.png"/>
         </Grid.Background>
         <TextBox x:Name="nameTextBox" HorizontalAlignment="Left" Height="30" Margin="143,401,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="271"/>
-        <Button x:Name="button" Content="TRY AGAIN!" HorizontalAlignment="Left" Margin="726,504,0,0" VerticalAlignment="Top" Width="229" Click="button_Click"/>
+        <Button x:Name="button" Command="{Binding TryAgainCommand}" Content="TRY AGAIN!" HorizontalAlignment="Left" Margin="726,504,0,0" VerticalAlignment="Top" Width="229"/>
     </Grid>
 </Window>

@@ -1,7 +1,8 @@
-﻿using EatThatChicken.ViewModel;
-using System.Windows;
-namespace EatThatChicken.View
+﻿namespace EatThatChicken.View
 {
+    using EatThatChicken.ViewModel;
+    using System.Windows;
+
     /// <summary>
     /// Interaction logic for GameFieldWindow.xaml
     /// </summary>

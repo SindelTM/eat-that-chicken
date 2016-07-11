@@ -16,10 +16,11 @@
 
 
 
-    class WPFGameRenderer : IGameRenderer
+    class WPFGameRenderer : IWPFGameRenderer
     {
-        private int score = 0;
-        private Dictionary<string, string> avatar = new Dictionary<string, string>();
+        private readonly Dictionary<string, string> avatars;
+
+        private readonly Canvas playGroundCanvas;
 
         public int ScreenHeight
         {
@@ -37,21 +38,12 @@
             }
         }
 
-        private Canvas playGroundCanvas;
-
         public WPFGameRenderer(Canvas playGroundCanvas)
         {
             this.playGroundCanvas = playGroundCanvas;
 
-            this.avatar.Add("Hunter", "/Images/Hunter.png");
-            this.avatar.Add("Bullet", "/Images/Bullet.png");
-            this.avatar.Add("AngryBird", "/Images/Birds/angry.png");
-            this.avatar.Add("MuscleBird", "/Images/Birds/muscle.png");
-            this.avatar.Add("NaughtyBird", "/Images/Birds/naughty.png");
-            this.avatar.Add("SkinyBird", "/Images/Birds/skiny.png");
-            this.avatar.Add("Bomb", "/Images/bomb.png");
-            this.avatar.Add("ChickenLeg", "/Images/chicken-leg.png");
-            this.avatar.Add("Heart", "/Images/heart.png");
+            this.avatars = new Dictionary<string, string>();
+            FillAvatars(this.avatars);
 
             (this.playGroundCanvas.Parent as GameFieldWindow).KeyDown += (sender, args) =>
             {
@@ -72,6 +64,20 @@
         }
 
         public event EventHandler<KeyDownEventArgs> UIAction;
+        public event EventHandler<EndGameEventArgs> EndGameAction;
+
+        private void FillAvatars(Dictionary<string, string> avatars)
+        {
+            avatars.Add("Hunter", "/Images/Hunter.png");
+            avatars.Add("Bullet", "/Images/Bullet.png");
+            avatars.Add("AngryBird", "/Images/Birds/angry.png");
+            avatars.Add("MuscleBird", "/Images/Birds/muscle.png");
+            avatars.Add("NaughtyBird", "/Images/Birds/naughty.png");
+            avatars.Add("SkinyBird", "/Images/Birds/skiny.png");
+            avatars.Add("Bomb", "/Images/bomb.png");
+            avatars.Add("ChickenLeg", "/Images/chicken-leg.png");
+            avatars.Add("Heart", "/Images/heart.png");
+        }
 
         public void Clear()
         {
@@ -82,7 +88,7 @@
         {
             foreach (var gameObject in gameObjects)
             {
-                var image = this.CreateImage(avatar[gameObject.GetType().Name], gameObject.Position, gameObject.Bounds);
+                var image = this.CreateImage(avatars[gameObject.GetType().Name], gameObject.Position, gameObject.Bounds);
                 this.playGroundCanvas.Children.Add(image);
             }
 
@@ -92,7 +98,7 @@
         public bool IsInRange(Position position)
         {
             return 0 <= position.Left && position.Left <= this.ScreenWidth &&
-                0 <= position.Top-200 && position.Top <= this.ScreenHeight;
+                0 <= position.Top - 200 && position.Top <= this.ScreenHeight;
         }
 
         public void UpdateScore(Hunter hunter)
@@ -100,8 +106,8 @@
             var points = $"Points of Player: {hunter.Points}";
             var lifes = $"Lifes: {hunter.NumberOfLifes}";
 
-            this.ShowScoreOnScreen(850, 50, points, Color.FromRgb(255,255,255));
-            this.ShowScoreOnScreen(850, 70, lifes, Color.FromRgb(255,255,255));
+            this.ShowScoreOnScreen(850, 50, points, Color.FromRgb(255, 255, 255));
+            this.ShowScoreOnScreen(850, 70, lifes, Color.FromRgb(255, 255, 255));
         }
 
         private void ShowScoreOnScreen(double x, double y, string text, Color color)
@@ -116,8 +122,7 @@
 
             Canvas.SetTop(textBlock, y);
 
-           this.playGroundCanvas.Children.Add(textBlock);
-
+            this.playGroundCanvas.Children.Add(textBlock);
         }
 
         public Image CreateImage(string path, Position position, Size bounds)
@@ -135,6 +140,11 @@
             Canvas.SetLeft(image, position.Left);
             Canvas.SetTop(image, position.Top);
             return image;
+        }
+
+        public void EndGame(int points)
+        {
+            this.EndGameAction(this, new EndGameEventArgs(points));
         }
     }
 }

@@ -19,12 +19,12 @@
         {
             Validator.CheckIsNull(record);
 
-            records.Add(record);
+            this.records.Add(record);
         }
 
         public List<IRecordable> GetRecords()
         {
-            return new List<IRecordable>(records);
+            return new List<IRecordable>(this.records);
         }
     }
 }

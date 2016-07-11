@@ -22,5 +22,7 @@ namespace EatThatChicken.Contracts
         bool IsInRange(Position position);
 
         event EventHandler<KeyDownEventArgs> UIAction;
+
+        void EndGame(int points);
     }
 }

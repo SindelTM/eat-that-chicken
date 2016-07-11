@@ -70,6 +70,8 @@
     <Compile Include="Contracts\IScorable.cs" />
     <Compile Include="Contracts\ISerializer.cs" />
     <Compile Include="Contracts\IUpdateable.cs" />
+    <Compile Include="Contracts\IWPFGameRenderer.cs" />
+    <Compile Include="Misc\EndGameEventArgs.cs" />
     <Compile Include="Models\Exceptions\RecordSerializationException.cs" />
     <Compile Include="Models\HighScoreContainer.cs" />
     <Compile Include="Models\Player.cs" />
@@ -103,6 +105,7 @@
     <Compile Include="GameObjects\Bullets\Bullet.cs" />
     <Compile Include="Misc\SimpleCollisionDetector.cs" />
     <Compile Include="Renderers\WPFGameRenderer.cs" />
+    <Compile Include="ViewModel\EndGameViewModel.cs" />
     <Compile Include="ViewModel\MainViewModel.cs" />
     <Compile Include="ViewModel\GameFieldViewModel.cs" />
     <Compile Include="View\EndGameWindow.xaml.cs">
