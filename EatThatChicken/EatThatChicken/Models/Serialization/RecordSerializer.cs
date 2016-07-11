@@ -1,11 +1,11 @@
 ﻿namespace EatThatChicken.Models.Serialization
 {
-    using Common;
-    using Contracts;
-    using Exceptions;
     using System;
     using System.IO;
     using System.Runtime.Serialization;
+    using Common;
+    using Contracts;
+    using Exceptions;
 
     public class RecordSerializer : ISerializer<HighScoreContainer>
     {

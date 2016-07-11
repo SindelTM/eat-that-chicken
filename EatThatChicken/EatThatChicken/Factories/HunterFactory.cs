@@ -1,16 +1,9 @@
-﻿using EatThatChicken.Contracts;
-using EatThatChicken.GameObjects;
-using EatThatChicken.GameObjects.Hunters;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using EatThatChicken.Common;
-using EatThatChicken.Common.Structs;
-
-namespace EatThatChicken.Factories
+﻿namespace EatThatChicken.Factories
 {
+    using EatThatChicken.Contracts;
+    using EatThatChicken.GameObjects.Hunters;
+    using EatThatChicken.Common.Structs;
+
     class HunterFactory : IGameObjectFactory<Hunter>
     {
         private const int HunterBoundsHeight = 190;

@@ -1,15 +1,11 @@
-﻿using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Media;
-using EatThatChicken.Common;
-using EatThatChicken.Common.Enumerations;
-using EatThatChicken.Common.Structs;
-using EatThatChicken.Contracts;
-using EatThatChicken.GameObjects.Birds;
-using Size = EatThatChicken.Common.Structs.Size;
-
-namespace EatThatChicken.GameObjects.Bullets
+﻿namespace EatThatChicken.GameObjects.Bullets
 {
+    using Common;
+    using Common.Enumerations;
+    using Common.Structs;
+    using Contracts;
+    using Size = Common.Structs.Size;
+
     public class Bullet : GameObject, IBullet
     {
         private const int defaultSpeed = 40;

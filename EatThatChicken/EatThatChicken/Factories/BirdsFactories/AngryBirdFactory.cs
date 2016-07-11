@@ -1,9 +1,7 @@
-﻿using EatThatChicken.Common;
-using EatThatChicken.Common.Structs;
-using EatThatChicken.Contracts;
-using EatThatChicken.GameObjects;
-namespace EatThatChicken.Factories.BirdsFactories
+﻿namespace EatThatChicken.Factories.BirdsFactories
 {
+    using EatThatChicken.Common.Structs;
+    using EatThatChicken.Contracts;
     using EatThatChicken.GameObjects.Birds;
 
     public class AngryBirdFactory : IGameObjectFactory<AngryBird>

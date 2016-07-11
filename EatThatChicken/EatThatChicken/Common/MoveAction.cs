@@ -1,7 +1,7 @@
-﻿using EatThatChicken.Common.Enumerations;
-
-namespace EatThatChicken.Common
+﻿namespace EatThatChicken.Common
 {
+    using EatThatChicken.Common.Enumerations;
+
     public class MoveAction
     {
         public MoveType Left { get; }

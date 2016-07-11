@@ -61,6 +61,7 @@
     <Compile Include="Common\CommandBase.cs" />
     <Compile Include="Common\ErrorMessages.cs" />
     <Compile Include="Common\Validator.cs" />
+    <Compile Include="Contracts\IAttackable.cs" />
     <Compile Include="Contracts\IBird.cs" />
     <Compile Include="Contracts\IBullet.cs" />
     <Compile Include="Contracts\IBulletAffectable.cs" />

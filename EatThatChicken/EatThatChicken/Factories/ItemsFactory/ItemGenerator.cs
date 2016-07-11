@@ -1,14 +1,10 @@
-﻿using EatThatChicken.Common;
-using EatThatChicken.Common.Structs;
-using EatThatChicken.Contracts;
-using EatThatChicken.GameObjects.Hunters;
-
-namespace EatThatChicken.Factories.ItemsFactory
+﻿namespace EatThatChicken.Factories.ItemsFactory
 {
     using System;
     using System.Linq;
     using System.Reflection;
-    using GameObjects;
+    using Common;
+    using Common.Structs;
     using GameObjects.GameItems;
 
     public class ItemGenerator

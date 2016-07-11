@@ -1,10 +1,6 @@
-﻿using System.Windows.Controls;
-using EatThatChicken.Common;
-using EatThatChicken.Common.Structs;
-
-namespace EatThatChicken.Contracts
+﻿namespace EatThatChicken.Contracts
 {
-    using GameObjects;
+    using EatThatChicken.Common.Structs;
 
     public interface IGameObject : IMoveable
     {

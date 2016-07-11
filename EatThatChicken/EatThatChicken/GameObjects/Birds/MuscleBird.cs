@@ -1,8 +1,6 @@
-﻿using EatThatChicken.Common.Structs;
-
-namespace EatThatChicken.GameObjects.Birds
+﻿namespace EatThatChicken.GameObjects.Birds
 {
-    using EatThatChicken.Common;
+    using EatThatChicken.Common.Structs;
 
     public class MuscleBird: Bird
     {

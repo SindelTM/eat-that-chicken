@@ -1,8 +1,8 @@
-﻿using System;
-using EatThatChicken.Common.Enumerations;
-
-namespace EatThatChicken.Common.Events
+﻿namespace EatThatChicken.Common.Events
 {
+    using System;
+    using EatThatChicken.Common.Enumerations;
+
     public class KeyDownEventArgs : EventArgs
     {
         public GameAction Action { get; set; }

@@ -1,10 +1,9 @@
-﻿using EatThatChicken.Common;
-using EatThatChicken.Common.Structs;
-using EatThatChicken.Contracts;
-using EatThatChicken.GameObjects;
-using EatThatChicken.GameObjects.Birds;
-namespace EatThatChicken.Factories.BirdsFactories
+﻿namespace EatThatChicken.Factories.BirdsFactories
 {
+    using EatThatChicken.Common.Structs;
+    using EatThatChicken.Contracts;
+    using EatThatChicken.GameObjects.Birds;
+
     public class SkinyBirdFactory : IGameObjectFactory<SkinyBird>
     {
         private const int SkinyBirdBoundsWidth = 60;

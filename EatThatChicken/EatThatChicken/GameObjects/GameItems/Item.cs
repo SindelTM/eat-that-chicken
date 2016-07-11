@@ -1,10 +1,10 @@
-﻿using EatThatChicken.Common;
-using EatThatChicken.Common.Enumerations;
-using EatThatChicken.Common.Structs;
-using EatThatChicken.Contracts;
-
-namespace EatThatChicken.GameObjects.GameItems
+﻿namespace EatThatChicken.GameObjects.GameItems
 {
+    using EatThatChicken.Common;
+    using EatThatChicken.Common.Enumerations;
+    using EatThatChicken.Common.Structs;
+    using EatThatChicken.Contracts;
+
     public abstract class Item : GameObject, IAffectableGameObject
     {
         private const MoveType Top = MoveType.Decremental;

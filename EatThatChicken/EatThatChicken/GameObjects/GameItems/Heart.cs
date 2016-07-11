@@ -1,10 +1,9 @@
-﻿using System.Windows.Controls;
-using EatThatChicken.Common;
-using EatThatChicken.Common.Structs;
-using EatThatChicken.Contracts;
-
-namespace EatThatChicken.GameObjects.GameItems
+﻿namespace EatThatChicken.GameObjects.GameItems
 {
+    using EatThatChicken.Common;
+    using EatThatChicken.Common.Structs;
+    using EatThatChicken.Contracts;
+
     [Item]
     class Heart : Item
     {

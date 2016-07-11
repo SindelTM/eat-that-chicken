@@ -1,13 +1,9 @@
-﻿using EatThatChicken.Common;
-using EatThatChicken.Common.Events;
-using EatThatChicken.Common.Structs;
-using EatThatChicken.GameObjects.Hunters;
-
-namespace EatThatChicken.Contracts
+﻿namespace EatThatChicken.Contracts
 {
     using System;
-    using GameObjects;
     using System.Collections.Generic;
+    using EatThatChicken.Common.Events;
+
     public interface IGameRenderer
     {
         int ScreenWidth { get; }

@@ -1,11 +1,9 @@
-﻿using EatThatChicken.Common;
-using EatThatChicken.Common.Structs;
-using EatThatChicken.Contracts;
-using EatThatChicken.GameObjects;
-using EatThatChicken.GameObjects.Bullets;
-
-namespace EatThatChicken.Factories
+﻿namespace EatThatChicken.Factories
 {
+    using EatThatChicken.Common.Structs;
+    using EatThatChicken.Contracts;
+    using EatThatChicken.GameObjects.Bullets;
+
     public class BulletFactory : IGameObjectFactory<Bullet>
     {
         const int bulletWidth = 10;

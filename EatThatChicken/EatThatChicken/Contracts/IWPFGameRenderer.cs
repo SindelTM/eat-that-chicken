@@ -1,8 +1,7 @@
-﻿using EatThatChicken.Common.Events;
-
-namespace EatThatChicken.Contracts
+﻿namespace EatThatChicken.Contracts
 {
     using System;
+    using EatThatChicken.Common.Events;
 
     interface IWPFGameRenderer : IGameRenderer
     {

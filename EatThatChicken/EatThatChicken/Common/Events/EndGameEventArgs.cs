@@ -1,7 +1,7 @@
-﻿using System;
-
-namespace EatThatChicken.Common.Events
+﻿namespace EatThatChicken.Common.Events
 {
+    using System;
+
     public class EndGameEventArgs : EventArgs
     {
         public EndGameEventArgs(int points)

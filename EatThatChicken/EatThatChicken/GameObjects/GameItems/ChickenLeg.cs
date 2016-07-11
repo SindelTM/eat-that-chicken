@@ -1,10 +1,7 @@
-﻿using EatThatChicken.Common;
-using EatThatChicken.Common.Structs;
-
-namespace EatThatChicken.GameObjects.GameItems
+﻿namespace EatThatChicken.GameObjects.GameItems
 {
-    using System.Windows.Controls;
-    using Contracts;
+    using EatThatChicken.Common;
+    using EatThatChicken.Common.Structs;
 
     [Item]
     public class ChickenLeg : Item

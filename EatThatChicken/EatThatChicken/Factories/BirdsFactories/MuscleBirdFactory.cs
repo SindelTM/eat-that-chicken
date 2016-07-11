@@ -1,10 +1,7 @@
-﻿using EatThatChicken.Common;
-using EatThatChicken.Common.Structs;
-
-namespace EatThatChicken.Factories.BirdsFactories
+﻿namespace EatThatChicken.Factories.BirdsFactories
 {
     using Contracts;
-    using GameObjects;
+    using Common.Structs;
     using GameObjects.Birds;
 
     public class MuscleBirdFactory : IGameObjectFactory<MuscleBird>

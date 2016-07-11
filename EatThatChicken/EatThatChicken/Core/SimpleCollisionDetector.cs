@@ -1,10 +1,10 @@
-﻿using System.Collections.Generic;
-using EatThatChicken.Common.Structs;
-using EatThatChicken.Contracts;
-using EatThatChicken.GameObjects.Hunters;
-
-namespace EatThatChicken.Core
+﻿namespace EatThatChicken.Core
 {
+    using System.Collections.Generic;
+    using EatThatChicken.Common.Structs;
+    using EatThatChicken.Contracts;
+    using EatThatChicken.GameObjects.Hunters;
+
     public class SimpleCollisionDetector : ICollisionDetector
     {
         public void HandleCollisions(IList<IBullet> bullets, IList<IBird> birds, IHunter hunter, IList<IGameObject> gameObjects)

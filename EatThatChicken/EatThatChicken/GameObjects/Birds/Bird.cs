@@ -1,10 +1,9 @@
-﻿using EatThatChicken.Common.Enumerations;
-using EatThatChicken.Common.Structs;
-
-namespace EatThatChicken.GameObjects.Birds
+﻿namespace EatThatChicken.GameObjects.Birds
 {
     using Common;
     using Contracts;
+    using EatThatChicken.Common.Enumerations;
+    using EatThatChicken.Common.Structs;
 
     public abstract class Bird : GameObject, IBird
     {

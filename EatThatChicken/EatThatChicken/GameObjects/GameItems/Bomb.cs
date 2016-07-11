@@ -1,10 +1,9 @@
-﻿using System.Windows.Controls;
-using EatThatChicken.Common;
-using EatThatChicken.Common.Structs;
-using EatThatChicken.Contracts;
-
-namespace EatThatChicken.GameObjects.GameItems
+﻿namespace EatThatChicken.GameObjects.GameItems
 {
+    using EatThatChicken.Common;
+    using EatThatChicken.Common.Structs;
+    using EatThatChicken.Contracts;
+
     [Item]
     public class Bomb : Item
     {
@@ -15,7 +14,7 @@ namespace EatThatChicken.GameObjects.GameItems
 
         public override void AffectHunter(IHunter hunter)
         {
-            if (hunter.NumberOfLifes >= 1 && hunter.NumberOfLifes <= 3)
+            if (hunter.NumberOfLifes >= 1)
             {
                 hunter.NumberOfLifes--;
             }

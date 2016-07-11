@@ -1,5 +1,4 @@
-﻿
-namespace EatThatChicken.Factories.BirdsFactories
+﻿namespace EatThatChicken.Factories.BirdsFactories
 {
     using System;
     using Contracts;

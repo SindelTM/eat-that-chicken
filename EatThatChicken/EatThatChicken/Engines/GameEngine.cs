@@ -1,21 +1,18 @@
-﻿using EatThatChicken.Common.Enumerations;
-using EatThatChicken.Common.Events;
-using EatThatChicken.Common.Structs;
-using EatThatChicken.Core;
-
-namespace EatThatChicken.Engines
+﻿namespace EatThatChicken.Engines
 {
     using System;
     using System.Collections.Generic;
     using System.Windows.Threading;
     using GameObjects.Birds;
     using GameObjects.Bullets;
-    using EatThatChicken.Common;
+    using EatThatChicken.Common.Enumerations;
+    using EatThatChicken.Common.Events;
+    using EatThatChicken.Common.Structs;
+    using EatThatChicken.Core;
     using EatThatChicken.Contracts;
     using EatThatChicken.Factories;
     using EatThatChicken.Factories.BirdsFactories;
     using EatThatChicken.Factories.ItemsFactory;
-
 
     public class GameEngine
     {
@@ -110,6 +107,20 @@ namespace EatThatChicken.Engines
 
         private void LoopGame(object sender, EventArgs args)
         {
+            CheckIfHunterIsAlive();
+            this.Renderer.Clear();
+            this.CollisionDetector.HandleCollisions(this.Bullets, this.Birds, this.Hunter, this.Items);
+            this.RemoveGameObjectsOutofScreen();
+            this.RemoveNotAliveGameObjects();
+            this.GenerateItem();
+            this.GenerateBird();
+            this.Renderer.UpdateScoreOnRenderer(this.Hunter);
+            this.Renderer.Draw(this.GameObjects);
+            this.GameObjects.ForEach(x => x.Move());
+        }
+
+        private void CheckIfHunterIsAlive()
+        {
             if (CollisionDetector.IsHunterColliding(this.Hunter, this.Birds))
             {
                 if (this.Hunter.NumberOfLifes > 0)
@@ -122,25 +133,6 @@ namespace EatThatChicken.Engines
                     this.Renderer.EndGame(this.Hunter.Points);
                 }
             }
-            this.Renderer.Clear();
-            this.CollisionDetector.HandleCollisions(this.Bullets, this.Birds, this.Hunter, this.Items);
-            this.RemoveGameObjectsOutofScreen();
-            this.RemoveNotAliveGameObjects();
-            this.GenerateItem();
-            this.GenerateBird();
-            this.Renderer.UpdateScoreOnRenderer(this.Hunter);
-            this.Renderer.Draw(this.GameObjects);
-            this.GameObjects.ForEach(x => x.Move());
-        }
-
-        private bool CheckIfHunterIsAlive()
-        {
-            if (this.Hunter.NumberOfLifes > 0)
-            {
-                return true;
-            }
-
-            return false;
         }
 
         private void GenerateItem()

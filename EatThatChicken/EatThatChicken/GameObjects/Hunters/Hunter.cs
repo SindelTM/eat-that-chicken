@@ -1,11 +1,9 @@
-﻿using EatThatChicken.Common;
-using EatThatChicken.Common.Enumerations;
-using EatThatChicken.Common.Structs;
-
-namespace EatThatChicken.GameObjects.Hunters
+﻿namespace EatThatChicken.GameObjects.Hunters
 {
     using Common;
     using Contracts;
+    using Common.Enumerations;
+    using Common.Structs;
 
     public class Hunter : GameObject, IHunter
     {

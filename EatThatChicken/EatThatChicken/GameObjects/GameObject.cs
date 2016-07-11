@@ -1,9 +1,8 @@
-﻿using EatThatChicken.Common.Structs;
-
-namespace EatThatChicken.GameObjects
+﻿namespace EatThatChicken.GameObjects
 {
     using Contracts;
     using Common;
+    using EatThatChicken.Common.Structs;
 
     public abstract class GameObject : IGameObject
     {

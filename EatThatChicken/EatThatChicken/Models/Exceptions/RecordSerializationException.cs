@@ -2,6 +2,7 @@
 {
     using System;
     using System.Runtime.Serialization;
+
     class RecordSerializationException : ApplicationException
     {
         private const string DefaultMessage = "Unable to serialize/deserialize record!";
