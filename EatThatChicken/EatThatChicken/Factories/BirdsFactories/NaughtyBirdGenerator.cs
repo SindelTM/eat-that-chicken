@@ -4,7 +4,7 @@
     using EatThatChicken.Common.Structs;
     using GameObjects.Birds;
 
-    public class NaughtyBirdFactory : IGameObjectFactory<NaughtyBird>
+    public class NaughtyBirdGenerator : IGameObjectFactory<NaughtyBird>
     {
         private const int NaughtyBirdBoundsWidth = 60;
         private const int NaughtyBirdBoundsHeight = 70;

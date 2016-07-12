@@ -83,11 +83,11 @@
     <Compile Include="Models\Serialization\RecordSerializer.cs" />
     <Compile Include="Engines\GameEngine.cs" />
     <Compile Include="Common\Enumerations\MoveType.cs" />
-    <Compile Include="Factories\BirdsFactories\AngryBirdFactory.cs" />
+    <Compile Include="Factories\BirdsFactories\AngryBirdGenerator.cs" />
     <Compile Include="Factories\BirdsFactories\BirdFactory.cs" />
-    <Compile Include="Factories\BirdsFactories\MuscleBirdFactory.cs" />
-    <Compile Include="Factories\BirdsFactories\NaughtyBirdFactory.cs" />
-    <Compile Include="Factories\BirdsFactories\SkinyBirdFactory.cs" />
+    <Compile Include="Factories\BirdsFactories\MuscleBirdGenerator.cs" />
+    <Compile Include="Factories\BirdsFactories\NaughtyBirdGenerator.cs" />
+    <Compile Include="Factories\BirdsFactories\SkinyBirdGenerator.cs" />
     <Compile Include="Factories\BulletFactory.cs" />
     <Compile Include="Factories\HunterFactory.cs" />
     <Compile Include="Factories\ItemsFactory\ItemGenerator.cs" />

@@ -4,7 +4,7 @@
     using EatThatChicken.Contracts;
     using EatThatChicken.GameObjects.Birds;
 
-    public class SkinyBirdFactory : IGameObjectFactory<SkinyBird>
+    public class SkinyBirdGenerator : IGameObjectFactory<SkinyBird>
     {
         private const int SkinyBirdBoundsWidth = 60;
         private const int SkinyBirdBoundsHeight = 70;

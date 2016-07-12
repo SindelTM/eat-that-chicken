@@ -17,7 +17,7 @@
             this.PointAffect = pointAffect;
         }
 
-        protected int Health { get; private set; }
+        public int Health { get;  set; }
 
         public int PointAffect { get; private set; }
 

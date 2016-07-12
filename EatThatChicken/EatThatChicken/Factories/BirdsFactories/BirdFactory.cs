@@ -27,22 +27,22 @@
 
             if (SkinyBirdAppearanceMin <= number && number <= SkinyBirdAppearanceMax)
             {
-                var skinyBird = new SkinyBirdFactory();
+                var skinyBird = new SkinyBirdGenerator();
                 return skinyBird.Create(left, top);
             }
             else if (AngryBirdAppearanceMin <= number && number <= AngryBirdAppearanceMax)
             {
-                var angryBird = new AngryBirdFactory();
+                var angryBird = new AngryBirdGenerator();
                 return angryBird.Create(left, top);
             }
             else if (MuscleBirdAppearanceMin <= number && number <= MuscleBirdAppearanceMax)
             {
-                var muscleBird = new MuscleBirdFactory();
+                var muscleBird = new MuscleBirdGenerator();
                 return muscleBird.Create(left, top);
             }
             else
             {
-                var naughthyBird = new NaughtyBirdFactory();
+                var naughthyBird = new NaughtyBirdGenerator();
                 return naughthyBird.Create(left, top);
             }
         }

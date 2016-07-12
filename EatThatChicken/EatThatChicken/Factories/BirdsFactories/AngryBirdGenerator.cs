@@ -4,7 +4,7 @@
     using EatThatChicken.Contracts;
     using EatThatChicken.GameObjects.Birds;
 
-    public class AngryBirdFactory : IGameObjectFactory<AngryBird>
+    public class AngryBirdGenerator : IGameObjectFactory<AngryBird>
     {
         private const int AngryBirdBoundsWidth = 60;
         private const int AngryBirdBoundsHeight = 70;

@@ -107,7 +107,7 @@
 
         private void LoopGame(object sender, EventArgs args)
         {
-            CheckIfHunterIsAlive();
+            this.CheckIfHunterIsAlive();
             this.Renderer.Clear();
             this.CollisionDetector.HandleCollisions(this.Bullets, this.Birds, this.Hunter, this.Items);
             this.RemoveGameObjectsOutofScreen();
@@ -123,11 +123,7 @@
         {
             if (CollisionDetector.IsHunterColliding(this.Hunter, this.Birds))
             {
-                if (this.Hunter.NumberOfLifes > 0)
-                {
-                    //this.Hunter.NumberOfLifes--;
-                }
-                else if (this.Hunter.NumberOfLifes == 0)
+                if (this.Hunter.NumberOfLifes == 0)
                 {
                     this.timer.Stop();
                     this.Renderer.EndGame(this.Hunter.Points);

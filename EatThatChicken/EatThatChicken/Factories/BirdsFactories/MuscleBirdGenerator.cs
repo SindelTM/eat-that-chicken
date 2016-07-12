@@ -4,7 +4,7 @@
     using Common.Structs;
     using GameObjects.Birds;
 
-    public class MuscleBirdFactory : IGameObjectFactory<MuscleBird>
+    public class MuscleBirdGenerator : IGameObjectFactory<MuscleBird>
     {
         private const int MuscleBirdBoundsWidth = 60;
         private const int MuscleBirdBoundsHeight = 70;
