@@ -19,25 +19,40 @@
         public EndGameViewModel(EndGameWindow window, int points)
         {
             this.TryAgainCommand = new CommandBase(ExecuteTryAgain, CanExecuteTryAgain);
+            this.EnterCommand = new CommandBase(ExecuteEnter, CanExecuteEnter);
             this.window = window;
             this.points = points;
         }
 
         public ICommand TryAgainCommand { get; }
 
+        public ICommand EnterCommand { get; }
+
         private void ExecuteTryAgain(object obj)
         {
-            string name = this.window.nameTextBox.Text;
-            if (!string.IsNullOrEmpty(name))
-            {
-                SaveScore(name, this.points);
-            }
             GameFieldWindow win = new GameFieldWindow();
             this.window.Close();
             win.Show();
         }
 
         private bool CanExecuteTryAgain(object obj)
+        {
+            return true;
+        }
+
+        private void ExecuteEnter(object obj)
+        {
+            string name = this.window.nameTextBox.Text;
+            if (!string.IsNullOrEmpty(name))
+            {
+                SaveScore(name, this.points);
+            }
+            MainWindow mainWindow = new MainWindow();
+            mainWindow.Show();
+            this.window.Close();
+        }
+
+        private bool CanExecuteEnter(object obj)
         {
             return true;
         }
