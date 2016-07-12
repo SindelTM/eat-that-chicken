@@ -2,6 +2,6 @@
 {
     public class GlobalConstants
     {
-        public const string ScorFilePath = "../../Data/score.bin";
+        public const string ScorFilePath = "../../score.bin";
     }
 }

@@ -220,9 +220,7 @@
   <ItemGroup>
     <Resource Include="muscle.ico" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Data\" />
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <Resource Include="Images\Bullet.png" />
   </ItemGroup>
