@@ -59,7 +59,8 @@
       <SubType>Designer</SubType>
     </ApplicationDefinition>
     <Compile Include="Common\CommandBase.cs" />
-    <Compile Include="Common\ErrorMessages.cs" />
+    <Compile Include="Common\Constants\ErrorMessages.cs" />
+    <Compile Include="Common\Constants\GlobalConstants.cs" />
     <Compile Include="Common\Validator.cs" />
     <Compile Include="Contracts\IAttackable.cs" />
     <Compile Include="Contracts\IBird.cs" />
@@ -103,13 +104,14 @@
     <Compile Include="Common\ItemAttribute.cs" />
     <Compile Include="GameObjects\Hunters\Hunter.cs" />
     <Compile Include="Common\MoveAction.cs" />
-    <Compile Include="Common\Enumerations\GameAction.cs" />
+    <Compile Include="Common\Enumerations\GameActionType.cs" />
     <Compile Include="Contracts\ICollisionDetector.cs" />
     <Compile Include="Common\Events\KeyDownEventArgs.cs" />
     <Compile Include="GameObjects\Bullets\Bullet.cs" />
     <Compile Include="Common\Structs\GameObjectBounds.cs" />
     <Compile Include="Renderers\WPFGameRenderer.cs" />
     <Compile Include="ViewModel\EndGameViewModel.cs" />
+    <Compile Include="ViewModel\HighScoreViewModel.cs" />
     <Compile Include="ViewModel\MainViewModel.cs" />
     <Compile Include="ViewModel\GameFieldViewModel.cs" />
     <Compile Include="View\EndGameWindow.xaml.cs">
@@ -119,6 +121,10 @@
       <DependentUpon>GameFieldWindow.xaml</DependentUpon>
     </Compile>
     <Page Include="View\EndGameWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\HighScoreWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -137,6 +143,9 @@
     <Compile Include="Common\Structs\Position.cs" />
     <Compile Include="Common\Structs\Size.cs" />
     <Compile Include="GameObjects\GameObject.cs" />
+    <Compile Include="View\HighScoreWindow.xaml.cs">
+      <DependentUpon>HighScoreWindow.xaml</DependentUpon>
+    </Compile>
     <Compile Include="View\Instructions.xaml.cs">
       <DependentUpon>Instructions.xaml</DependentUpon>
     </Compile>
@@ -211,7 +220,9 @@
   <ItemGroup>
     <Resource Include="muscle.ico" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Folder Include="Data\" />
+  </ItemGroup>
   <ItemGroup>
     <Resource Include="Images\Bullet.png" />
   </ItemGroup>

@@ -33,15 +33,15 @@
                 var key = args.Key;
                 if (key == Key.Left)
                 {
-                    this.UIAction(this, new KeyDownEventArgs(GameAction.MoveLeft));
+                    this.UIAction(this, new KeyDownEventArgs(GameActionType.MoveLeft));
                 }
                 else if (key == Key.Right)
                 {
-                    this.UIAction(this, new KeyDownEventArgs(GameAction.MoveRight));
+                    this.UIAction(this, new KeyDownEventArgs(GameActionType.MoveRight));
                 }
                 else if (key == Key.Space)
                 {
-                    this.UIAction(this, new KeyDownEventArgs(GameAction.Fire));
+                    this.UIAction(this, new KeyDownEventArgs(GameActionType.Fire));
                 }
             };
         }

@@ -59,21 +59,21 @@
 
         private void UIActionHandler(object sender, KeyDownEventArgs e)
         {
-            if (e.Action == GameAction.MoveLeft)
+            if (e.Action == GameActionType.MoveLeft)
             {
                 if (this.Hunter.Position.Left > 0)
                 {
                     this.Hunter.MoveLeft();
                 }
             }
-            else if (e.Action == GameAction.MoveRight)
+            else if (e.Action == GameActionType.MoveRight)
             {
                 if (this.Hunter.Position.Left < this.Renderer.ScreenWidth - this.Hunter.Bounds.Width)
                 {
                     this.Hunter.MoveRight();
                 }
             }
-            else if (e.Action == GameAction.Fire)
+            else if (e.Action == GameActionType.Fire)
             {
                 FireBullet();
             }

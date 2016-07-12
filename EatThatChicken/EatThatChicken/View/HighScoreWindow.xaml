@@ -1,0 +1,33 @@
+﻿<Window x:Class="EatThatChicken.View.HighScoreWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:EatThatChicken.View"
+        mc:Ignorable="d"
+        Title="High Score" Height="600" Width="1000" ResizeMode="NoResize"  WindowStartupLocation="CenterScreen">
+    <Grid>
+        <Grid.Background>
+            <ImageBrush ImageSource="/Images/background-galaxy.png"/>
+        </Grid.Background>
+        <ListBox Name="Scores" ItemsSource="{Binding}" BorderBrush="Transparent" 
+     Grid.IsSharedSizeScope="True"
+     HorizontalContentAlignment="Stretch" Margin="71,164,433,37">
+            <ListBox.ItemTemplate>
+                <DataTemplate>
+                    <Grid Margin="4" >
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="150" SharedSizeGroup="Key" />
+                            <ColumnDefinition Width="150" />
+                            <ColumnDefinition Width="150" />
+                        </Grid.ColumnDefinitions>
+                        <TextBlock Text="{Binding Name}" FontWeight="Bold" FontSize="14" />
+                        <TextBlock Grid.Column="1" Text="{Binding Score }" FontSize="14" />
+                        <TextBlock Grid.Column="2" Text="{Binding Date }" FontSize="14" />
+                    </Grid>
+                </DataTemplate>
+            </ListBox.ItemTemplate>
+        </ListBox>
+        <Button x:Name="backBtn" Content="BACK" Command="{Binding BackCommand}" HorizontalAlignment="Left" Margin="649,453,0,0" VerticalAlignment="Top" Height="81" Width="285"/>
+    </Grid>
+</Window>

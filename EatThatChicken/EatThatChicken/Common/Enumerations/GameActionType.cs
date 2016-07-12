@@ -1,6 +1,6 @@
 ﻿namespace EatThatChicken.Common.Enumerations
 {
-    public enum GameAction
+    public enum GameActionType
     {
         MoveLeft,
         MoveRight,

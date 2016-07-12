@@ -11,7 +11,7 @@
             <ImageBrush ImageSource="/Images/background-galaxy.png"/>
         </Canvas.Background>
         <Button x:Name="btnStart" Content="START GAME" Command="{Binding StartCommand}" Canvas.Left="641" Canvas.Top="452" Margin="0" Height="80" Width="282"/>
-        <Button x:Name="btnHighscore" Content="HIGHSCORE" Canvas.Left="106" Canvas.Top="311" Margin="0" Width="285" Height="80"/>
+        <Button x:Name="btnHighscore" Content="HIGHSCORE" Command="{Binding HighScoreCommand}" Canvas.Left="106" Canvas.Top="311" Margin="0" Width="285" Height="80"/>
         <Button x:Name="btnInstructions" Content="INSTRUCTIONS" Command="{Binding OpenInstructions}" Canvas.Left="106" Canvas.Top="173" Margin="0" Height="80" Width="285"/>
         <Button x:Name="btnExit" Content="EXIT GAME" Command="{Binding ExitCommand}" Canvas.Left="106" Canvas.Top="451" Margin="0" Height="81" Width="285"/>
 

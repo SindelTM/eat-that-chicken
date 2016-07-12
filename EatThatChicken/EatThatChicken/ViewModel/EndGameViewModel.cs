@@ -1,6 +1,7 @@
 ﻿namespace EatThatChicken.ViewModel
 {
     using Common;
+    using Common.Constants;
     using Models;
     using Models.Exceptions;
     using Models.Serialization;
@@ -17,19 +18,19 @@
 
         public EndGameViewModel(EndGameWindow window, int points)
         {
-            this.TryAgainCommand = new CommandBase(TryAgain, CanExecuteTryAgain);
+            this.TryAgainCommand = new CommandBase(ExecuteTryAgain, CanExecuteTryAgain);
             this.window = window;
             this.points = points;
         }
 
         public ICommand TryAgainCommand { get; }
 
-        private void TryAgain(object obj)
+        private void ExecuteTryAgain(object obj)
         {
             string name = this.window.nameTextBox.Text;
             if (!string.IsNullOrEmpty(name))
             {
-                SaveScore(name);
+                SaveScore(name, this.points);
             }
             GameFieldWindow win = new GameFieldWindow();
             this.window.Close();
@@ -41,15 +42,15 @@
             return true;
         }
 
-        private void SaveScore(string name)
+        private void SaveScore(string name, int points)
         {
             BinaryFormatter formatter = new BinaryFormatter();
-            string fileName = "score.bin";
+            string fileName = GlobalConstants.ScorFilePath;
             RecordSerializer serilizer = new RecordSerializer(formatter, fileName);
 
             HighScoreContainer container = GetContainer(serilizer);
 
-            Player player = new Player(DateTime.Now, name, this.points);
+            Player player = new Player(DateTime.Now, name, points);
 
             container.Add(player);
 

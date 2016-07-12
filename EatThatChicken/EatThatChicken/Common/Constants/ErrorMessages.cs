@@ -1,6 +1,6 @@
-﻿namespace EatThatChicken.Common
+﻿namespace EatThatChicken.Common.Constants
 {
-    public class ErrorMessages
+    public class ErrorMessages : GlobalConstants
     {
         public const string StringCannotBeNullOrEmpty = "{0} cannot be null or empty!";
 

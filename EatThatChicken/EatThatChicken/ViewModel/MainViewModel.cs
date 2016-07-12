@@ -12,6 +12,7 @@
         private CommandBase startCommand;
         private CommandBase exitCommand;
         private CommandBase openInstructions;
+        private CommandBase highScoreCommand;
         //constructor 
         public MainViewModel(MainWindow window)
         {
@@ -53,6 +54,17 @@
                 return this.openInstructions;
             }
         }
+        public ICommand HighScoreCommand
+        {
+            get
+            {
+                if (this.highScoreCommand == null)
+                {
+                    this.highScoreCommand = new CommandBase(this.OpenHighScore, this.CanExecuteOpenHighScore);
+                }
+                return this.highScoreCommand;
+            }
+        }
         //methods for opening/closing windows btnStart,btnExit,openInstructions
         private void StartGame(object param)
         {
@@ -71,6 +83,13 @@
             mainWindow.Close();
         }
 
+        private void OpenHighScore(object obj)
+        {
+            HighScoreWindow highScore = new HighScoreWindow();
+            highScore.Show();
+            mainWindow.Close();
+        }
+
         private bool CanExecuteStartCommand(object param)
         {
             return true;
@@ -82,6 +101,11 @@
         }
 
         private bool CanExecuteOpenInstructions(object obj)
+        {
+            return true;
+        }
+
+        private bool CanExecuteOpenHighScore(object obj)
         {
             return true;
         }

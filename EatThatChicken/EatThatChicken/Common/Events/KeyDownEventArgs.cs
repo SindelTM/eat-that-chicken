@@ -5,9 +5,9 @@
 
     public class KeyDownEventArgs : EventArgs
     {
-        public GameAction Action { get; set; }
+        public GameActionType Action { get; set; }
 
-        public KeyDownEventArgs(GameAction action)
+        public KeyDownEventArgs(GameActionType action)
         {
             this.Action = action;
         }
