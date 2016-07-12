@@ -20,6 +20,7 @@
                 if (AreCollided(hunter, bird))
                 {
                     bird.IsAlive = false;
+                    bird.Health = 0;
                     hunter.NumberOfLifes--;
                     return true;
                 }
